@@ -1,0 +1,2 @@
+module RentInfosHelper
+end

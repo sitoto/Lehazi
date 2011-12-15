@@ -1,0 +1,26 @@
+<div class="post">
+<h2 class="title">信息列表</h2>
+  <div class="content">
+    <table width="100%">
+    <% @infos.each do |info| %>
+      <tr>
+        <td><%= (info.pub_time.nil?)? 0: info.pub_time.strftime("%m月%d日")%></td>
+
+        <td><%= link_to info.title, info %></td>
+        <td><%= info.rent %></td>
+        <td><%= info.area %></td>
+        <td><%= info.district%></td>
+        <td><%= info.style %></td>
+
+
+      </tr>
+    <% end %>
+    </table>
+    <%= will_paginate @infos ,:class => 'digg_pagination' %>
+    <br />
+
+    <%= link_to 'New info', new_info_path %>
+  </div>
+
+
+</div>

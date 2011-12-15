@@ -1,0 +1,367 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #EBEBED;
+    color: #333;
+    font-family: Verdana, Tahoma, "BitStream vera Sans", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+img {
+    border: none;
+}
+
+a img {
+    border: none;
+}
+.fixed,
+.clear {
+	clear:both;
+}
+.clearfix {
+display: block;
+}
+
+.clearfix::after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+#error {
+    background: #F1E9E1;
+    padding: 5px 10px 5px 15px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #E05C23;
+}
+
+#notice {
+    background: #F6F9E7;
+    padding: 5px 10px 5px 15px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #84985D;
+}
+
+#wrap {
+    text-align: left;
+    margin: 0 auto;
+    width: 1024px;
+}
+
+#container {
+    background: #D6D6D6;
+    padding: 0 3px 3px;
+}
+#topbar {
+
+}
+
+#user_nav{
+    margin: 3px 0 0 0;
+    padding: 2px;
+    text-align: right;
+    float: right;
+}
+
+/* content START */
+#content {
+    background: #FFF;
+    border: 1px solid #B0BEC7;
+    margin-bottom: 10px;
+    padding: 0 1px;
+}
+
+#navigation {
+    background: #E9EEF1;
+    font-size: 10px;
+    border-top: 1px solid #FFF !important;
+    border-top: 0;
+}
+
+*+html #navigation {
+    border-top: 0 !important;
+}
+
+/* content END */
+/* menus START */
+#menubar {
+	background:#E9EEF1;
+	float:left;
+	padding:0 10px;
+}
+#menubar li {
+	display:inline;
+	list-style:none;
+	float:left;
+	border:solid #FFF;
+	border-width:0 1px;
+	margin-left:-1px;
+}
+#menubar li a {
+	background:#E9EEF1;
+	display:block;
+	text-decoration:none;
+	padding:5px 10px;
+}
+#menubar li a:hover,
+#menubar li a.current {
+	background: #9999ff;
+    color:#FFF;
+}
+#menubar .current_page_item {
+	background:#FFF;
+	font-weight:bold;
+}
+#menubar .current_page_item li{
+	font-weight:normal;
+}
+
+#menubar li ul,
+#subscribe ul {
+	display:none;
+	margin-left:-1px !important;
+	margin-left:0;
+	background:#FFF;
+	padding:1px;
+	position:absolute;
+	z-index:1;
+}
+#subscribe ul {
+	margin-left:-1px;
+}
+*+html #subscribe ul {
+	margin-left:-2px !important;
+}
+#menubar li li,
+#subscribe li {
+	float:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+	border:0;
+}
+#menubar li li a,
+#subscribe li a {
+	display:block;
+	padding:5px 10px;
+	text-decoration:none;
+	width:130px;
+	overflow:hidden;
+}
+
+#subscribe a {
+	background:#F1E9E1;
+}
+#subscribe a:hover,
+#subscribe a.current {
+	background:#EDC;
+}
+#copyright,
+.feedlink,
+.greedlink,
+.twitterlink {
+	float:right;
+	padding:5px 10px;
+	border-right:1px solid #FFF;
+	margin-right:-1px;
+	position:relative;
+}
+
+a.feedlink {
+	background:#F1E9E1;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+}
+a.feedlink:hover {
+	background:#EDC;
+	text-decoration:none;
+}
+a.greedlink {
+	background:#ECF3D3;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+	color:#84985D;
+}
+a.greedlink:hover {
+	background:#DEECBE;
+	text-decoration:none;
+}
+a.twitterlink {
+	background:#DEECF3;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+	color:#38A;
+}
+a.twitterlink:hover {
+	background:#D0E1EF;
+	text-decoration:none;
+}
+/* menus END */
+/* main START */
+#main {
+    width: 670px;
+    margin: 10px 0 0;
+    float: left;
+    overflow: hidden;
+}
+.post .title {
+	background:#F1F5F6;
+	padding:5px 10px 3px 15px;
+	color:#258;
+    font-family: 微软雅黑,黑体;
+    font-size: 22px;
+}
+.post .title a:hover {
+	color:#333;
+	text-decoration:none;
+}
+.post .meta {
+	background:#F1F5F6;
+	padding:0 10px 5px 15px;
+}
+.post .meta .info {
+	font-size:10px;
+	float:left;
+}
+.post .meta .comments {
+	font-size:10px;
+	float:right;
+}
+.post .tags {
+	font-size:10px;
+	margin-bottom:10px;
+}
+.post .content {
+	line-height:145%;
+	padding:10px 0 10px 15px;
+	overflow:hidden;
+}
+.post .content h4 {
+	font-size:14px;
+	margin-bottom:8px;
+	color:#60743A;
+}
+.post .content img {
+	max-width:600px;
+}
+.post .content p {
+	margin-bottom:8px;
+}
+.post .content ul,
+.post .content ol {
+	padding-bottom:10px;
+}
+.post .content ul li,
+.post .content ol li {
+	list-style-position:inside;
+	padding-left:20px;
+}
+.post .content table {
+	border-collapse:collapse;
+	background:#FFF;
+	margin:5px 0 10px;
+	border:2px solid #E1E7E9;
+}
+.post .content table tr td,
+.post .content table tr th {
+	border-left:1px dotted #FFF;
+	border-right:1px dotted #FFF;
+	border-bottom:1px solid #FFF;
+	text-align:left;
+	vertical-align:middle;
+	padding:5px 10px;
+}
+.post .content table tr td {
+	background:#F1F5F6;
+}
+.post .content table tr th {
+	background:#E1E7E9;
+}
+/* main END */
+
+/* sidebar START */
+#sidebar {
+    width: 270px;
+    margin: 10px 0 0;
+    float: right;
+    overflow: hidden;
+}
+
+.widget {
+    background: #F1F5F6;
+    margin-bottom: 10px;
+    padding: 0 10px 5px;
+}
+
+.widget h3 {
+    background: #E1E7E9;
+    margin: 0 -10px;
+    padding: 5px 10px;
+    font-size: 11px;
+    border-bottom: 1px solid #FFF;
+}
+
+.widget ul {
+    margin: 0 -5px;
+}
+
+.widget li {
+    list-style: none;
+    padding: 3px 5px;
+    border-bottom: 1px solid #E1E7E9;
+    line-height: 18px;
+}
+
+.widget div.itembox {
+    padding: 5px 0 0;
+}
+
+.widget li ul {
+    padding-right: 0;
+    margin-left: 10px;
+}
+
+.widget li li {
+    padding: 3px 5px 0;
+    border-top: 1px solid #E1E7E9;
+    border-bottom: none;
+    margin-top: 3px;
+}
+
+/* sidebar END */
+/* footer START */
+#footer {
+    background: #E9EEF1;
+    font-size: 10px;
+    border-bottom: 1px solid #FFF;
+    text-align: center;
+}
+
+/* footer END */

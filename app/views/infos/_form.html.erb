@@ -1,0 +1,69 @@
+<%= form_for(@info) do |f| %>
+  <% if @info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@info.errors.count, "error") %> prohibited this info from being saved:</h2>
+
+      <ul>
+      <% @info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    标题<br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    区域<br />
+    <%= f.text_field :district %>
+  </div>
+   <div class="field">
+    地址<br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    租金<br />
+    <%= f.text_field :rent %>
+  </div>
+  <div class="field">
+    面积<br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    房型<br />
+    <%= f.text_field :style %>
+  </div>
+  <div class="field">
+    楼层<br />
+    <%= f.text_field :floor %>
+  </div>
+  <div class="field">
+    配置<br />
+    <%= f.text_field :config %>
+  </div>
+  <div class="field">
+    房屋概况<br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    联系人<br />
+    <%= f.text_field :pub_person %>
+  </div>
+  <div class="field">
+    联系电话<br />
+    <%= f.text_field :pub_person_tel_image_url %>
+  </div>
+    <div class="field">
+    联系电话<br />
+    <%= f.text_field :pub_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_time %><br />
+    <%= f.datetime_select :pub_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

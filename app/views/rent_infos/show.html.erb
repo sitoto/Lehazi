@@ -1,0 +1,58 @@
+<p>
+  <b>Title:</b>
+  <%= @rent_info.title %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @rent_info.address %>
+</p>
+
+<p>
+  <b>Rent:</b>
+  <%= @rent_info.rent %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @rent_info.area %>
+</p>
+
+<p>
+  <b>Style:</b>
+  <%= @rent_info.style %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%= @rent_info.floor %>
+</p>
+
+<p>
+  <b>Config:</b>
+  <%= @rent_info.config %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @rent_info.description %>
+</p>
+
+<p>
+  <b>Pub person:</b>
+  <%= @rent_info.pub_person %>
+</p>
+
+<p>
+  <b>Pub person tel image url:</b>
+  <%= @rent_info.pub_person_tel_image_url %>
+</p>
+
+<p>
+  <b>Pub time:</b>
+  <%= @rent_info.pub_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_rent_info_path(@rent_info) %> |
+<%= link_to 'Back', rent_infos_path %>

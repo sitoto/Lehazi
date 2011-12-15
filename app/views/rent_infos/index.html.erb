@@ -1,0 +1,43 @@
+<h1>Listing rent_infos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>Rent</th>
+    <th>Area</th>
+    <th>Style</th>
+    <th>Floor</th>
+    <th>Config</th>
+    <th>Description</th>
+    <th>Pub person</th>
+    <th>Pub person tel image url</th>
+    <th>Pub time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rent_infos.each do |rent_info| %>
+  <tr>
+    <td><%= rent_info.title %></td>
+    <td><%= rent_info.address %></td>
+    <td><%= rent_info.rent %></td>
+    <td><%= rent_info.area %></td>
+    <td><%= rent_info.style %></td>
+    <td><%= rent_info.floor %></td>
+    <td><%= rent_info.config %></td>
+    <td><%= rent_info.description %></td>
+    <td><%= rent_info.pub_person %></td>
+    <td><%= rent_info.pub_person_tel_image_url %></td>
+    <td><%= rent_info.pub_time %></td>
+    <td><%= link_to 'Show', rent_info %></td>
+    <td><%= link_to 'Edit', edit_rent_info_path(rent_info) %></td>
+    <td><%= link_to 'Destroy', rent_info, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rent info', new_rent_info_path %>

@@ -1,0 +1,61 @@
+<%= form_for(@rent_info) do |f| %>
+  <% if @rent_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rent_info.errors.count, "error") %> prohibited this rent_info from being saved:</h2>
+
+      <ul>
+      <% @rent_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :rent %><br />
+    <%= f.text_field :rent %>
+  </div>
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :style %><br />
+    <%= f.text_field :style %>
+  </div>
+  <div class="field">
+    <%= f.label :floor %><br />
+    <%= f.text_field :floor %>
+  </div>
+  <div class="field">
+    <%= f.label :config %><br />
+    <%= f.text_field :config %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_person %><br />
+    <%= f.text_field :pub_person %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_person_tel_image_url %><br />
+    <%= f.text_field :pub_person_tel_image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_time %><br />
+    <%= f.datetime_select :pub_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

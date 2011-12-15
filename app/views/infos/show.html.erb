@@ -1,0 +1,77 @@
+<div class="post">
+
+<h2 class="title"> <%= @info.title %> </h2>
+<div class="meta">
+  <div class="info">
+    <%= @info.pub_time.strftime("%Y-%m-%d %H:%M") %>
+  </div>
+  <div class="comments">
+			<a href="#respond">发表评论</a>
+			| <a href="http://lehazi.com/infos/trackback" rel="trackback">Trackback</a>
+  </div>
+  <div class="fixed"></div>
+</div>
+<div class="content">
+    <p>
+      <b>区域:</b>
+      <%= @info.district %>
+    </p>
+    <p>
+      <b>地址:</b>
+      <%= @info.address %>
+    </p>
+
+    <p>
+      <b>租金:</b>
+      <%= @info.rent %>
+    </p>
+
+    <p>
+      <b>面积:</b>
+      <%= @info.area %>
+    </p>
+
+    <p>
+      <b>房型:</b>
+      <%= @info.style %>
+    </p>
+
+    <p>
+      <b>楼层:</b>
+      <%= @info.floor %>
+    </p>
+
+    <p>
+      <b>配置:</b>
+      <%= @info.config %>
+    </p>
+
+    <p>
+      <b>联系人:</b>
+      <%= @info.pub_person %>
+    </p>
+
+    <p>
+      <b>联系电话:</b>
+      <%= image_tag  @info.pub_person_tel_image_url %>
+    </p>
+
+    <p>
+      <b>发布时间:</b>
+      <%= @info.pub_time.strftime("%Y-%m-%d %H:%M") %>
+    </p>
+
+    <p>
+      <b>房屋概况:</b>
+      <hr>
+      <%= @info.description %>
+        <hr>
+    </p>
+
+</div>
+
+
+<%= link_to 'Edit', edit_info_path(@info) %> |
+<%= link_to 'Back', infos_path %>
+
+</div>
