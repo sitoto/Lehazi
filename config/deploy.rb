@@ -20,7 +20,7 @@ set :domain, 'www.lehazi.com'#'58.215.187.215'
 set :application, 'lehazi'
 
 # file paths
-set :repository,  "#{user}@#{domain}:root/git/{application}.git"
+set :repository,  "#{user}@#{domain}:git/#{application}.git"
 #set :deploy_to, "/home/#{user}/#{domain}" 
 set :deploy_to, "/var/www/#{domain}"
 
