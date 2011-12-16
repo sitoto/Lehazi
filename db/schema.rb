@@ -13,11 +13,46 @@
 
 ActiveRecord::Schema.define(:version => 20111212085944) do
 
+  create_table "articleforyule", :force => true do |t|
+    t.text    "title"
+    t.text    "keywords"
+    t.text    "content"
+    t.integer "clicknum", :default => 10008
+    t.text    "name"
+    t.text    "from"
+    t.text    "pubdate"
+  end
+
+  create_table "articleforyule_copy_jo", :force => true do |t|
+    t.text    "title"
+    t.text    "keywords"
+    t.text    "content"
+    t.integer "clicknum", :default => 10008
+    t.text    "name"
+    t.text    "from"
+    t.text    "pubdate"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "infoforzufang", :force => true do |t|
+    t.text "title"
+    t.text "pub_time"
+    t.text "area"
+    t.text "config"
+    t.text "price"
+    t.text "zhuangxiu"
+    t.text "floor"
+    t.text "pub_name"
+    t.text "tel"
+    t.text "intor"
+    t.text "address"
+    t.text "style"
   end
 
   create_table "infos", :force => true do |t|
@@ -83,5 +118,21 @@ ActiveRecord::Schema.define(:version => 20111212085944) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["persistence_token"], :name => "idx_users_persistence", :unique => true
+
+  create_table "洪山", :id => false, :force => true do |t|
+    t.integer "id",        :default => 0, :null => false
+    t.text    "title"
+    t.text    "pub_time"
+    t.text    "area"
+    t.text    "config"
+    t.text    "price"
+    t.text    "zhuangxiu"
+    t.text    "floor"
+    t.text    "pub_name"
+    t.text    "tel"
+    t.text    "intor"
+    t.text    "address"
+    t.text    "style"
+  end
 
 end
