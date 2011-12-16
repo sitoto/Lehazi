@@ -3,19 +3,28 @@ development:
   adapter: mysql2
   database: test 
   host: localhost 
-  username: root 
-  password: 
-
+  username: lehazi 
+  password: lehazibu
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  
 test:
   adapter: mysql2
   database: test 
   host: localhost 
-  username: root 
-  password: 
+  username: lehazi 
+  password: lehazibu
+  pool: 5
+  timeout: 5000
+  encoding: utf8
 
 production:
   adapter: mysql2
   database: lehazi_com 
   host: localhost 
-  username: root 
-  password: 17qupiaoLIU
+  username: lehazi 
+  password: lehazibu
+  pool: 5
+  timeout: 5000
+  encoding: utf8
