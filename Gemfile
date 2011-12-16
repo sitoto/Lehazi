@@ -9,7 +9,7 @@ gem 'mongrel'
 
 gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
-gem 'sqlite3'
+gem 'sqlite3-ruby' ,'1.2.2'
 gem 'will_paginate'
 
 #gem 'mysql'
