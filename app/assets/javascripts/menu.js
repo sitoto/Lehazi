@@ -1,8 +1,3 @@
-/*
-Author: mg12
-Update: 2009/06/30
-Author URI: http://www.neoease.com/
-*/
 (function() {
 
 var Class = {

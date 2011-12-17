@@ -12,7 +12,7 @@ LehaziCom::Application.routes.draw do
   resources :categories
 
   resources :infos
-  root :to => "infos#index"
+  root :to => "home#index"
   resources :rent_infos
 
   # The priority is based upon order of creation:

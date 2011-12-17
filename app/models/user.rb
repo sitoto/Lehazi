@@ -1,14 +1,22 @@
 class User < ActiveRecord::Base
-   belongs_to :role
-  attr_accessible :email, :password, :password_confirmation
+  belongs_to :role
+  attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
 
   attr_accessor :password
   before_save :encrypt_password
-
+  before_create :set_some_att
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+
+  def set_some_att
+    self.perishable_token = 'abc'
+    self.persistence_token = DateTime.now().to_s
+    self.single_access_token= 'def'
+    #self.current_login_ip  = :current_login_ip #request.remote_ip #IPSocket.getaddress(Socket.gethostname)
+    self.role_id =1
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)

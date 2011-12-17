@@ -11,40 +11,22 @@
 }
 
 body {
-    background: #EBEBED;
+    background: #FFFFFF;
     color: #333;
     font-family: Verdana, Tahoma, "BitStream vera Sans", Arial, Helvetica, sans-serif;
     font-size: 13px;
     line-height: 18px;
 }
-
-h1 {
-    font-size: 20px;
-}
-
-h2 {
-    font-size: 16px;
-}
-
-h3 {
-    font-size: 14px;
-}
-
-img {
-    border: none;
-}
-
-a img {
-    border: none;
-}
+h1 {font-size: 20px;}
+h2 {font-size: 16px;}
+h3 {font-size: 14px;}
+img {border: none;}
+a img {border: none;}
 .fixed,
-.clear {
-	clear:both;
-}
+.clear {clear:both;}
 .clearfix {
 display: block;
 }
-
 .clearfix::after {
 content: ".";
 display: block;
@@ -52,7 +34,6 @@ height: 0;
 clear: both;
 visibility: hidden;
 }
-
 #error {
     background: #F1E9E1;
     padding: 5px 10px 5px 15px;
@@ -60,7 +41,6 @@ visibility: hidden;
     font-size: 10px;
     color: #E05C23;
 }
-
 #notice {
     background: #F6F9E7;
     padding: 5px 10px 5px 15px;
@@ -68,13 +48,11 @@ visibility: hidden;
     font-size: 10px;
     color: #84985D;
 }
-
 #wrap {
     text-align: left;
     margin: 0 auto;
     width: 1024px;
 }
-
 #container {
     background: #D6D6D6;
     padding: 0 3px 3px;
@@ -89,7 +67,10 @@ visibility: hidden;
     text-align: right;
     float: right;
 }
-
+#header{
+    background-color: #FFFFFF;
+    margin-bottom: 3px;
+}
 /* content START */
 #content {
     background: #FFF;
@@ -226,8 +207,8 @@ a.twitterlink:hover {
 /* menus END */
 /* main START */
 #main {
-    width: 670px;
-    margin: 10px 0 0;
+    width: 690px;
+    margin:10px 0px 10px 10px;
     float: left;
     overflow: hidden;
 }
@@ -235,7 +216,7 @@ a.twitterlink:hover {
 	background:#F1F5F6;
 	padding:5px 10px 3px 15px;
 	color:#258;
-    font-family: 微软雅黑,黑体;
+    font-family: '微软雅黑,黑体';
     font-size: 22px;
 }
 .post .title a:hover {
@@ -308,16 +289,16 @@ a.twitterlink:hover {
 
 /* sidebar START */
 #sidebar {
-    width: 270px;
-    margin: 10px 0 0;
-    float: right;
+    width: 300px;
+    margin: 0  0;
+    float: left;
     overflow: hidden;
 }
 
 .widget {
     background: #F1F5F6;
     margin-bottom: 10px;
-    padding: 0 10px 5px;
+    padding: 10px 0px;
 }
 
 .widget h3 {

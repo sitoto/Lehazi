@@ -2,55 +2,43 @@
 <html>
 <head>
   <title>Lehazi</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= yield :head	  %>
+  <%= yield :head %>
 </head>
 <body>
 <div id="wrap">
- <div id="container">
-   <div id="topbar" class="clearfix">
-     <%= render :partial =>'layouts/topbar' %>
-   </div>
-   <div id="header">
-     <%= image_tag 'logo.png',:alt=>"乐哈子" %>
-   </div>
-   <div id="content">
-     <div id='navigation'>
+  <div id="container">
+    <div id="topbar" class="clearfix">
+      <%= render :partial =>'topbar' %>
+    </div>
+    <div id="header">
+      <%= image_tag 'logo.png', :alt=>"乐哈子" %>
+    </div>
+    <div id="content">
+      <div id='navigation'>
         <%= render :partial =>'layouts/menu' %>
-     </div>
-     <div id="main">
+      </div>
+      <div id="main">
         <% if flash[:notice] -%>
-          <div id="notice"><%= flash[:notice] %></div>
-         <%	 end %>
-         <%	 if flash[:error] -%>
-          <div id="error"><%= flash[:error] %></div>
-         <%	 end %>
-
-         <%= yield %>
-     </div>
-
-     <div id="sidebar">
-       <div class="widget popular-posts">
-        <h3>最受欢迎</h3>
-         <ul>
-        <li>123 </li>
-        </ul>
-        </div>
-
-     </div>
-     <div class="fixed">
-
-     </div>
-     <div id="footer">
-        <%= render :partial =>'layouts/footer' %>
-     </div>
-   </div>
- </div>
+            <div id="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <% if flash[:error] -%>
+            <div id="error"><%= flash[:error] %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <div id="sidebar">
+        <%= render :partial =>'sidebar' %>
+      </div>
+      <div class="fixed">
+      </div>
+      <div id="footer">
+        <%= render :partial =>'footer' %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
 </body>
 </html>

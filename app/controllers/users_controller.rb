@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
  def new
     @user = User.new
+
   end
 
   def create
     @user = User.new(params[:user])
+    @user.current_login_ip=request.remote_ip
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else
