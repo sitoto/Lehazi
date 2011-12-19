@@ -6,6 +6,7 @@ gem 'mongrel','1.2.0.pre2'
 gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'will_paginate'
+gem 'RedCloth'
 
 gem 'mysql2'
 group :production do

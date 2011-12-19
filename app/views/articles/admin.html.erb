@@ -1,0 +1,14 @@
+<h2>编辑</h2>
+
+<p><%=	 link_to '新建', new_article_path %></p>
+<ul>
+<% @articles.each  do |article| %>
+    <li>
+      <%=	 link_to article.title, article %>
+      <%=   article.published ? '已发布' : '未发布' %>
+      <%=	 link_to 'Edit', edit_article_path(article) %>
+      <%=	 link_to 'Delete', article, method: :delete, :confirm => 'Are you sure?' %>
+    </li>
+<% end %>
+</ul>
+<%= will_paginate @infos ,:class => 'digg_pagination' %>

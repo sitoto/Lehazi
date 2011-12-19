@@ -1,6 +1,4 @@
 class InfosController < ApplicationController
-   layout "application"
-
   # GET /infos
   # GET /infos.json
   def index

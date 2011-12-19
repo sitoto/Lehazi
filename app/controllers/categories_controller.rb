@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-
-
+before_filter :check_administrator_role,:except => :show
   # GET /categories
   # GET /categories.json
   def index
@@ -88,6 +87,16 @@ class CategoriesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def admin
+    @categories = Category.find(:all)
+    respond_to do |format|
+      format.html
+      format.json { render json: @categories }
+      format.xml { render xml: @categories }
+    end
+  end
+
 
 
 def infoaddresstree

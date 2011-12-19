@@ -11,7 +11,7 @@
 <div id="wrap">
   <div id="container">
     <div id="topbar" class="clearfix">
-      <%= render :partial =>'topbar' %>
+      <%= render :partial =>'layouts/topbar' %>
     </div>
     <div id="header">
       <%= image_tag 'logo.png', :alt=>"乐哈子" %>
@@ -30,12 +30,12 @@
         <%= yield %>
       </div>
       <div id="sidebar">
-        <%= render :partial =>'sidebar' %>
+        <%= render :partial =>'layouts/sidebar' %>
       </div>
       <div class="fixed">
       </div>
       <div id="footer">
-        <%= render :partial =>'footer' %>
+        <%= render :partial =>'layouts/footer' %>
       </div>
     </div>
   </div>

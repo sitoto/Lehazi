@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
-  belongs_to :role
-  attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
+  has_and_belongs_to_many :roles
+  has_many :articles
+  has_many :infos
 
+  attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
+  attr_protected :enabled,:crypted_password
   attr_accessor :password
+
   before_save :encrypt_password
   before_create :set_some_att
   validates_confirmation_of :password
@@ -15,7 +19,6 @@ class User < ActiveRecord::Base
     self.persistence_token = DateTime.now().to_s
     self.single_access_token= 'def'
     #self.current_login_ip  = :current_login_ip #request.remote_ip #IPSocket.getaddress(Socket.gethostname)
-    self.role_id =1
   end
 
   def self.authenticate(email, password)
@@ -32,5 +35,9 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.crypted_password = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def has_roles?(rolename)
+    self.roles.find_by_name(rolename) ? true : false
   end
 end

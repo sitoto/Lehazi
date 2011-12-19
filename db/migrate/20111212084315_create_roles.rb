@@ -5,5 +5,9 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
+    Role.create(:name => 'Administrator')
+  end
+  def self.down
+    drop_table :roles
   end
 end

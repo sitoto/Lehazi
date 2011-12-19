@@ -1,0 +1,6 @@
+<h1>Roles for <%= @user.login %></h1>
+<h2>Roles assigned:</h2>
+<ul><%=	 render :partial => 'role', :collection => @user.roles%></ul>
+<h2>Roles available:</h2>
+<ul><%=	 render :partial => 'role', :collection => (@all_roles - @user.roles )%></ul>
+<p>Find me in app/views/roles/index.html.erb</p>

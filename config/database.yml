@@ -1,7 +1,7 @@
 
 development:
   adapter: mysql2
-  database: test 
+  database: development
   host: localhost 
   username: lehazi 
   password: lehazibu
