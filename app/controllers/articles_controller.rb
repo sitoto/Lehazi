@@ -2,9 +2,9 @@ class ArticlesController < ApplicationController
   before_filter :check_editor_role, :except => [:index, :show]
 
   def index
-    @articles
+
     if params[:category_id]
-       @articles = Article.where("category_id=#{params[:category_id].to_i} AND published=true").paginate(:articles,
+       @articles = Article.where("category_id=#{params[:category_id].to_i} AND published=true").paginate(:page => params[:page],
                                                     :include => :user).order ( 'published_at DESC')
     else
       @articles = Article.where(:published => true).paginate(:page => params[:page],

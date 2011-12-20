@@ -2,7 +2,7 @@
 
   <% if @article.category  %>
   <p class="category">
-    分类：<%= link_to @article.category.name, category_article_path(@article.category) %>
+    分类：<%= link_to @article.category.name, category_articles_path(@article.category) %>
   </p>
   <% end %>
   <p>

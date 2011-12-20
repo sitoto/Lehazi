@@ -9,6 +9,7 @@ LehaziCom::Application.routes.draw do
   #resources :users  , :member => {:enable => :put}  do |users|
   #  resources :roles
   #end
+  #get 'articles' =>"articles#index", :as=>"articles"
   resources :articles  do
     collection do
       get 'admin'
@@ -18,7 +19,7 @@ LehaziCom::Application.routes.draw do
     collection do
       get 'admin'
     end
-    resources :articles , :name_prefix => 'category_'
+    resources :articles, :name_prefix => 'category_' #,:path_prefix => '/categories/:category_id'
   end
 
   resources :users  do
@@ -35,7 +36,7 @@ LehaziCom::Application.routes.draw do
   #end
 
   resources :sessions
-  resources :categories
+
   resources :infos
   root :to => "home#index"
   resources :rent_infos

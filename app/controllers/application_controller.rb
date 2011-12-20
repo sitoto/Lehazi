@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def is_logged_in?
     login,password = get_http_auth_data
     @current_user = User.find(session[:user_id]) if session[:user_id]
-    @current_user = User.authenticate(email,password) if email && password
+    @current_user = User.authenticate(login,password) if login && password
     @current_user ? @current_user : false
   end
 
