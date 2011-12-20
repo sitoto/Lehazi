@@ -1,0 +1,43 @@
+<h2>
+  <%= link_to '论坛', forums_path %> »
+  <%= link_to @topic.forum.name , forum_topics_path(@topic.forum_id) %> »
+  <%= @topic.name  %>
+</h2>
+
+<h3><%= @topic.name  %></h3>
+<p>
+    <%	 if is_logged_in? %>
+        <%=	 link_to '回帖', new_forum_topic_post_path %>
+      <%	 else %>
+  <%= link_to '登陆', login_url	  %>
+    <%	 end %>
+</p>
+<table id="posts">
+  <tr>
+    <th class="author">作者</th>
+    <th class="post">消息</th>
+    <th>time</th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr class="<%= cycle("odd","even")%>">
+    <td class="author"><%= link_to post.user.login , user_path(post.user) %>
+        <small>
+          注册于<%= post.user.created_at.to_s(:short)	   %><br/>
+          <%=	 pluralize(post.user.posts_count,'post') %>
+        </small>
+      <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
+      <br/>
+          <small>
+            <%= link_to '编辑', edit_forum_topic_post_path(@topic.forum_id,post.topic_id,post.id)%>
+            <%=	 link_to '删除',forum_topic_post_path(@topic.forum_id,post.topic_id,post.id), method: :delete ,:confirm => '确定？'  %>
+          </small>
+       <%	 end %>
+    </td>
+    <td class="post"><%= textilize(post.body) %></td>
+
+    <td><%= post.updated_at %></td>
+  </tr>
+<% end %>
+</table>
+ <%= will_paginate @infos ,:class => 'digg_pagination' %>

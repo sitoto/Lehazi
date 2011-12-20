@@ -85,3 +85,7 @@ a, a:link, a:visited {
 
 .red, .reqd, .error, .important {color: red; }
 .border {margin-bottom: 6px;}
+
+th { background-color: #933; color: #fff; }
+tr.odd { background-color: #fcc; }
+tr.even { background-color: #ecc; }

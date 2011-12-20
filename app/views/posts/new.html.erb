@@ -1,0 +1,11 @@
+<h2>New post</h2>
+
+<h3>标题： <%=	 @topic.name %></h3>
+
+<%= form_for(@post ,:url => forum_topic_posts_path) do |f| %>
+         <p>内容：<br/> <%=	f.text_area  :body, :rows => 8, :cols => 60 %></p>
+         <%= submit_tag '保存' %>
+         <%= link_to '取消', forum_topic_posts_path %>
+<%	 end %>
+
+

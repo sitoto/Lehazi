@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
  protect_from_forgery
   helper_method :current_user
-
+  helper_method :is_logged_in?
   #before_filter :authorize
   private
 
@@ -51,6 +51,10 @@ class ApplicationController < ActionController::Base
   def check_administrator_role
       check_role('Administrator')
   end
+
+ def check_moderator_role
+   check_role('Moderator')
+ end
 
   def login_required
     unless is_logged_in?

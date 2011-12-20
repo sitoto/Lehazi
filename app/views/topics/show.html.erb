@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Forum:</b>
+  <%= @topic.forum_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @topic.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @topic.name %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @topic.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%= @topic.updated_at %>
+</p>
+
+<p>
+  <b>Posts count:</b>
+  <%= @topic.posts_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_forum_topic_path(@topic) %> |
+<%= link_to 'Back', forum_topics_path %>

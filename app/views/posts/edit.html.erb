@@ -1,0 +1,8 @@
+<h2>修改帖子</h2>
+
+<%=	 @post.topic.name %>
+<%= form_for(@post ,:url => forum_topic_post_path(:forum_id, @post.topic_id,@post.id)) do |f| %>
+         <p>内容：<br/> <%=	f.text_area  :body, :rows => 8, :cols => 60 %></p>
+         <%= submit_tag '保存' %>
+         <%= link_to '取消', forum_topic_posts_path %>
+<%	 end %>

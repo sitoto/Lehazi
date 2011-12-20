@@ -1,0 +1,42 @@
+<h2>娱乐八卦幽默笑话</h2>
+
+    <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
+        <p><%=	 link_to '新建论坛主题', new_forum_path %></p>
+    <%	 end %>
+
+<table id="froums">
+  <tr>
+    <th>主题</th>
+
+    <th>帖数</th>
+
+  </tr>
+
+<% @forums.each do |forum| %>
+  <tr class="<%= cycle('odd','even')%>">
+    <td class="name">
+      <div class="forumname">
+        <%= link_to forum.name, forum_topics_url(forum.id) %>
+      </div>
+
+      <div class="forumdescription">
+        <%= forum.description %>
+      </div>
+
+      <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
+        <br/>
+          <small>
+            <%= link_to '编辑', edit_forum_path(forum)%>
+            <%=	 link_to '删除',forum, method: :delete ,:confirm => '确定？'  %>
+          </small>
+      <%	 end %>
+     </td>
+
+    <td class="topic"><%= forum.topics_count %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

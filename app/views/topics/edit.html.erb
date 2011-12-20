@@ -1,0 +1,9 @@
+<h2>编辑主题</h2>
+
+<%=	 @topic.name %>
+<%= form_for(@topic ,:url => forum_topic_path(@topic.forum_id, @topic.id)) do |f| %>
+         <p>标题：<br /> <%=	 f.text_field :name, :size => 40 %> </p>
+
+         <%= submit_tag '保存' %>
+         <%= link_to '取消', forum_topics_path %>
+<%	 end %>

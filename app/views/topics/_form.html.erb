@@ -1,0 +1,41 @@
+<%= form_for @topic ,:url => forum_topic_path do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :forum_id %><br />
+    <%= f.number_field :forum_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br />
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :posts_count %><br />
+    <%= f.number_field :posts_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,8 @@
 LehaziCom::Application.routes.draw do
 
+
+
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -19,7 +22,7 @@ LehaziCom::Application.routes.draw do
     collection do
       get 'admin'
     end
-    resources :articles, :name_prefix => 'category_' #,:path_prefix => '/categories/:category_id'
+    resources :articles#, :name_prefix => 'category_' ,:path_prefix => '/categories/:category_id'
   end
 
   resources :users  do
@@ -27,6 +30,13 @@ LehaziCom::Application.routes.draw do
 
     member do
       put "enable"
+    end
+  end
+
+
+  resources :forums do
+    resources :topics do
+       resources :posts
     end
   end
 

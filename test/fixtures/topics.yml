@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  forum_id: 1
+  user_id: 1
+  name: MyString
+  created_at: 2011-12-20 14:00:34
+  updated_at: 2011-12-20 14:00:34
+  posts_count: 1
+
+two:
+  forum_id: 1
+  user_id: 1
+  name: MyString
+  created_at: 2011-12-20 14:00:34
+  updated_at: 2011-12-20 14:00:34
+  posts_count: 1

@@ -346,3 +346,7 @@ a.twitterlink:hover {
 }
 
 /* footer END */
+
+table#forums{width:100%;background-color: #FFFFFF;;border: 1px solid #067ab4;}
+table#forums td.name{ width:60%}
+table#forums td.topic{ width:20%;text-align: center;}
