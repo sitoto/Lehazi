@@ -10,26 +10,34 @@
    <div id="banner_list">
         <ul>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p1.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank"><img src="assets/pics/p11.jpg" title="" alt="" /></a>
               <div class="txt">
-                <span class="title">《金陵十三钗》入围金球 章子怡力挺张艺谋得奖</span>
-                <span class="content">提到恩师张艺谋执导的电影《金陵十三钗》入围第69届金球奖最佳外语片，子怡为恩师及中国电影感骄傲。问对张导可有信心？她兴奋地说：“我还未看，但我知道看过的人都说非常非常好。其实中国电影比其他国家的电影有更大的难度，因为我们的电影审查制度很严格，所以我们创作范围就很小。能在这样小的创作范围内获提名，我觉得是很不容易呢！”</span>
+                <span class="title">圣诞节档期大片抢先看</span>
+                <span class="content">《金陵十三钗》《碟中谍4》《龙门飞甲》《大魔术师》《倾城之泪》《一代宗师》等圣诞节大片等您来鉴赏......</span>
               </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p5.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank"><img src="assets/pics/p12.jpg" title="" alt="" /></a>
               <div class="txt">
-                <span class="title">金陵十三钗</span>
-                <span class="content">《金陵十三钗》入围金球 章子怡力挺张艺谋得奖</span>
+                <span class="title">圣诞节快乐！</span>
+                <span class="content">圣诞节尴尬之最：夹起火鸡想到禽流感；收到礼物恐有核炸弹；肩扛口袋好似捡破烂；贴上胡子引发大骚乱——我的天！拉登重新出现！ </span>
               </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p3.jpg" title="" alt="" /></a>
-            <div class="txt">c</div>
+              <a href="#" target="_blank"><img src="assets/pics/p13.jpg" title="" alt="" /></a>
+                <div class="txt">
+                <span class="title">圣诞节快乐！</span>
+                <span class="content">俺是者哥史街伤嘴惯信泥地任，椰是嘴向年泥地任，腰吻俺邮夺矮泥，约粮呆标俺地信！
+俺腰窄吓耶孔种嘴命粮地猩猩松泥！啊！芹矮地，向泥！圣诞节快乐！ </span>
+              </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p4.jpg" title="" alt="" /></a>
-            <div class="txt">d</div>
+              <a href="#" target="_blank"><img src="assets/pics/p14.jpg" title="" alt="" /></a>
+              <div class="txt">
+                <span class="title">哈利波特-好莱坞环球影城</span>
+                <span class="content">哈利波特好莱坞环球影城<br/>好莱坞环球影城（Universal Studios Hollywood）6日举行了一个发布会，正式宣布该乐园将建设哈利波特魔法世界（The Wizarding World of Harry Potter）
+                  -可能在2015年开幕 </span>
+              </div>
 
             </li>
         </ul>
@@ -37,14 +45,58 @@
     </div>
 </div>
 
-<div class="adbar border">
-ad
-</div>
+
 <div id="infobar" class="border">
-infobar
+    <div class="c_1">
+       <div class="c_t1">
+         <h2>推荐阅读</h2>
+         <span class="c_m1"><a href="">更多 </a></span>
+       </div>
+       <div class="c_c1">
+        <ul class="c_u1">
+          <% @top_articles.each do |article| %>
+            <li><span class="dian01">·</span>
+                <% if article.category  %>
+                <%= link_to '['+article.category.name+'] '+article.title, article ,:target => '_blank'%>
+                <% else %>
+                <%= link_to article.title, article, :target => '_blank' %>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </dir>
+    </div>
+    </div>
+
+
 </div>
+
+<div class="adbar border">
+<img src="assets/pics/adi.jpg" width="680" height="60" border="0" alt="lehazi.com" title="寻找利益与风险的分享者">
+</div>
+
 <div id="messagebar" class="border">
-    message
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>笑话幽默</h2>
+        <span class="c_m2"><a href="#">更多</a></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+<div class="adbar1 border">
+  <img src="assets/pics/adi1.jpg" width="680" height="120" border="0"
+       alt="非官方 ，在野党，全部野史，贻笑大方--邀你加盟"
+       title="非官方 ，在野党，全部野史，贻笑大方--邀你加盟">
 </div>
 <style type="text/css">
 
@@ -66,16 +118,34 @@ cursor:pointer; width:478px; }
 #banner_list ul li {position:absolute; top:0;left:0; margin:0;padding:0px ;z-index: 0;float:left;display:block;color:#FFF;background:#6f4f67;cursor:pointer}
 #banner_list ul li a {position:absolute; top:0;left:0; margin:0;padding:0px ;}
 #banner_list ul li .txt {position:absolute; left:478px; margin:0;padding:0px ;width: 200px; height: 286px;background-color: #000;}
-#banner_list ul li .txt .title{ font-size: 12px;color: yellow; display: block; margin: 10px;}
-#banner_list ul li .txt .content{ font-size: 11px; color: #FFF; text-indent: 24px;  display: block; margin: 0 10px;}
+#banner_list ul li .txt .title{ font-size: 13px;color: yellow; display: block; margin: 10px;}
+#banner_list ul li .txt .content{ font-size: 12px; line-height: 24px; color: #FFF; text-indent: 24px;  display: block; margin: 0 10px;}
 
 
 #banner_list ul li.selected{z-index: 1;}
 
+.dian01{color: #D18CD9;}
+.adbar {position:relative; width:680px; height:60px;background-color: #f5deb3; overflow:hidden; }
+.adbar1 {position:relative; width:680px; height:120px;background-color: #f5deb3; overflow:hidden; }
 
-.adbar {position:relative; width:680px; height:60px;background-color: #f5deb3; overflow:hidden; margin-top: 16px;}
+#infobar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
+    #infobar .c_1 {display: block;overflow: hidden;margin: 8px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
+        #infobar .c_1 .c_t1{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
+        #infobar .c_1 .c_t1 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 8px 0px 0px 8px;}
+        #infobar .c_1 .c_t1 .c_m1 {width: 48px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
+    #infobar .c_1 .c_c1{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
+    #infobar .c_1 .c_c1 ul.c_u1{width: 664px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
+    #infobar .c_1 .c_c1 ul.c_u1 li{width: 48%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
+        padding: 2px 0px 3px 0px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;list-style: none;color: #B21515;    }
 
-#infobar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #f5deb3;}
-#messagebar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #f5deb3;}
+#messagebar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
+#messagebar .c_2 {display: block;overflow: hidden;margin: 8px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
+    #messagebar .c_2 .c_t2{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
+    #messagebar .c_2 .c_t2 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 8px 0px 0px 8px;}
+    #messagebar .c_2 .c_t2 .c_m2 {width: 48px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
+#messagebar .c_2 .c_c2{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
+    #messagebar .c_2 .c_c2 ul.c_u2{width: 664px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
+    #messagebar .c_2 .c_c2 ul.c_u2 li{width: 32%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
+        padding: 2px 0px 3px 0px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;list-style: none;color: #B21515;    }
 
 </style>

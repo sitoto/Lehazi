@@ -1,12 +1,25 @@
+<div class="article">
+  <div class="a_title">
 <h2><%= @article.title  %></h2>
+  </div>
+  <div class="a_attr">
+      <% if @article.category  %>
+      <p class="category">
+        分类：<%= link_to @article.category.name, category_articles_path(@article.category) %>
+      </p>
+      <% end %>
+    <%= @article.created_at.to_s(:short) %>
+  </div>
+  <div class="a_content">
+      <p>
 
-  <% if @article.category  %>
-  <p class="category">
-    分类：<%= link_to @article.category.name, category_articles_path(@article.category) %>
-  </p>
-  <% end %>
-  <p>
-    <%= @article.created_at.to_s(:short) %>  <br />
-    <%=	 textilize(@article.body) %><br />
-  </p>
-<p><%=	 link_to '返回' , articles_url %></p>
+        <%=	 raw(textilize(@article.body)) %><br />
+      </p>
+  </div>
+  <div class="a_author">
+
+  </div>
+  <p><%= link_to '返回' , articles_url %></p>
+</div>
+
+

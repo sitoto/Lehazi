@@ -26,7 +26,7 @@
     <%= f.text_area :body, :row => 20, :cols => 60 %>
   </div>
   <div class="field">
-    目录<br />
+    分类<br />
     <%= f.collection_select :category_id, Category.find(:all), :id, :name %>
   </div>
 

@@ -212,6 +212,26 @@ a.twitterlink:hover {
     float: left;
     overflow: hidden;
 }
+.article .a_title{    background: #F1F5F6; padding: 5px 10px 3px 15px;color: #258; font-size: 22px; font-family: '微软雅黑,黑体';}
+.article .a_attr{    background: #F1F5F6; padding: 0 10px 5px 15px;}
+.article .a_content{   line-height: 180%; padding: 10px 10px 10px 15px; overflow: hidden;}
+.article .a_content p{   margin-bottom:8px;}
+.article .a_content img{ max-width:650px; }
+.article .a_content ul,.article .a_content ol {	padding-bottom:10px; }
+.article .a_content ul li,.article .a_content ol li { 	list-style-position:inside;	padding-left:20px;}
+.article .a_content table {	border-collapse:collapse; 	background:#FFF;	margin:5px 0 10px;	border:2px solid #E1E7E9;}
+.article .a_content table tr td,.article .a_content table tr th {	border-left:1px dotted #FFF;	border-right:1px dotted #FFF;
+    border-bottom:1px solid #FFF;	text-align:left;	vertical-align:middle;	padding:5px 10px;}
+.article .a_content table tr td {	background:#F1F5F6;}
+.article .a_content table tr th {	background:#E1E7E9;}
+
+#a_list h2{ display: block; padding: 0 5px 10px 5px; font-weight: bold;}
+#a_list .a_item{ padding: 0 5px 10px 5px;}
+#a_list .a_item h3{color: #258; line-height: 24px;}
+#a_list .a_item h3 span{ display: block;    float: right; color:#999; font-size: 12px; padding-right: 10px;}
+#a_list .a_item .a_c{ border:0; background: #eee;}
+#a_list .a_item .a_c p{ margin-bottom:8px;}
+
 .post .title {
 	background:#F1F5F6;
 	padding:5px 10px 3px 15px;
@@ -290,17 +310,26 @@ a.twitterlink:hover {
 /* sidebar START */
 #sidebar {
     width: 300px;
-    margin: 0  0;
+    margin: 10px 0 0 0;
     float: left;
     overflow: hidden;
 }
 
 .widget {
     background: #F1F5F6;
-    margin-bottom: 10px;
-    padding: 10px 0px;
-}
 
+}
+.popular-posts{height: 286px;}
+
+.popular-article{
+    height: 286px;
+}
+.popular-pics{
+    height: 346px;
+}
+.popular-fun{
+   height: 126px;
+}
 .widget h3 {
     background: #E1E7E9;
     margin: 0 -10px;

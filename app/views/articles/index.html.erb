@@ -1,23 +1,23 @@
 <%	 content_for :head do %>
     <%= auto_discovery_link_tag	  %>
 <% end %>
-
-<h2>news</h2>
+<div id="a_list">
+<h2>娱乐快递</h2>
 
 <%	 @articles.each do |article| %>
-    <div class="article">
-      <h3><%= article.title %></h3>
-      <% if article.category  %>
-      <p class="category">
-        分类：<%= link_to article.category.name, category_articles_path(article.category) %>
-      </p>
-      <% end %>
-      <p>
+    <div class="a_item">
+      <h3>
+        <% if article.category  %>
+        <%= link_to '['+article.category.name+'] ', category_articles_path(article.category) %>
+        <% end %>
+        <%=link_to article.title, article %>
+      </h3>
+      <div class="a_c">
         <%= article.created_at.to_s(:short) %> by <%=	 article.user.login %> <br />
-        <%=	 article.synopsis %><br />
+        <%=	 article.synopsis %>
         <%=	 link_to '阅读全文', article%>
-
-      </p>
+      </div>
     </div>
 <%	 end %>
-<%= will_paginate @infos ,:class => 'digg_pagination' %>
+<%= will_paginate @articles ,:class => 'digg_pagination' %>
+</div>

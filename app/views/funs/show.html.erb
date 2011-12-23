@@ -1,0 +1,19 @@
+<div class="article">
+  <div class="a_title">
+<h2><%= @fun.title  %></h2>
+  </div>
+  <div class="a_attr">
+      <% if @fun.category  %>
+        分类：<%= link_to @fun.category.name, category_funs_path(@fun.category) %>
+      <% end %>
+    查看：<%= @fun.click_time %> 发布人：<%=  (@fun.user_id==0) ? "匿名" : @fun.user.login %>
+  </div>
+  <div class="a_content">
+      <div class="a_c">
+        <%=	 raw(textilize(@fun.body)) %><br />
+      </div>
+  </div>
+
+  <p><%= link_to '返回' , funs_path %></p>
+</div>
+

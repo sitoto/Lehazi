@@ -1,4 +1,4 @@
-<h2>编辑</h2>
+<h2>管理</h2>
 
 <p><%=	 link_to '新建', new_article_path %></p>
 <ul>
@@ -11,4 +11,4 @@
     </li>
 <% end %>
 </ul>
-<%= will_paginate @infos ,:class => 'digg_pagination' %>
+<%= will_paginate @articles ,:class => 'digg_pagination' %>

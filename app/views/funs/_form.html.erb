@@ -1,0 +1,38 @@
+<%= form_for(@fun) do |f| %>
+  <% if @fun.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fun.errors.count, "error") %> prohibited this fun from being saved:</h2>
+
+      <ul>
+      <% @fun.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, t('title') %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body, t('content')%>
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :click_time , t('clickedtimes')%>
+    <%= f.number_field :click_time %>
+  </div>
+  <div class="field">
+    <%= f.label :from_url, t('from') %>
+    <%= f.text_field :from_url %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id, t('category') %>
+    <%= f.collection_select :category_id, Category.find(:all), :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220062349) do
+ActiveRecord::Schema.define(:version => 20111223082040) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(:version => 20111220062349) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "topics_count", :default => 0, :null => false
+  end
+
+  create_table "funs", :force => true do |t|
+    t.string   "title",       :default => "笑话", :null => false
+    t.text     "body",                          :null => false
+    t.integer  "click_time",  :default => 1008, :null => false
+    t.string   "from_url"
+    t.integer  "category_id", :default => 0,    :null => false
+    t.integer  "user_id",     :default => 0,    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "infoforzufang", :force => true do |t|

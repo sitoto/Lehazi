@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :articles
   has_many :infos
+  has_many :funs
 
   attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
   attr_protected :enabled,:crypted_password

@@ -1,0 +1,21 @@
+<h2>管理</h2>
+
+<p><%=	 link_to '新建', new_fun_path %></p>
+<table>
+<% @funs.each  do |fun| %>
+      <tr>
+   <td><%=	 link_to fun.title, fun %></td>
+
+    <td><%= fun.click_time %></td>
+    <td><%= fun.from_url %></td>
+    <td><%= fun.category_id %></td>
+    <td><%= fun.user_id %></td>
+    <td><%= fun.created_at %></td>
+    <td>
+      <%=	 link_to '编辑', edit_fun_path(fun) %>
+      <%=	 link_to '删除', fun, method: :delete, :confirm => 'Are you sure?' %>
+    </td>
+      </tr>
+<% end %>
+</table>
+<%= will_paginate @funs ,:class => 'digg_pagination' %>
