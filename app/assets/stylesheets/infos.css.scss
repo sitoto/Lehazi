@@ -17,12 +17,13 @@
 #postnavi,
 #commentnavi,
 .post .tags {
-	font-size:12px;
+	font-size:13px;
 }
 #menubar .menus li a, #admin li a {
 	padding:5px 10px !important;
 	padding:6px 10px;
 }
+li.page_item a{color:#00f;font-weight: bold; }
 *+html #menubar .menus li a, *+html #admin li a {
 	padding:6px 10px !important;
 }

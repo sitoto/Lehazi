@@ -7,9 +7,9 @@ class FunsController < ApplicationController
 
     if params[:category_id]
        @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'updated_at DESC')
+                                                    :include => :user).order ( 'created_at DESC')
     else
-      @funs = Fun.paginate(:page => params[:page], :include => :user).order('updated_at DESC')
+      @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
     end
     @funs.each do |f|
         f.increment!(:click_time, by = 1)
@@ -93,6 +93,6 @@ class FunsController < ApplicationController
     end
   end
   def admin
-     @funs = Fun.paginate(:page => params[:page], :include => :user).order('updated_at DESC')
+     @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
   end
 end

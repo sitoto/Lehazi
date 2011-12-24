@@ -34,7 +34,7 @@
           </small>
        <%	 end %>
     </td>
-    <td class="post"><%= textilize(post.body) %></td>
+    <td class="post"><%= raw(post.body) %></td>
 
     <td><%= post.updated_at %></td>
   </tr>

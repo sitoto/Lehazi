@@ -49,8 +49,8 @@
 <div id="infobar" class="border">
     <div class="c_1">
        <div class="c_t1">
-         <h2>推荐阅读</h2>
-         <span class="c_m1"><a href="">更多 </a></span>
+         <h2>娱乐新闻</h2>
+         <span class="c_m1"><%= link_to '更多' ,articles_path,:target => '_blank'%></span>
        </div>
        <div class="c_c1">
         <ul class="c_u1">
@@ -79,7 +79,7 @@
     <div class="c_2">
       <div class="c_t2">
         <h2>笑话幽默</h2>
-        <span class="c_m2"><a href="#">更多</a></span>
+        <span class="c_m2"><%= link_to '更多' ,funs_path,:target => '_blank'%></span>
       </div>
       <div class="c_c2">
         <ul class="c_u2">
@@ -99,9 +99,11 @@
        title="非官方 ，在野党，全部野史，贻笑大方--邀你加盟">
 </div>
 <style type="text/css">
+#menubar a.m_home{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_arti,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+
 
 #banner {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;}
-
 #banner_list img {border:0px;}
 #banner_bg {position:absolute; bottom:0;background-color:#000;height:30px;filter: Alpha(Opacity=30);opacity:0.3;z-index:1000;
 cursor:pointer; width:478px; }

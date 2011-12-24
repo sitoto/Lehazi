@@ -10,10 +10,14 @@
   </div>
   <div class="a_content">
       <div class="a_c">
-        <%=	 raw(textilize(@fun.body)) %><br />
+        <%=	 raw((@fun.body)) %><br />
       </div>
   </div>
 
   <p><%= link_to '返回' , funs_path %></p>
 </div>
+<style type="text/css">
+#menubar a.m_funs{background: #9999ff;    color:#FFF;}
+#menubar a.m_arti,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+</style>
 

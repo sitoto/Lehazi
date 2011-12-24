@@ -14,8 +14,8 @@ body {
     background: #FFFFFF;
     color: #333;
     font-family: Verdana, Tahoma, "BitStream vera Sans", Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 24px;
 }
 h1 {font-size: 20px;}
 h2 {font-size: 16px;}
@@ -60,13 +60,9 @@ visibility: hidden;
 #topbar {
 
 }
+#user_nav{ font-size: 12px; line-height: 18px;    margin: 3px 0 0 0;    padding: 2px;    text-align: right;    float: right;}
+#user_nav a{ color: #00f; }
 
-#user_nav{
-    margin: 3px 0 0 0;
-    padding: 2px;
-    text-align: right;
-    float: right;
-}
 #header{
     background-color: #FFFFFF;
     margin-bottom: 3px;
@@ -112,17 +108,9 @@ visibility: hidden;
 	padding:5px 10px;
 }
 #menubar li a:hover,
-#menubar li a.current {
-	background: #9999ff;
-    color:#FFF;
-}
-#menubar .current_page_item {
-	background:#FFF;
-	font-weight:bold;
-}
-#menubar .current_page_item li{
-	font-weight:normal;
-}
+#menubar li a.current {	background: #9999ff;    color:#FFF;}
+#menubar .current_page_item {	background:#FFF;	font-weight:bold;}
+#menubar .current_page_item li{ font-weight:normal;}
 
 #menubar li ul,
 #subscribe ul {

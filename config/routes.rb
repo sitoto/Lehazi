@@ -1,15 +1,10 @@
 LehaziCom::Application.routes.draw do
 
+  root :to => "home#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
-  #get "show_user" => "users#show_by_name", :as =>"show_user"
-
-  #resources :users  , :member => {:enable => :put}  do |users|
-  #  resources :roles
-  #end
-  #get 'articles' =>"articles#index", :as=>"articles"
   resources :articles  do
     collection do
       get 'admin'
@@ -29,8 +24,6 @@ LehaziCom::Application.routes.draw do
     resources :funs
   end
 
-
-
   resources :users  do
     resources :roles
 
@@ -39,22 +32,14 @@ LehaziCom::Application.routes.draw do
     end
   end
 
-
   resources :forums do
     resources :topics do
        resources :posts
     end
   end
 
-  #resources :users do
-  #  put :enable, :on=> :member
-  #  resource :roles
-  #end
-
   resources :sessions
-
   resources :infos
-  root :to => "home#index"
   resources :rent_infos
 
   # The priority is based upon order of creation:

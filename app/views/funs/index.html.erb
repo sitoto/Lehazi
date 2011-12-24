@@ -14,10 +14,14 @@
 
       </h3>
       <div class="a_c">
-        <%=	 raw(textilize(fun.body)) %>
+        <%=	 raw((fun.body).to_s.truncate(200)) %>
         <%=	 link_to '阅读全文', fun%>
       </div>
     </div>
 <%	 end %>
 <%= will_paginate @funs ,:class => 'digg_pagination' %>
 </div>
+<style type="text/css">
+#menubar a.m_funs{background: #9999ff;    color:#FFF;}
+#menubar a.m_arti,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+</style>

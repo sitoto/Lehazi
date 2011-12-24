@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lehazi</title>
+  <title>娱乐广场-<%= :tit ? :tit :"lehazi.com"%></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -33,35 +33,24 @@
 
      <div id="sidebar">
        <div class="widget popular-posts border">
-        <h3>最新更新</h3>
+        <h3>最受欢迎</h3>
          <ul>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">内涵冷段子,看懂不要说 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话3 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">让人冻手冻脚的冷笑话 </a></li>
-        <li><a href="#">内涵冷段子,看懂不要说 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">让人冻手冻脚的冷笑话 </a></li>
-        <li><a href="#">内涵冷段子,看懂不要说 </a></li>
+            <% @random_funs.each do |fun| %>
+            <li>
+                <%= link_to fun.title, fun ,:target => '_blank'%>(<%= fun.click_time%>)
+            </li>
+            <% end %>
 
 
         </ul>
         </div>
         <div class="widget  popular-article border">
-        <h3>最受欢迎</h3>
+        <h3>图书推荐</h3>
          <ul>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">让人冻手冻脚的冷笑话 </a></li>
-        <li><a href="#">内涵冷段子,看懂不要说 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">经典又耐人寻味的一组冷笑话 </a></li>
-        <li><a href="#">让人冻手冻脚的冷笑话 </a></li>
-        <li><a href="#">内涵冷段子,看懂不要说 </a></li>
+        <li style="text-align: center;">
+          <iframe src="http://rcm-cn.amazon.cn/e/cm?lt1=_blank&bc1=E1E7E9&IS2=1&bg1=E1E7E9&fc1=000000&lc1=0000FF&t=sitoto-23&o=28&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=B0048EKQS0" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+          <iframe src="http://rcm-cn.amazon.cn/e/cm?lt1=_blank&bc1=E1E7E9&IS2=1&bg1=E1E7E9&fc1=000000&lc1=0000FF&t=sitoto-23&o=28&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=B005KGBTQ8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+        </li>
         </ul>
         </div>
        <div class="widget  popular-pics border">
