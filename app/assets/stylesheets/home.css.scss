@@ -1,91 +1,365 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#hero_carousel {
-  float: left;
-  margin-right: 15px;
-  color: #FFF;
-  background: #000; }
-  #hero_carousel, #hero_carousel ul.carousel {
-    position: relative;
-    width: 675px;
-    height: 260px; }
-  #hero_carousel ul.carousel {
-    overflow: hidden; }
-    #hero_carousel ul.carousel li {
-      position: absolute;
-      z-index: 0;
-      top: 0;
-      left: 0;
-      width: 675px;
-      height: 260px; }
-      #hero_carousel ul.carousel li.selected {
-        z-index: 1; }
-    #hero_carousel ul.carousel .image {
-      position: relative;
-      float: left;
-      width: 470px;
-      height: 260px;
-      overflow: hidden; }
-      #hero_carousel ul.carousel .image a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 470px;
-        height: 260px; }
-    #hero_carousel ul.carousel .text {
-      float: right;
-      width: 175px;
-      height: 230px;
-      padding: 15px;
-      background: #000;
-      line-height: 1.3; }
-      #hero_carousel ul.carousel .text h3 {
-        margin: 0.25ex 0 0.5ex;
-        font-size: 1.8em;
-        line-height: 1.2; }
-        #hero_carousel ul.carousel .text h3 a {
-          color: #ffc200; }
-      #hero_carousel ul.carousel .text p {
-        font-size: 1.2em; }
-        #hero_carousel ul.carousel .text p a {
-          font-weight: normal;
-          color: #FFF; }
-      #hero_carousel ul.carousel .text .sup-heading {
-        color: #999;
-        font-size: 1.1em; }
-      #hero_carousel ul.carousel .text .read-more {
-        margin-top: 1ex;
-        text-align: right; }
-        #hero_carousel ul.carousel .text .read-more a {
-          color: #ffc200;
-          font-weight: bold; }
-  #hero_carousel ul.navigation {
-    position: absolute;
-    z-index: 10;
-    bottom: 8px;
-    right: 15px; }
-    #hero_carousel ul.navigation #hero-prev, #hero_carousel ul.navigation #hero-next {
-      position: relative;
-      top: 4px;
-      width: 0px;
-      outline: 0;
-      font-size: 0px;
-      line-height: 0%;
-      color: #000; }
-    #hero_carousel ul.navigation #hero-prev {
-      border-top: 6px solid #000;
-      border-right: 6px solid #DDD;
-      border-bottom: 6px solid #000; }
-    #hero_carousel ul.navigation #hero-next {
-      border-top: 6px solid #000;
-      border-left: 6px solid #DDD;
-      border-bottom: 6px solid #000; }
-    #hero_carousel ul.navigation li {
-      float: left; }
-      #hero_carousel ul.navigation li img, #hero_carousel ul.navigation li a {
-        margin: 0 4px; }
-      #hero_carousel ul.navigation li img {
-        border: 2px solid #000; }
-        #hero_carousel ul.navigation li img.selected {
-          border-color: #ffc200; }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #FFFFFF;
+    color: #333;
+    font-family: Verdana, Tahoma, "BitStream vera Sans", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+}
+h1 {font-size: 20px;}
+h2 {font-size: 16px;}
+h3 {font-size: 14px;}
+img {border: none;}
+a img {border: none;}
+.fixed,
+.clear {clear:both;}
+.clearfix {
+display: block;
+}
+.clearfix::after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+#error {
+    background: #F1E9E1;
+    padding: 5px 10px 5px 15px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #E05C23;
+}
+#notice {
+    background: #F6F9E7;
+    padding: 5px 10px 5px 15px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #84985D;
+}
+#wrap {
+    text-align: left;
+    margin: 0 auto;
+    width: 1024px;
+}
+#container {
+    background: #D6D6D6;
+    padding: 0 3px 3px;
+}
+#topbar {
+
+}
+#user_nav{ font-size: 12px; line-height: 18px;    margin: 3px 0 0 0;    padding: 2px;    text-align: right;    float: right;}
+#user_nav a{ color: #00f; }
+
+#header{
+    background-color: #FFFFFF;
+    margin-bottom: 3px;
+}
+/* content START */
+#content {
+    background: #FFF;
+    border: 1px solid #B0BEC7;
+    margin-bottom: 10px;
+    padding: 0 1px;
+}
+
+#navigation {
+    background: #E9EEF1;
+    font-size: 10px;
+    border-top: 1px solid #FFF !important;
+    border-top: 0;
+}
+
+*+html #navigation {
+    border-top: 0 !important;
+}
+
+/* content END */
+/* menus START */
+#menubar {
+	background:#E9EEF1;
+	float:left;
+	padding:0 10px;
+}
+#menubar li {
+	display:inline;
+	list-style:none;
+	float:left;
+	border:solid #FFF;
+	border-width:0 1px;
+	margin-left:-1px;
+}
+#menubar li a {
+	background:#E9EEF1;
+	display:block;
+	text-decoration:none;
+	padding:5px 10px;
+}
+#menubar li a:hover,
+#menubar li a.current {	background: #9999ff;    color:#FFF;}
+#menubar .current_page_item {	background:#FFF;	font-weight:bold;}
+#menubar .current_page_item li{ font-weight:normal;}
+
+#menubar li ul,
+#subscribe ul {
+	display:none;
+	margin-left:-1px !important;
+	margin-left:0;
+	background:#FFF;
+	padding:1px;
+	position:absolute;
+	z-index:1;
+}
+#subscribe ul {
+	margin-left:-1px;
+}
+*+html #subscribe ul {
+	margin-left:-2px !important;
+}
+#menubar li li,
+#subscribe li {
+	float:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+	border:0;
+}
+#menubar li li a,
+#subscribe li a {
+	display:block;
+	padding:5px 10px;
+	text-decoration:none;
+	width:130px;
+	overflow:hidden;
+}
+
+#subscribe a {
+	background:#F1E9E1;
+}
+#subscribe a:hover,
+#subscribe a.current {
+	background:#EDC;
+}
+#copyright,
+.feedlink,
+.greedlink,
+.twitterlink {
+	float:right;
+	padding:5px 10px;
+	border-right:1px solid #FFF;
+	margin-right:-1px;
+	position:relative;
+}
+
+a.feedlink {
+	background:#F1E9E1;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+}
+a.feedlink:hover {
+	background:#EDC;
+	text-decoration:none;
+}
+a.greedlink {
+	background:#ECF3D3;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+	color:#84985D;
+}
+a.greedlink:hover {
+	background:#DEECBE;
+	text-decoration:none;
+}
+a.twitterlink {
+	background:#DEECF3;
+	border-left:1px solid #FFF;
+	text-decoration:none;
+	color:#38A;
+}
+a.twitterlink:hover {
+	background:#D0E1EF;
+	text-decoration:none;
+}
+/* menus END */
+/* main START */
+#main {
+    width: 690px;
+    margin:10px 0px 10px 10px;
+    float: left;
+    overflow: hidden;
+}
+.article .a_title{    background: #F1F5F6; padding: 5px 10px 3px 15px;color: #258; font-size: 22px; font-family: '微软雅黑,黑体';}
+.article .a_attr{    background: #F1F5F6; padding: 0 10px 5px 15px;}
+.article .a_content{   line-height: 180%; padding: 10px 10px 10px 15px; overflow: hidden;}
+.article .a_content p{   margin-bottom:8px;}
+.article .a_content img{ max-width:650px; }
+.article .a_content ul,.article .a_content ol {	padding-bottom:10px; }
+.article .a_content ul li,.article .a_content ol li { 	list-style-position:inside;	padding-left:20px;}
+.article .a_content table {	border-collapse:collapse; 	background:#FFF;	margin:5px 0 10px;	border:2px solid #E1E7E9;}
+.article .a_content table tr td,.article .a_content table tr th {	border-left:1px dotted #FFF;	border-right:1px dotted #FFF;
+    border-bottom:1px solid #FFF;	text-align:left;	vertical-align:middle;	padding:5px 10px;}
+.article .a_content table tr td {	background:#F1F5F6;}
+.article .a_content table tr th {	background:#E1E7E9;}
+
+#a_list h2{ display: block; padding: 0 5px 10px 5px; font-weight: bold;}
+#a_list .a_item{ padding: 0 5px 10px 5px;}
+#a_list .a_item h3{color: #258; line-height: 24px;}
+#a_list .a_item h3 span{ display: block;    float: right; color:#999; font-size: 12px; padding-right: 10px;}
+#a_list .a_item .a_c{ border:0; background: #eee;}
+#a_list .a_item .a_c p{ margin-bottom:8px;}
+
+.post .title {
+	background:#F1F5F6;
+	padding:5px 10px 3px 15px;
+	color:#258;
+    font-family: '微软雅黑,黑体';
+    font-size: 22px;
+}
+.post .title a:hover {
+	color:#333;
+	text-decoration:none;
+}
+.post .meta {
+	background:#F1F5F6;
+	padding:0 10px 5px 15px;
+}
+.post .meta .info {
+	font-size:10px;
+	float:left;
+}
+.post .meta .comments {
+	font-size:10px;
+	float:right;
+}
+.post .tags {
+	font-size:10px;
+	margin-bottom:10px;
+}
+.post .content {
+	line-height:145%;
+	padding:10px 0 10px 15px;
+	overflow:hidden;
+}
+.post .content h4 {
+	font-size:14px;
+	margin-bottom:8px;
+	color:#60743A;
+}
+.post .content img {
+	max-width:600px;
+}
+.post .content p {
+	margin-bottom:8px;
+}
+.post .content ul,
+.post .content ol {
+	padding-bottom:10px;
+}
+.post .content ul li,
+.post .content ol li {
+	list-style-position:inside;
+	padding-left:20px;
+}
+.post .content table {
+	border-collapse:collapse;
+	background:#FFF;
+	margin:5px 0 10px;
+	border:2px solid #E1E7E9;
+}
+.post .content table tr td,
+.post .content table tr th {
+	border-left:1px dotted #FFF;
+	border-right:1px dotted #FFF;
+	border-bottom:1px solid #FFF;
+	text-align:left;
+	vertical-align:middle;
+	padding:5px 10px;
+}
+.post .content table tr td {
+	background:#F1F5F6;
+}
+.post .content table tr th {
+	background:#E1E7E9;
+}
+/* main END */
+
+/* sidebar START */
+#sidebar {
+    width: 300px;
+    margin: 10px 0 0 0;
+    float: left;
+    overflow: hidden;
+}
+
+.widget {
+    background: #F1F5F6;
+
+}
+.popular-posts{height: 286px;}
+
+.popular-article{
+    height: 286px;
+}
+.popular-pics{
+    height: 346px;
+}
+.popular-fun{
+   height: 126px;
+}
+.widget h3 {
+    background: #E1E7E9;
+    margin: 0 -10px;
+    padding: 5px 10px;
+    font-size: 11px;
+    border-bottom: 1px solid #FFF;
+}
+
+.widget ul {
+    margin: 0 -5px;
+}
+
+.widget li {
+    list-style: none;
+    padding: 3px 5px;
+    border-bottom: 1px solid #E1E7E9;
+    line-height: 18px;
+}
+
+.widget div.itembox {
+    padding: 5px 0 0;
+}
+
+.widget li ul {
+    padding-right: 0;
+    margin-left: 10px;
+}
+
+.widget li li {
+    padding: 3px 5px 0;
+    border-top: 1px solid #E1E7E9;
+    border-bottom: none;
+    margin-top: 3px;
+}
+
+/* sidebar END */
+/* footer START */
+#footer {
+    background: #E9EEF1;
+    font-size: 10px;
+    border-bottom: 1px solid #FFF;
+    text-align: center;
+}
+
+/* footer END */
+
+table#forums{width:100%;background-color: #FFFFFF;;border: 1px solid #067ab4;}
+table#forums td.name{ width:60%}
+table#forums td.topic{ width:20%;text-align: center;}

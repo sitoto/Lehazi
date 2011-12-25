@@ -15,7 +15,7 @@ LehaziCom::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = false #change it to true 2011-12-25 fix bug ActionView::Template::Error (application.css isn't precompiled):
 
   # Generate digests for assets URLs
   config.assets.digest = true
