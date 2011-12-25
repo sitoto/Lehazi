@@ -2,7 +2,6 @@ class CreateUsers < ActiveRecord::Migration
 def self.up
     create_table :users do |t|
         t.string    :login,               :null => false
-        t.integer   :role_id,             :null => false
         t.string    :email,               :null => false
         t.string    :crypted_password,    :null => false
         t.string    :password_salt,       :null => false
@@ -21,9 +20,7 @@ def self.up
 
       t.timestamps
     end
-      add_index :users, ["login"], :name => "index_users_on_login", :unique => true
-      add_index :users, ["email"], :name => "index_users_on_email", :unique => true
-      add_index :users, ["persistence_token"], :name => "idx_users_persistence", :unique => true
+
   end
    #User.create(:login => 'admin', :password => 'admin', :password_confirmation => 'admin', :role_id => 1)
 

@@ -9,7 +9,7 @@ class CreateArticles < ActiveRecord::Migration
       t.datetime :created_at
       t.datetime :updated_at
       t.datetime :published_at
-      t.integer :category_id
+      t.integer :category_id ,  :default => 1
 
     end
   end
