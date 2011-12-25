@@ -10,21 +10,22 @@
    <div id="banner_list">
         <ul>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p11.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank">
+                <%= image_tag "pics/p11.jpg"%></a>
               <div class="txt">
                 <span class="title">圣诞节档期大片抢先看</span>
                 <span class="content">《金陵十三钗》《碟中谍4》《龙门飞甲》《大魔术师》《倾城之泪》《一代宗师》等圣诞节大片等您来鉴赏......</span>
               </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p12.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank"><%= image_tag "pics/p12.jpg"%></a>
               <div class="txt">
                 <span class="title">圣诞节快乐！</span>
                 <span class="content">圣诞节尴尬之最：夹起火鸡想到禽流感；收到礼物恐有核炸弹；肩扛口袋好似捡破烂；贴上胡子引发大骚乱——我的天！拉登重新出现！ </span>
               </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p13.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank"><%= image_tag "pics/p13.jpg"%></a>
                 <div class="txt">
                 <span class="title">圣诞节快乐！</span>
                 <span class="content">俺是者哥史街伤嘴惯信泥地任，椰是嘴向年泥地任，腰吻俺邮夺矮泥，约粮呆标俺地信！
@@ -32,7 +33,7 @@
               </div>
             </li>
             <li>
-              <a href="#" target="_blank"><img src="assets/pics/p14.jpg" title="" alt="" /></a>
+              <a href="#" target="_blank"><%= image_tag "pics/p14.jpg"%></a>
               <div class="txt">
                 <span class="title">哈利波特-好莱坞环球影城</span>
                 <span class="content">哈利波特好莱坞环球影城<br/>好莱坞环球影城（Universal Studios Hollywood）6日举行了一个发布会，正式宣布该乐园将建设哈利波特魔法世界（The Wizarding World of Harry Potter）
@@ -72,7 +73,7 @@
 </div>
 
 <div class="adbar border">
-<img src="assets/pics/adi.jpg" width="680" height="60" border="0" alt="lehazi.com" title="寻找利益与风险的分享者">
+<%= image_tag "pics/adi.jpg", :width =>680, :height => 120,:border => 0, :alt=>"lehazi.com", :title => "寻找利益与风险的分享者"%>
 </div>
 
 <div id="messagebar" class="border">
@@ -94,9 +95,7 @@
     </div>
 </div>
 <div class="adbar1 border">
-  <img src="assets/pics/adi1.jpg" width="680" height="120" border="0"
-       alt="非官方 ，在野党，全部野史，贻笑大方--邀你加盟"
-       title="非官方 ，在野党，全部野史，贻笑大方--邀你加盟">
+  <%= image_tag "pics/adi1.jpg", :width =>680, :height => 120,:border => 0, :alt=>"非官方 ，在野党，全部野史，贻笑大方--邀你加盟", :title => "非官方 ，在野党，全部野史，贻笑大方--邀你加盟"%>
 </div>
 <style type="text/css">
 #menubar a.m_home{background: #9999ff;    color:#FFF;}

@@ -31,6 +31,8 @@ role :web, "www.lehazi.com"
 role :app, "www.lehazi.com"
 role :db,  "www.lehazi.com", :primary => true
 
+load 'deploy/assets'
+
 namespace :deploy do
 
   task :copy_config_files, :roles => [:app] do
