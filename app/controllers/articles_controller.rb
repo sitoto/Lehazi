@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ArticlesController < ApplicationController
   before_filter :check_editor_role, :except => [:index, :show]
 
@@ -10,6 +11,7 @@ class ArticlesController < ApplicationController
       @articles = Article.where(:published => true).paginate(:page => params[:page],
                                                     :include => :user).order('published_at DESC')
     end
+    @tit = "娱乐信息"
     respond_to do |format|
       format.html # index.html.erb
       format.xml {render :xml =>@articles.to_xml }
@@ -24,6 +26,7 @@ class ArticlesController < ApplicationController
     else
       @article = Article.find_by_id_and_published(params[:id], true)
     end
+    @tit = @article.title  + '_' + @article.category.name
     respond_to do |format|
       format.html
       format.xml { render :xml => @article.to_xml }

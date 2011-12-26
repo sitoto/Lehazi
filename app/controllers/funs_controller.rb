@@ -1,3 +1,4 @@
+# encoding: utf-8
 class FunsController < ApplicationController
   before_filter :check_editor_role, :except => [:index, :show]
 
@@ -15,6 +16,7 @@ class FunsController < ApplicationController
         f.increment!(:click_time, by = 1)
     end
 
+    @tit = '笑话幽默'
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @funs }
@@ -26,7 +28,7 @@ class FunsController < ApplicationController
   def show
       @fun =Fun.find(params[:id])
       @fun.increment!(:click_time, by = 1)
-
+      @tit = @fun.title  + '_' + @fun.category.name
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fun }

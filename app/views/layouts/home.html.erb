@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>娱乐广场-<%= @tit ? @tit :"lehazi.com"%></title>
+  <title>娱乐广场_累了困了乐一下</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -33,7 +33,7 @@
 
      <div id="sidebar">
        <div class="widget popular-posts border">
-        <h3>最受欢迎</h3>
+        <h3>随机笑话</h3>
          <ul>
             <% @random_funs.each do |fun| %>
             <li>
