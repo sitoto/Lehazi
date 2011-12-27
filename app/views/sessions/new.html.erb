@@ -1,17 +1,17 @@
 <div class="depot_form">
-  <h1>Log in</h1>
+
   <% if flash[:alert] %>
       <p id="notice"><%= flash[:alert] %></p>
   <% end %>
   <%= form_tag sessions_path do %>
       <fieldset>
-        <legend>Please Log In</legend>
+        <legend>请登陆</legend>
         <div>
-          <label for="name">Email:</label>
+          <label for="name">邮箱:</label>
           <%= text_field_tag :email, params[:email] %>
         </div>
         <div>
-          <label for="password">Password:</label>
+          <label for="password">密码:</label>
           <%= password_field_tag :password, params[:password] %>
         </div>
         <div>

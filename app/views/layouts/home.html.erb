@@ -21,13 +21,6 @@
         <%= render :partial =>'layouts/menu' %>
      </div>
      <div id="main">
-        <% if flash[:notice] -%>
-          <div id="notice"><%= flash[:notice] %></div>
-         <%	 end %>
-         <%	 if flash[:error] -%>
-          <div id="error"><%= flash[:error] %></div>
-         <%	 end %>
-
          <%= yield %>
      </div>
 
@@ -40,8 +33,6 @@
                 <%= link_to fun.title, fun ,:target => '_blank'%>(<%= fun.click_time%>)
             </li>
             <% end %>
-
-
         </ul>
         </div>
         <div class="widget  popular-article border">

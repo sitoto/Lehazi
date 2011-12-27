@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  entry_id: 1
+  user_id: 1
+  guest_name: MyString
+  guest_email: MyString
+  body: MyText
+  created_at: 2011-12-26 14:01:55
+
+two:
+  entry_id: 1
+  user_id: 1
+  guest_name: MyString
+  guest_email: MyString
+  body: MyText
+  created_at: 2011-12-26 14:01:55

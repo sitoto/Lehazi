@@ -24,12 +24,18 @@ LehaziCom::Application.routes.draw do
     resources :funs
   end
 
-  resources :users  do
-    resources :roles
 
+  resources :users  do
+
+    resources :entries do
+      resources :comments
+    end
+
+    resources :roles
     member do
       put "enable"
     end
+
   end
 
   resources :forums do

@@ -1,0 +1,32 @@
+<div class="blog">
+<h2><%=	 link_to blog_title(@user), user_entries_path %> </h2>
+
+<% @entries.each do |entry| %>
+    <div class="blogentry">
+      <h3><%= link_to entry.title , user_entry_path(entry.user_id,entry)	  %></h3>
+      <% if is_logged_in? and current_user.id = @user.id  %>
+        <div class="blogoptions">
+            <%=	 link_to '编辑', edit_user_entry_path(entry.user_id, entry) %>
+            <%=	 link_to '删除', user_entry_path(entry.user_id, entry), :confirm => "确定删除？", :method => :delete %>
+        </div>
+      <% end %>
+      <div class="blogentrybody">
+        <%= raw(textilize(entry.body)) %>
+      </div>
+      <div class="blognumcomments">
+        <p>
+          <%=	 link_to (entry.comments_count.to_s + '评论'), user_entry_path(entry.user_id,entry) %>
+        </p>
+      </div>
+    </div>
+
+<% end %>
+
+
+<%= will_paginate @entries ,:class => 'digg_pagination' %>
+</div>
+<style type="text/css">
+#menubar a.m_le{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_arti{}
+</style>
+

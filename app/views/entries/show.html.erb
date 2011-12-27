@@ -1,0 +1,39 @@
+<div class="blog">
+<h2> <%= link_to blog_title(@entry.user), user_entries_path %> </h2>
+<h2> <%= @entry.title %></h2>
+<div class="blog_body">
+  <%= @entry.body %>
+</div>
+
+<h3>评论 </h3>
+  <%= @entry.comments_count != 0 ? '共' + @entry.comments_count.to_s + '条评论' : '暂无评论' %>
+  <% @entry.comments.each do |comment|	  %>
+    <div class="comments">
+      <p class="commentfrom">
+        <%=	 comment.user.login %>,<%= comment.created_at.to_s(:short) %>
+         <%	 if is_logged_in? and current_user.id == @entry.user.id %>
+            <%=	 link_to '删除', user_entry_comment_path(@entry.user_id, @entry.id, comment.id), :confirm => '确定删除？', method: :delete %>
+        <%	 end %>
+      </p>
+      <div style="padding:10px;">
+
+        <%= raw(textilize(comment.body))  %>
+      </div>
+
+    </div>
+  <% end  %>
+<h3>发表评论</h3>
+<%= form_for(:comment ,:url => user_entry_comments_path(@entry.user_id, @entry.id))  do |f| %>
+  <div class="field">
+    <%= f.text_area :body , :row => 4, :cols => 40 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit  '提交'%>
+  </div>
+<% end %>
+</div>
+<style type="text/css">
+#menubar a.m_le{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_arti{}
+</style>

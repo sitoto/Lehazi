@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :infos
   has_many :funs
+  has_many :entries
+  has_many :comments
 
   attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
   attr_protected :enabled,:crypted_password

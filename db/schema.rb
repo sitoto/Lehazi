@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225023346) do
+ActiveRecord::Schema.define(:version => 20111226060416) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20111225023346) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published_at"
-    t.integer  "category_id",                      :default => 1
+    t.integer  "category_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -31,6 +31,29 @@ ActiveRecord::Schema.define(:version => 20111225023346) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "entry_id"
+    t.integer  "user_id"
+    t.string   "guest_name"
+    t.string   "guest_email"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
+
+  create_table "entries", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "comments_count", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -49,6 +72,21 @@ ActiveRecord::Schema.define(:version => 20111225023346) do
     t.integer  "user_id",     :default => 0,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "infoforzufang", :force => true do |t|
+    t.text "title"
+    t.text "pub_time"
+    t.text "area"
+    t.text "config"
+    t.text "price"
+    t.text "zhuangxiu"
+    t.text "floor"
+    t.text "pub_name"
+    t.text "tel"
+    t.text "intor"
+    t.text "address"
+    t.text "style"
   end
 
   create_table "infos", :force => true do |t|
@@ -137,6 +175,9 @@ ActiveRecord::Schema.define(:version => 20111225023346) do
     t.datetime "updated_at"
     t.boolean  "enabled",             :default => true, :null => false
     t.integer  "posts_count",         :default => 0,    :null => false
+    t.integer  "entries_count",       :default => 0,    :null => false
+    t.string   "blog_title"
+    t.boolean  "enabled_comments",    :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
