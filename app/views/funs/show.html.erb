@@ -14,7 +14,35 @@
       </div>
   </div>
 
-  <p><%= link_to '返回' , funs_path %></p>
+  <br/>
+  <br/>
+  <div class="a_before_next">
+    <span class="a_before">
+      上一篇：<%	 if @fun_p %>
+          <%= link_to @fun_p[0].title , fun_path(@fun_p[0].id) %>
+          <%	 else %>
+          没有了
+          <%	 end %>
+    </span>
+    <span class="a_next">
+          下一篇：<%	 if @fun_n %>
+          <%= link_to @fun_n[0].title , fun_path(@fun_n[0].id) %>
+          <%	 else %>
+          没有了
+          <%	 end %>
+    </span>
+  </div>
+  <div class="fixed"></div>
+  <div class="a_relations">
+        <h2>随机推荐</h2>
+        <ul class="a_ul3">
+            <% @relation_funs.each do |fun| %>
+            <li>
+                <%= link_to fun.title, fun ,:target => '_blank', :title => fun.body.truncate(50)%>
+            </li>
+            <% end %>
+        </ul>
+  </div>
 </div>
 <style type="text/css">
 #menubar a.m_funs{background: #9999ff;    color:#FFF;}

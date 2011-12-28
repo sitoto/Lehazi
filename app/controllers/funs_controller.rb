@@ -7,10 +7,10 @@ class FunsController < ApplicationController
   def index
 
     if params[:category_id]
-       @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page],
+       @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page], :per_page => 10,
                                                     :include => :user).order ( 'created_at DESC')
     else
-      @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
+      @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
     end
     @funs.each do |f|
         f.increment!(:click_time, by = 1)
@@ -26,13 +26,25 @@ class FunsController < ApplicationController
   # GET /funs/1
   # GET /funs/1.json
   def show
+      a = Integer(params[:id]) -1
+      b = Integer(params[:id]) +1
       @fun =Fun.find(params[:id])
+      Fun.exists?(a) ?  @fun_p =Fun.find_by_sql("select id, title from funs where id = #{a}") : @fun_p =nil
+      Fun.exists?(b) ?  @fun_n =Fun.find_by_sql("select id, title from funs where id = #{b}") : @fun_n =nil
+
       @fun.increment!(:click_time, by = 1)
       @tit = @fun.title  + '_' + @fun.category.name
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @fun }
-    end
+
+      arr = get_random_numbers(Fun.count,18)
+
+      #@relation_funs = Fun.find_by_sql("select id, title, click_time from funs where category_id =#{@fun.category_id} and id in #{arr} order by click_time DESC ")
+      @relation_funs = Fun.find(arr)
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @fun }
+      end
+  rescue
+    redirect_to funs_path, :notice => "未知的参数"
   end
 
   # GET /funs/new
@@ -96,5 +108,9 @@ class FunsController < ApplicationController
   end
   def admin
      @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
+  end
+
+  def get_random_numbers  count,max
+   (1..count).to_a.sample(max)
   end
 end

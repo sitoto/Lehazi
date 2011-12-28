@@ -208,12 +208,21 @@ a.twitterlink:hover {
     border-bottom:1px solid #FFF;	text-align:left;	vertical-align:middle;	padding:5px 10px;}
 .article .a_content table tr td {	background:#F1F5F6;}
 .article .a_content table tr th {	background:#E1E7E9;}
+.article .a_before_next { width:100%; padding:0;color:#999;}
+.article .a_before_next span.a_before{ float:left; }
+.article .a_before_next span.a_next{ float:right; margin:0 10px; }
+.article .a_relations{ width:100%; padding:0;color:#999; margin-top:8px;  }
+.article .a_relations h2{ width:100%; padding:0;color:#000; background:#F1F5F6; font-size:13px; }
+.article .a_relations ul.a_ul3{width: 690px; font-size:12px; display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
+.article .a_relations ul.a_ul3 li{width: 32%;  display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
+        padding: 2px 0px 3px 0px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;list-style: none;color: #B21515;    }
+
 
 #a_list h2{ display: block; padding: 0 5px 10px 5px; font-weight: bold;}
 #a_list .a_item{ padding: 0 5px 10px 5px;}
-#a_list .a_item h3{color: #258; line-height: 24px;}
+#a_list .a_item h3{color: #258; line-height: 24px;background: #eee;}
 #a_list .a_item h3 span{ display: block;    float: right; color:#999; font-size: 12px; padding-right: 10px;}
-#a_list .a_item .a_c{ border:0; background: #eee;}
+#a_list .a_item .a_c{ border:0; background: #fff; font-size:13px; padding: 8px 12px 12px 12px;}
 #a_list .a_item .a_c p{ margin-bottom:8px;}
 
 .post .title {
@@ -294,7 +303,7 @@ a.twitterlink:hover {
 /* sidebar START */
 #sidebar {
     width: 300px;
-    margin: 10px 0 0 0;
+    margin: 10px 0 0 3px;
     float: left;
     overflow: hidden;
 }
