@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
   def has_roles?(rolename)
     self.roles.find_by_name(rolename) ? true : false
   end
+
+  def email_with_login
+    "#{login} <#{email}>"
+  end
 end

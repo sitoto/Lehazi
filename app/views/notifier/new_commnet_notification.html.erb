@@ -1,0 +1,9 @@
+你好，<%= @blog_owner.username %>,
+
+您在娱乐广场的博客上有一个新的评论。
+
+<%= @comment.user.login %>'于<%= @comment.created_at.to_s(:short)%>写的。
+
+<%= link_to '点击这里阅读', @blog_entry_url %>.
+
+娱乐广场工作组

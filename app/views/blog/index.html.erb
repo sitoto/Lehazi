@@ -1,0 +1,10 @@
+<h2>最近更新日志</h2>
+
+<%	 @entries.each do |entry| %>
+    <p>
+      <%= link_to entry.user.login, user_entries_path(entry.user.id) %><br/>
+      <%=	 entry.title %> -- <%=	 time_ago_in_words(entry.created_at) %> ago
+
+    </p>
+<%	 end %>
+<%= will_paginate @entries ,:class => 'digg_pagination' %>

@@ -1,5 +1,7 @@
 LehaziCom::Application.routes.draw do
 
+  get "blogs"  => "blog#index", :as => "blogs"
+
   root :to => "home#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
