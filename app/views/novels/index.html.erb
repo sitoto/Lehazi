@@ -24,7 +24,7 @@
 
           <%= link_to novel.title , '#', :title =>  novel.synopsis%></td>
         <td class="n_score"><%= novel.click_time %></td>
-        <td><%= novel.from_name %></td>
+        <td><%= novel.from_name + "-" + novel.other_from %></td>
         <td><%= novel.author %></td>
         <td><%= novel.free? ? '免费' : '需付费' %></td>
       </tr>
