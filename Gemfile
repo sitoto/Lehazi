@@ -14,6 +14,11 @@ group :production do
 end
 
 gem 'capistrano'
+gem 'carrierwave' ,'0.5.6'
+gem 'mini_magick'
+gem 'mongo'
+gem 'bson'
+gem 'bson_ext'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'

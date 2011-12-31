@@ -1,8 +1,8 @@
 <ul id="menubar">
     <li class="page_item"><%=	 link_to '首页',root_path ,:class => 'm_home'%></li>
-    <li class="page_item"><%=	 link_to '笑话幽默','/funs/', :class =>'m_funs'  %></li>
-    <li class="page_item"><%=	 link_to '娱乐信息','/articles/', :class =>'m_arti'  %></li>
-    <li class="page_item"><%=	 link_to '小说天地','#' , :class => 'm_novel' %></li>
+    <li class="page_item"><%=	 link_to '笑话幽默',funs_path, :class =>'m_funs'  %></li>
+    <li class="page_item"><%=	 link_to '娱乐信息',articles_path, :class =>'m_arti'  %></li>
+    <li class="page_item"><%=	 link_to '小说天地', novels_path , :class => 'm_novel' %></li>
     <li class="page_item"><%=	 link_to '游戏资讯','#' , :class => 'm_game' %></li>
     <li class="page_item"><%=	 link_to '租房客','#' , :class => 'm_zu' %></li>
     <li class="page_item"><%=	 link_to '漂流客','#' , :class => 'm_piao' %></li>

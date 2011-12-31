@@ -1,0 +1,42 @@
+<div id="novel">
+
+<div class="n_title fixed">
+<h2>小说网络阅读排行榜</h2>
+  <span>数据来自互联网</span>
+</div>
+
+<div class="n_list fixed">
+    <table>
+      <thead>
+        <tr>
+          <td>作品</td>
+          <td>热度</td>
+          <td>来自</td>
+          <td>作者</td>
+          <td>免费</td>
+
+        </tr>
+      </thead>
+    <tbody>
+    <% @novels.each do |novel| %>
+      <tr class="<%= cycle('odd','even')%>">
+        <td><%= (novel.category_id == 0)? '' : novel.category.name+":" %>
+
+          <%= link_to novel.title , '#', :title =>  novel.synopsis%></td>
+        <td class="n_score"><%= novel.click_time %></td>
+        <td><%= novel.from_name %></td>
+        <td><%= novel.author %></td>
+        <td><%= novel.free? ? '免费' : '需付费' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  <%= will_paginate @novels ,:class => 'digg_pagination' %>
+</div>
+
+
+</div>
+<style type="text/css">
+  #menubar a.m_novel{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_home,a.m_arti,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+</style>

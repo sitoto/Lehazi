@@ -1,5 +1,8 @@
 <h2><%= @user.login %> </h2>
-<p>Member since <%= @user.created_at.to_s(:long) %> </p>
+<div class="portrait">
+    <%= image_tag @user.portrait_location_url(:thumb) %>
+</div>
+<p>注册日期： <%= @user.created_at.to_s(:long) %> </p>
 <p>简介</p>
 
 <h3>博客</h3>
@@ -7,10 +10,8 @@
   <% for entry in @entries  %>
     <li>
       <%= link_to entry.title, user_entry_path(@user.id, entry.id)  %>
-
     </li>
   <% end %>
-
 </ul>
 
 <p>

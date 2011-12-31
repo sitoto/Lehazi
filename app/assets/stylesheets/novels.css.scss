@@ -1,0 +1,21 @@
+// Place all the styles related to the Novels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#novel{ width:680px;}
+#novel .n_title h2{ float:left; display:block;}
+#novel .n_title span{ font-size:13px; color:#999; float:right; display:block;}
+#novel .n_list { width:680px;margin:0; padding:0;}
+#novel .n_list ol{display:block; float:left; width:690px; margin:0; padding:0;}
+#novel .n_list ol li{ width:670px;display:block; float:left;}
+#novel .n_list table{width:100%;margin-bottom: 10px; font-size:13px;}
+#novel .n_list table thead{display: table-header-group; vertical-align: middle;border-color: inherit;}
+#novel .n_list table thead tr td{background:#E1E7E9; font-size:13px;}
+
+.tc {text-align: center;}
+#novel .n_list table tbody tr.odd {background-color: #F6F6F6;}
+#novel .n_list table tbody tr.even{background-color: #FFFFFF;}
+
+#novel .n_list table tr td a{color: #1952FF;}
+#novel .n_list table tr td.n_score{background: url(global.png) 0 -420px transparent no-repeat;
+    color: #D55111;float: left;padding-left: 20px;padding-right: 5px;display: inline-block;line-height: 32px;}

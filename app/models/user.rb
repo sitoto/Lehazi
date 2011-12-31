@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :comments
 
+  #portrait
+  mount_uploader :portrait_location, PortraitUploader
+
+
   attr_accessible :login, :email, :password, :password_confirmation,:current_login_ip
   attr_protected :enabled,:crypted_password
   attr_accessor :password

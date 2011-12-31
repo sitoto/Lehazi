@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     unless is_logged_in? && current_user.has_roles?(role)
       respond_to do|format|
         format.html do
-          flash[:error] = "You don't have the permission to do that.'"
+          flash[:error] = "你没有权限.'"
           redirect_to login_url
         end
         format.xml do

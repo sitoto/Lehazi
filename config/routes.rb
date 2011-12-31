@@ -1,6 +1,14 @@
 LehaziCom::Application.routes.draw do
 
+ if Rails.env.development?
+  match "/images/uploads/*path" => "gridfs#serve"
+end
+
+  resources :user_portraits
+
   get "blogs"  => "blog#index", :as => "blogs"
+
+
 
   root :to => "home#index"
   get "logout" => "sessions#destroy", :as => "logout"
@@ -17,7 +25,11 @@ LehaziCom::Application.routes.draw do
       get 'admin'
     end
    end
-
+    resources :novels  do
+    collection do
+      get 'admin'
+    end
+  end
   resources :categories  do
     collection do
       get 'admin'

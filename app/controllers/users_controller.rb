@@ -1,7 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_filter :check_administrator_role,
-      :only => [:index,:destroy,:enable]
+  before_filter :check_administrator_role, :only => [:index,:destroy,:enable]
   before_filter :login_required, :only => [:edit, :update]
 
   def index
@@ -11,11 +10,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @entries = @user.entries.find(:all, :limit => 3, :order => 'created_at DESC')
   end
+
   def show_by_name
     @user= User.find_by_username(params[:login])
     render :action => 'show'
   end
-
 
  def new
     @user = User.new

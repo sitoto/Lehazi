@@ -1,0 +1,62 @@
+<h2>
+  <%= link_to '小说', novels_path %> »
+  <%= @novel.category_id !=0 ? @novel.category.name + " »" :'' %>
+  <%= @novel.title  %>
+</h2>
+<hr>
+<p>
+  <b>分类:</b>
+  <%= @novel.category_id !=0 ? @novel.category.name  : '无'  %>
+</p>
+
+<p>
+  <b>作品:</b>
+  <%= @novel.title %>
+</p>
+
+<p>
+  <b>作家:</b>
+  <%= @novel.author %>
+</p>
+
+<p>
+  <b>简介:</b>
+  <%= @novel.synopsis %>
+</p>
+
+<p>
+  <b>字数:</b>
+  <%= @novel.word_num %>
+</p>
+
+<p>
+  <b> 创建日期:</b>
+  <%= @novel.created_at %>
+</p>
+
+<p>
+  <b>来自:</b>
+  <%= @novel.from_name %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @novel.from_url %>
+</p>
+
+<p>
+  <b>其他:</b>
+  <%= @novel.other_from %>
+</p>
+
+<p>
+  <b>免费:</b>
+  <%= @novel.free %>
+</p>
+
+<p>
+  <b>热度:</b>
+  <%= @novel.click_time %>
+</p>
+
+<%= link_to '返回', novels_path %>

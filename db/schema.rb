@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226060416) do
+ActiveRecord::Schema.define(:version => 20111231135015) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -108,6 +108,21 @@ ActiveRecord::Schema.define(:version => 20111226060416) do
     t.integer  "category_id",              :default => 0
   end
 
+  create_table "novels", :force => true do |t|
+    t.integer  "category_id", :default => 0
+    t.string   "title",       :default => "小说",                           :null => false
+    t.string   "author",      :default => "网友",                           :null => false
+    t.text     "synopsis"
+    t.integer  "word_num",    :default => 0,                              :null => false
+    t.datetime "created_at"
+    t.string   "from_name",   :default => "未知",                           :null => false
+    t.string   "from_url",    :default => "http://www.lehazi.com/novels", :null => false
+    t.text     "other_from"
+    t.boolean  "free",        :default => false
+    t.integer  "click_time",  :default => 0,                              :null => false
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
     t.integer  "user_id"
@@ -157,15 +172,15 @@ ActiveRecord::Schema.define(:version => 20111226060416) do
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                 :null => false
-    t.string   "email",                                 :null => false
-    t.string   "crypted_password",                      :null => false
-    t.string   "password_salt",                         :null => false
-    t.string   "persistence_token",                     :null => false
-    t.string   "single_access_token",                   :null => false
-    t.string   "perishable_token",                      :null => false
-    t.integer  "login_count",         :default => 0,    :null => false
-    t.integer  "failed_login_count",  :default => 0,    :null => false
+    t.string   "login",                                           :null => false
+    t.string   "email",                                           :null => false
+    t.string   "crypted_password",                                :null => false
+    t.string   "password_salt",                                   :null => false
+    t.string   "persistence_token",                               :null => false
+    t.string   "single_access_token",                             :null => false
+    t.string   "perishable_token",                                :null => false
+    t.integer  "login_count",         :default => 0,              :null => false
+    t.integer  "failed_login_count",  :default => 0,              :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -173,11 +188,12 @@ ActiveRecord::Schema.define(:version => 20111226060416) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "enabled",             :default => true, :null => false
-    t.integer  "posts_count",         :default => 0,    :null => false
-    t.integer  "entries_count",       :default => 0,    :null => false
+    t.boolean  "enabled",             :default => true,           :null => false
+    t.integer  "posts_count",         :default => 0,              :null => false
+    t.integer  "entries_count",       :default => 0,              :null => false
     t.string   "blog_title"
     t.boolean  "enabled_comments",    :default => true
+    t.string   "portrait_location",   :default => "portrait.jpg", :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

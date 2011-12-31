@@ -1,0 +1,23 @@
+<h2>管理</h2>
+
+<p><%=	 link_to '新建', new_novel_path %></p>
+<hr>
+<ul>
+<% @novels.each  do |novel| %>
+    <li>
+      <%= link_to novel.title, novel %>
+       <%= novel.click_time %>
+        <%= novel.from_name %>
+        <%= novel.author %>
+        <%= novel.free? ? '免费' : '需付费' %>
+      <%=	 link_to '编辑', edit_novel_path(novel) %>
+      <%=	 link_to '删除', novel, method: :delete, :confirm => 'Are you sure?' %>
+    </li>
+<% end %>
+</ul>
+<hr>
+<%= will_paginate @novels ,:class => 'digg_pagination' %>
+<style type="text/css">
+  #menubar a.m_novel{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_home,a.m_arti,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+</style>
