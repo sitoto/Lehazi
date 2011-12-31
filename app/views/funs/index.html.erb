@@ -10,7 +10,9 @@
         <%= link_to '['+fun.category.name+'] ', category_funs_path(fun.category) %>
         <% end %>
         <%=link_to fun.title, fun %>
-        <span>查看：<%= fun.click_time %> </span><span>发布人：<%=  (fun.user_id==0) ? "匿名" : fun.user.login %></span>
+        <span>查看：<%= fun.click_time %> </span>
+		<span>来自：<%= fun.from_url %> </span>
+		<span>发布人：<%=  (fun.user_id==0) ? "匿名" : fun.user.login %></span>
 
       </h3>
       <div class="a_c">
