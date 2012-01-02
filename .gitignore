@@ -15,3 +15,5 @@
 /tmp
 
 /.idea
+# Igonre the deploy file
+/config/deploy.rb
