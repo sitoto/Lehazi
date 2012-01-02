@@ -1,8 +1,8 @@
 LehaziCom::Application.routes.draw do
 
- if Rails.env.development?
+ #if Rails.env.development?
   match "/images/uploads/*path" => "gridfs#serve"
-end
+#end
 
   resources :user_portraits
 
