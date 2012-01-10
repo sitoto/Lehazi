@@ -1,5 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
+  layout "we"
   before_filter :check_administrator_role, :only => [:index,:destroy,:enable]
   before_filter :login_required, :only => [:edit, :update]
 

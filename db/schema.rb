@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231135015) do
+ActiveRecord::Schema.define(:version => 20120110092300) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -60,7 +60,8 @@ ActiveRecord::Schema.define(:version => 20111231135015) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "topics_count", :default => 0, :null => false
+    t.integer  "topics_count", :default => 0,  :null => false
+    t.string   "permalink",    :default => ""
   end
 
   create_table "funs", :force => true do |t|
@@ -72,6 +73,35 @@ ActiveRecord::Schema.define(:version => 20111231135015) do
     t.integer  "user_id",     :default => 0,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "funs_copy", :force => true do |t|
+    t.string   "title",       :default => "笑话", :null => false
+    t.text     "body",                          :null => false
+    t.integer  "click_time",  :default => 1008, :null => false
+    t.string   "from_url"
+    t.integer  "category_id", :default => 0,    :null => false
+    t.integer  "user_id",     :default => 0,    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "games", :force => true do |t|
+    t.integer  "category_id", :default => 4,     :null => false
+    t.string   "name",        :default => "游戏",  :null => false
+    t.string   "company"
+    t.text     "synopsis"
+    t.string   "logo"
+    t.string   "ad_word"
+    t.boolean  "is_new",      :default => false, :null => false
+    t.boolean  "is_online",   :default => true,  :null => false
+    t.boolean  "sales",       :default => false, :null => false
+    t.string   "sale_url"
+    t.integer  "user_id",     :default => 1,     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hot_num",     :default => 0
+    t.string   "permalink",   :default => ""
   end
 
   create_table "infoforzufang", :force => true do |t|
@@ -129,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20111231135015) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "f_level_num", :default => 1
   end
 
   add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
@@ -166,7 +197,10 @@ ActiveRecord::Schema.define(:version => 20111231135015) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posts_count", :default => 0, :null => false
+    t.integer  "posts_count", :default => 0,  :null => false
+    t.integer  "click_times", :default => 1
+    t.string   "from_url",    :default => ""
+    t.string   "f_category",  :default => ""
   end
 
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
@@ -197,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20111231135015) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["persistence_token"], :name => "idx_users_persistence", :unique => true
 
 end

@@ -1,4 +1,5 @@
 class ForumsController < ApplicationController
+    layout "we"
   before_filter :check_moderator_role, :except => [:index, :show]
 
   # GET /forums
@@ -15,7 +16,7 @@ class ForumsController < ApplicationController
   # GET /forums/1
   # GET /forums/1.json
   def show
-    redirect_to forum_topics_url(params[:forum_id])
+    redirect_to forum_topics_url(params[:id].to_i)
   end
 
   # GET /forums/new
@@ -31,7 +32,7 @@ class ForumsController < ApplicationController
 
   # GET /forums/1/edit
   def edit
-    @forum = Forum.find(params[:id])
+    @forum = Forum.find(params[:id].to_i)
   end
 
   # POST /forums
@@ -53,7 +54,7 @@ class ForumsController < ApplicationController
   # PUT /forums/1
   # PUT /forums/1.json
   def update
-    @forum = Forum.find(params[:id])
+    @forum = Forum.find(params[:id].to_i)
 
     respond_to do |format|
       if @forum.update_attributes(params[:forum])
@@ -69,7 +70,7 @@ class ForumsController < ApplicationController
   # DELETE /forums/1
   # DELETE /forums/1.json
   def destroy
-    @forum = Forum.find(params[:id])
+    @forum = Forum.find(params[:id].to_i)
     @forum.destroy
 
     respond_to do |format|

@@ -1,42 +1,50 @@
-<h2>娱乐八卦幽默笑话</h2>
+<div class="span-23">
+  <hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '乐哈社区', forums_path %>  >
+    列表
+  <span style="float: right;">
+      <label>热门搜索：</label>
+
+  </span>
+  </hgroup>
+  <hr>
+</div>
+<div class="span-23">
 
     <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
         <p><%=	 link_to '新建论坛主题', new_forum_path %></p>
     <%	 end %>
 
-<table id="froums">
-  <tr>
-    <th>主题</th>
+    <table id="froums">
+      <tr>
+        <th>序号</th>
+        <th>分类</th>
+        <th>主题</th>
 
-    <th>帖数</th>
+        <th>帖数</th>
 
-  </tr>
+      </tr>
 
-<% @forums.each do |forum| %>
-  <tr class="<%= cycle('odd','even')%>">
-    <td class="name">
-      <div class="forumname">
-        <%= link_to forum.name, forum_topics_url(forum.id) %>
-      </div>
+    <% @forums.each do |forum| %>
+      <tr>
+        <td><%=	 forum.id  %></td>
+        <td><%= link_to forum.name, forum_topics_url(forum) %></td>
+        <td>
+            <%= forum.description %>
+          <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
+            <br/>
+              <small>
+                <%= link_to '编辑', edit_forum_path(forum)%>
+                <%=	 link_to '删除',forum, method: :delete ,:confirm => '确定？'  %>
+              </small>
+          <%	 end %>
+         </td>
 
-      <div class="forumdescription">
-        <%= forum.description %>
-      </div>
-
-      <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
-        <br/>
-          <small>
-            <%= link_to '编辑', edit_forum_path(forum)%>
-            <%=	 link_to '删除',forum, method: :delete ,:confirm => '确定？'  %>
-          </small>
-      <%	 end %>
-     </td>
-
-    <td class="topic"><%= forum.topics_count %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+        <td><%= forum.topics_count %></td>
+      </tr>
+    <% end %>
+    </table>
+</div>
 
 

@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
   config.grid_fs_port = "10004"
   config.grid_fs_username = "lehazi"
   config.grid_fs_password = "lehazi2011"
-  config.grid_fs_access_url = "/images" #好像是访问时图片url的前缀
+  config.grid_fs_access_url = "/images" #访问时图片url的前缀
 end

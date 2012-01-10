@@ -1,0 +1,33 @@
+<ul>
+  <li><%= link_to '首页', root_path %></li>
+  <li><%= link_to '微社区', we_path %></li>
+  <li><%= link_to '博客', blogs_path %></li>
+  <li><%= link_to '论坛', forums_path %></li>
+  <li><hr size="1" width= 90% align="left"></li>
+
+  <%  if is_logged_in? %>
+    <li>我是：<i><%= link_to current_user.login , user_path(current_user) %></i></li>
+    <li><%= link_to "退出 ", logout_path %> | <%=	 link_to ' 设置', edit_user_path(current_user) %></li>
+      <li><%= link_to current_user.blog_title,  user_entries_path(current_user) %></li>
+      <li><%= link_to '写日志',  new_user_entry_path(current_user.id) %></li>
+         <% if current_user.has_roles?('Administrator') %>
+            <li><%= link_to '管理用户' , users_path %></li>
+            <li><%= link_to '管理目录' , categories_path %></li>
+            <li>角色：管理员</li>
+         <%	 end %>
+         <% if current_user.has_roles?('Editor') %>
+            <li>角色：网站编辑</li>
+          <% end %>
+          <% if current_user.has_roles?('Moderator') %>
+            <li>角色：版主</li>
+          <% end %>
+  <% else %>
+    <li><%= link_to "注册 ", signup_path %> | <%= link_to " 登陆", login_path %></li>
+
+  <% end %>
+  <li><hr size="1" width= 90% align="left"></li>
+  <li>乐友</li>
+  <li><%=	 link_to '关注 28', user_path(1) %> </li>
+  <li><%=	 link_to '被关注：27', user_path(1) %> </li>
+
+</ul>

@@ -1,0 +1,12 @@
+// Place all the styles related to the Games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#game{ float:left; padding:0 3px 3px;}
+#game .game_nav{ line-height:150%; font-size:13px; margin:3px 5px; border-bottom:1px solid #999;}
+#game .leftbar{float:left; width:200px; padding:0;}
+#game .leftbar ul{float:left; width:200px;margin:0; padding:0;}
+#game .leftbar ul li{float:left; width:150px; margin:10px 10px 0 10px; display:block; padding:0;}
+
+
+#game .content{float:left; width:800px; display:block; margin:0 8px 0 0; padding:0;}

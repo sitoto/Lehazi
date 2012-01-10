@@ -1,53 +1,22 @@
-<div id="banner" class="border">
- <!--   <div id="banner_bg"></div> -->
-    <div id="banner_info"></div>
-    <ul>
-        <li class="on">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ul>
-   <div id="banner_list">
-        <ul>
-            <li>
-              <a href="#" target="_blank">
-                <%= image_tag "pics/p11.jpg"%></a>
-              <div class="txt">
-                <span class="title">圣诞节档期大片抢先看</span>
-                <span class="content">《金陵十三钗》《碟中谍4》《龙门飞甲》《大魔术师》《倾城之泪》《一代宗师》等圣诞节大片等您来鉴赏......</span>
-              </div>
+<div class="infobar border">
+    <div class="c_1">
+      <div class="c_t1">
+         <h2>最新动态</h2>
+         <span class="c_m1"><%= link_to '进入' ,forums_path,:target => '_blank'%></span>
+       </div>
+       <div class="c_c1">
+        <ul class="c_u1">
+          <% @top_topics.each do |topic| %>
+            <li><span class="dian01">·</span>
+                <%= link_to topic.name, forum_topic_posts_path(topic.forum_id,topic.id) , :target => "_blank"%>
             </li>
-            <li>
-              <a href="#" target="_blank"><%= image_tag "pics/p12.jpg"%></a>
-              <div class="txt">
-                <span class="title">圣诞节快乐！</span>
-                <span class="content">圣诞节尴尬之最：夹起火鸡想到禽流感；收到礼物恐有核炸弹；肩扛口袋好似捡破烂；贴上胡子引发大骚乱——我的天！拉登重新出现！ </span>
-              </div>
-            </li>
-            <li>
-              <a href="#" target="_blank"><%= image_tag "pics/p13.jpg"%></a>
-                <div class="txt">
-                <span class="title">圣诞节快乐！</span>
-                <span class="content">俺是者哥史街伤嘴惯信泥地任，椰是嘴向年泥地任，腰吻俺邮夺矮泥，约粮呆标俺地信！
-俺腰窄吓耶孔种嘴命粮地猩猩松泥！啊！芹矮地，向泥！圣诞节快乐！ </span>
-              </div>
-            </li>
-            <li>
-              <a href="#" target="_blank"><%= image_tag "pics/p14.jpg"%></a>
-              <div class="txt">
-                <span class="title">哈利波特-好莱坞环球影城</span>
-                <span class="content">哈利波特好莱坞环球影城<br/>好莱坞环球影城（Universal Studios Hollywood）6日举行了一个发布会，正式宣布该乐园将建设哈利波特魔法世界（The Wizarding World of Harry Potter）
-                  -可能在2015年开幕 </span>
-              </div>
-
-            </li>
+          <% end %>
         </ul>
-
+      </dir>
+    </div>
     </div>
 </div>
-
-
-<div id="infobar" class="border">
+<div class="infobar border">
     <div class="c_1">
        <div class="c_t1">
          <h2>娱乐信息</h2>
@@ -68,23 +37,116 @@
       </dir>
     </div>
     </div>
-
-
 </div>
 
 <div class="adbar border">
-<%= image_tag "pics/adi.jpg", :width =>680, :height => 120,:border => 0, :alt=>"lehazi.com", :title => "寻找利益与风险的分享者"%>
+<%= image_tag "pics/adi.jpg", :width =>680, :height => 60,:border => 0, :alt=>"lehazi.com", :title => "寻找利益与风险的分享者"%>
 </div>
 
-<div id="messagebar" class="border">
+<div class="messagebar border">
     <div class="c_2">
       <div class="c_t2">
-        <h2>笑话幽默</h2>
-        <span class="c_m2"><%= link_to '更多' ,funs_path,:target => '_blank'%></span>
+        <h2>时事笑话</h2>
+        <span class="c_m2"><%= link_to '更多'  ,category_funs_path(5),:target => '_blank'%></span>
       </div>
       <div class="c_c2">
         <ul class="c_u2">
             <% @top_funs.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+
+<div class="messagebar border">
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>情感趣事</h2>
+        <span class="c_m2"><%= link_to '更多' ,category_funs_path(9),:target => '_blank'%></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs_love.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+
+
+<div class="messagebar border">
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>学生时代</h2>
+        <span class="c_m2"><%= link_to '更多' ,category_funs_path(8),:target => '_blank'%></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs_student.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+<div class="messagebar border">
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>IT故事</h2>
+        <span class="c_m2"><%= link_to '更多' ,category_funs_path(12),:target => '_blank'%></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs_it.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+
+<div class="messagebar border">
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>搞笑网文</h2>
+        <span class="c_m2"><%= link_to '更多' ,category_funs_path(6),:target => '_blank'%></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs_net.each do |fun| %>
+            <li><span class="dian01">·</span>
+                <%= link_to fun.title, fun ,:target => '_blank'%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+
+    </div>
+</div>
+
+<div class="messagebar border round">
+    <div class="c_2">
+      <div class="c_t2">
+        <h2>冷笑话</h2>
+        <span class="c_m2"><%= link_to '更多' ,category_funs_path(4),:target => '_blank'%></span>
+      </div>
+      <div class="c_c2">
+        <ul class="c_u2">
+            <% @top_funs_cold.each do |fun| %>
             <li><span class="dian01">·</span>
                 <%= link_to fun.title, fun ,:target => '_blank'%>
             </li>
@@ -99,13 +161,13 @@
 </div>
 <style type="text/css">
 #menubar a.m_home{background: #9999ff;    color:#FFF;}
-#menubar a.m_funs,a.m_arti,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+#menubar a.m_funs,a.m_arti,a.m_novel,a.m_game,a.m_baidu, a.m_tianya,a.m_le{}
 
 
 #banner {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;}
 #banner_list img {border:0px;}
 #banner_bg {position:absolute; bottom:0;background-color:#000;height:30px;filter: Alpha(Opacity=30);opacity:0.3;z-index:1000;
-cursor:pointer; width:478px; }
+              cursor:pointer; width:478px; }
 #banner_info{position:absolute; bottom:0; left:5px;height:22px;color:#fff;z-index:1001;cursor:pointer}
 #banner_text {position:absolute;width:120px;z-index:1002; right:3px; bottom:3px;}
 #banner ul {position:absolute;list-style-type:none;filter: Alpha(Opacity=80);opacity:0.8; z-index:1002;
@@ -129,24 +191,26 @@ cursor:pointer; width:478px; }
 .adbar {position:relative; width:680px; height:60px;background-color: #f5deb3; overflow:hidden; }
 .adbar1 {position:relative; width:680px; height:120px;background-color: #f5deb3; overflow:hidden; }
 
-#infobar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
-    #infobar .c_1 {display: block;overflow: hidden;margin: 8px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
-        #infobar .c_1 .c_t1{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
-        #infobar .c_1 .c_t1 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 8px 0px 0px 8px;}
-        #infobar .c_1 .c_t1 .c_m1 {width: 48px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
-    #infobar .c_1 .c_c1{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
-    #infobar .c_1 .c_c1 ul.c_u1{width: 664px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
-    #infobar .c_1 .c_c1 ul.c_u1 li{width: 48%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
+.infobar {position:relative;margin-right: 5px; float: left; width:335px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
+    .infobar .c_1 {display: block;overflow: hidden;margin: 0px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
+        .infobar .c_1 .c_t1{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
+        .infobar .c_1 .c_t1 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 3px 0px 0px 8px;}
+        .infobar .c_1 .c_t1 .c_m1 {width: 38px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
+        .infobar .c_1 .c_t1 .c_m1 a{color:#666;font-size: 13px;}
+    .infobar .c_1 .c_c1{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
+    .infobar .c_1 .c_c1 ul.c_u1{width: 332px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
+    .infobar .c_1 .c_c1 ul.c_u1 li{width: 100%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
         padding: 2px 0px 3px 0px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;list-style: none;color: #B21515;    }
 
-#messagebar {position:relative; width:680px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
-#messagebar .c_2 {display: block;overflow: hidden;margin: 8px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
-    #messagebar .c_2 .c_t2{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
-    #messagebar .c_2 .c_t2 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 8px 0px 0px 8px;}
-    #messagebar .c_2 .c_t2 .c_m2 {width: 48px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
-#messagebar .c_2 .c_c2{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
-    #messagebar .c_2 .c_c2 ul.c_u2{width: 664px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
-    #messagebar .c_2 .c_c2 ul.c_u2 li{width: 32%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
+.messagebar {position:relative; float:left; margin-right: 5px; width:335px; height:286px; border:0px ; overflow:hidden;background-color: #FFFFFF;}
+.messagebar .c_2 {display: block;overflow: hidden;margin: 8px 0px 0px;padding: 0px;border: 1px solid #E9EEF1;zoom: 1;height: 276px;    }
+    .messagebar .c_2 .c_t2{background-color:#E9EEF1; height: 30px;display: block;overflow: hidden;margin: 0px;padding: 0px;    }
+    .messagebar .c_2 .c_t2 h2 {color:#333;font-size: 14px;font-weight: bold;display: inline;float: left;overflow: hidden;margin: 3px 0px 0px 8px;}
+    .messagebar .c_2 .c_t2 .c_m2 {width: 38px;height: 28px;display: inline;float: right;margin: 0px;padding: 0px;cursor: pointer;    }
+    .messagebar .c_2 .c_t2 .c_m2 a{color:#666;font-size: 13px;}
+.messagebar .c_2 .c_c2{width: 98%;overflow: hidden;display: block;margin: 0px auto;padding: 0px;zoom: 1;    }
+    .messagebar .c_2 .c_c2 ul.c_u2{width: 332px;display: block;overflow: hidden;float: right;margin: 8px 0px;padding: 0px;    }
+    .messagebar .c_2 .c_c2 ul.c_u2 li{width: 48%;display: inline;overflow: hidden;float: left;height: 20px;margin: 0px 4px 0px 2px;
         padding: 2px 0px 3px 0px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;list-style: none;color: #B21515;    }
 
 </style>

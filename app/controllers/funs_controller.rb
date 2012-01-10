@@ -9,6 +9,7 @@ class FunsController < ApplicationController
     if params[:category_id]
        @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page], :per_page => 10,
                                                     :include => :user).order ( 'created_at DESC')
+       @fun_category = Category.find(params[:category_id])
     else
       @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
     end
@@ -16,7 +17,7 @@ class FunsController < ApplicationController
         f.increment!(:click_time, by = 1)
     end
 
-    @tit = '笑话幽默'
+    @title = '幽默短文'
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @funs }
@@ -33,7 +34,7 @@ class FunsController < ApplicationController
       Fun.exists?(b) ?  @fun_n =Fun.find_by_sql("select id, title from funs where id = #{b}") : @fun_n =nil
 
       @fun.increment!(:click_time, by = 1)
-      @tit = @fun.title  + '_' + @fun.category.name
+      @title = @fun.title  + ' - ' + @fun.category.name
 
       arr = get_random_numbers(Fun.count,18)
 

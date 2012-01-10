@@ -1,0 +1,89 @@
+<div class="game_nav fix clear">
+   游戏 »<%= @game.category.name %> » <%= @game.name %>
+</div>
+
+<div class="leftbar">
+  <ul>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+    <li><a>网络游戏</a></li>
+  </ul>
+
+
+</div>
+
+<div class="content">
+<p>
+  <b>Category:</b>
+  <%= @game.category.name %>
+</p>
+<p>
+  <b>Permalink:</b>
+  <%= @game.permalink %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @game.name %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @game.company %>
+</p>
+
+<p>
+  <b>Synopsis:</b>
+  <%=raw @game.synopsis %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <img src="<%= @game.logo %>" alt="<%= @game.name%>">
+
+</p>
+
+<p>
+  <b>Ad word:</b>
+  <%= @game.ad_word %>
+</p>
+
+<p>
+  <b>Is new:</b>
+  <%= @game.is_new %>
+</p>
+
+<p>
+  <b>Is online:</b>
+  <%= @game.is_online %>
+</p>
+
+<p>
+  <b>Sales:</b>
+  <%= @game.sales %>
+</p>
+
+<p>
+  <b>Sale url:</b>
+  <%= @game.sale_url %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
+
+</div>
+
+<style type="text/css">
+  #menubar a.m_game{background: #9999ff;    color:#FFF;}
+#menubar a.m_funs,a.m_home,a.m_novel,a.m_arti,a.m_baidu, a.m_tianya,a.m_le{}
+</style>
+
+

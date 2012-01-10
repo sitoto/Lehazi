@@ -1,31 +1,48 @@
 LehaziCom::Application.routes.draw do
 
- #if Rails.env.development?
+if Rails.env.development?
   match "/images/uploads/*path" => "gridfs#serve"
-#end
-
-  resources :user_portraits
+end
 
   get "blogs"  => "blog#index", :as => "blogs"
-
-
 
   root :to => "home#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  get "we" =>  "we#index", :as => "we"
+  get "tieba" =>  "we#tieba", :as => "teiba"
+  get "tianya" =>  "we#tianya", :as => "tianya"
+  get "douban" =>  "we#douban", :as => "douban"
 
+
+  resources :users  do
+    resources :entries do
+      resources :comments
+    end
+
+    resources :roles
+      member do
+        put "enable"
+    end
+
+  end
+  resources :games do
+    collection do
+      get 'admin'
+    end
+  end
   resources :articles  do
     collection do
       get 'admin'
     end
   end
-   resources :funs do
+  resources :funs do
     collection do
       get 'admin'
     end
    end
-    resources :novels  do
+  resources :novels  do
     collection do
       get 'admin'
     end
@@ -36,31 +53,25 @@ LehaziCom::Application.routes.draw do
     end
     resources :articles#, :name_prefix => 'category_' ,:path_prefix => '/categories/:category_id'
     resources :funs
+    resources :games
   end
 
 
-  resources :users  do
 
-    resources :entries do
-      resources :comments
-    end
 
-    resources :roles
-    member do
-      put "enable"
-    end
-
-  end
 
   resources :forums do
     resources :topics do
+      collection do
+        get "newtopic"
+        get "last"
+      end
        resources :posts
     end
   end
 
   resources :sessions
   resources :infos
-  resources :rent_infos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

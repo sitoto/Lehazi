@@ -1,0 +1,25 @@
+<h2>管理</h2>
+
+<p><%=	 link_to '新建', new_game_path %></p>
+<table>
+<% @games.each  do |game| %>
+ <tr>
+   <td><%=	 link_to game.name, game %></td>
+
+    <td><%= game.hot_num %></td>
+    <td><%= game.company %></td>
+    <td><%= game.ad_word %></td>
+    <td><%= game.is_new %></td>
+    <td><%= game.sales %></td>
+    <td>
+      <%=	 link_to '编辑', edit_game_path(game) %>
+      <%=	 link_to '删除', game, method: :delete, :confirm => 'Are you sure?' %>
+    </td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @games ,:class => 'digg_pagination' %>
+<style type="text/css">
+#menubar a.m_game{background: #9999ff;    color:#FFF;}
+#menubar a.m_arti,a.m_home,a.m_novel,a.m_funs,a.m_baidu, a.m_tianya,a.m_le{}
+</style>

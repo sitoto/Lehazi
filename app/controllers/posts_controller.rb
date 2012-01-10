@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  layout "we"
   before_filter :check_moderator_role, :only => [:destroy, :edit, :update]
   before_filter :login_required, :except => [:index, :show ]
 

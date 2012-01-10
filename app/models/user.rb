@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :funs
   has_many :entries
   has_many :comments
+  has_many :games
 
   #portrait
   mount_uploader :portrait_location, PortraitUploader
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   def set_some_att
     self.perishable_token = 'abc'

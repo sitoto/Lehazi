@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+    layout "we"
+
   before_filter :login_required, :except => [:index, :show]
 
   # GET /entries
@@ -13,14 +15,10 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/1
-  # GET /entries/1.json
   def show
     @entry = Entry.find_by_id_and_user_id(params[:id],params[:user_id],:include => [:user, [:comments => :user]])
   end
 
-  # GET /entries/new
-  # GET /entries/new.json
   def new
     @entry = Entry.new
   end

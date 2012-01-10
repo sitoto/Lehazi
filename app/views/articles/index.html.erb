@@ -1,27 +1,43 @@
-<%	 content_for :head do %>
+<% content_for :head do %>
     <%= auto_discovery_link_tag	  %>
 <% end %>
-<div id="a_list">
-<h2>娱乐快递</h2>
+<div class="span-23">
+  <hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '娱乐新闻', funs_path %>  >
+     <% if !@article_category.nil?  %>
+        <%= link_to @article_category.name , category_funs_path(@article_category) %>  >
+     <% end %>
+    列表
+  <span style="float: right;">
+      <label>热门搜索：</label>
+      <%=	 link_to '2012末日', '#' %>
+  </span>
+  </hgroup>
+  <hr>
+</div>
+<div class="span-23">
 
+</div>
+<div class="span-19">
+    <table>
+      <tbody>
 <%	 @articles.each do |article| %>
-    <div class="a_item">
-      <h3>
-        <% if article.category  %>
-        <%= link_to '['+article.category.name+'] ', category_articles_path(article.category) %>
-        <% end %>
-        <%=link_to article.title, article %>
-      </h3>
-      <div class="a_c">
-        <%= article.created_at.to_s(:short) %> by <%=	 article.user.login %> <br />
-        <%=	 article.synopsis %>
-        <%=	 link_to '阅读全文', article%>
-      </div>
-    </div>
+
+      <tr>
+        <td><% if article.category  %>
+            <%= link_to '['+article.category.name+'] ', category_articles_path(article.category) %>
+            <% end %></td>
+        <td><%=link_to article.title, article %></td>
+        <td><%= article.created_at.to_s(:short) %></td>
+      </tr>
+
 <%	 end %>
+    </tbody>
+</table>
 <%= will_paginate @articles ,:class => 'digg_pagination' %>
 </div>
 <style type="text/css">
   #menubar a.m_arti{background: #9999ff;    color:#FFF;}
-#menubar a.m_funs,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+#menubar a.m_funs,a.m_home,a.m_novel,a.m_game,a.m_baidu, a.m_tianya,a.m_le{}
 </style>

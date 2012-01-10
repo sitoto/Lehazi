@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  layout "we"
 before_filter :check_administrator_role,:except => :show
   # GET /categories
   # GET /categories.json

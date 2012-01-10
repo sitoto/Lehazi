@@ -7,11 +7,13 @@ class ArticlesController < ApplicationController
     if params[:category_id]
        @articles = Article.where("category_id=#{params[:category_id].to_i} AND published=true").paginate(:page => params[:page],
                                                     :include => :user).order ( 'published_at DESC')
+       @article_category = Category.find(params[:category_id])
     else
       @articles = Article.where(:published => true).paginate(:page => params[:page],
                                                     :include => :user).order('published_at DESC')
     end
-    @tit = "娱乐信息"
+    @title = "娱乐信息"
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml {render :xml =>@articles.to_xml }
@@ -26,7 +28,7 @@ class ArticlesController < ApplicationController
     else
       @article = Article.find_by_id_and_published(params[:id], true)
     end
-    @tit = @article.title  + '_' + @article.category.name
+    @title = @article.title  + '_' + @article.category.name
     respond_to do |format|
       format.html
       format.xml { render :xml => @article.to_xml }

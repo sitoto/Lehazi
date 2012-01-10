@@ -1,0 +1,6 @@
+* {margin: 0;padding: 0;}
+.fixed,.clear {clear:both;}
+.clearfix {display: block;}
+.clearfix::after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+#error {    background: #F1E9E1;padding: 5px 10px 5px 15px;margin-bottom: 10px;font-size: 10px;color: #E05C23;}
+#notice {background: #F6F9E7;padding: 5px 10px 5px 15px;margin-bottom: 10px;font-size: 10px;color: #84985D;}

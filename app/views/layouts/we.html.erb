@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= csrf_meta_tags %>
+  <%= render "layouts/stylesheets" %>
+  <%= yield :head %>
+</head>
+<body>
+
+  <div class="container">
+     <%= render 'layouts/header' %>
+
+     <section class="round">
+       <% if flash[:notice] -%>
+            <div id="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <% if flash[:error] -%>
+            <div id="error"><%= flash[:error] %></div>
+        <% end %>
+        <%= yield %>
+       <div class="clear"></div>
+     </section>
+
+     <%= render :partial =>'layouts/footer' %>
+  </div>
+
+</body>
+</html>

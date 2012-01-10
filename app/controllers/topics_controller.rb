@@ -1,13 +1,15 @@
 class TopicsController < ApplicationController
+  layout "we"
+
   before_filter :check_moderator_role, :only => [:destroy, :edit, :update]
-  before_filter :login_required, :except => [:index, :show ]
+  before_filter :login_required, :except => [:index, :show, :last, :newtopic ]
 
   # GET /topics
   # GET /topics.json
   def index
     @forum = Forum.find(params[:forum_id])
     @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.updated_at DESC')
+                                                    :include => :user).order ( 'topics.click_times DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,5 +83,18 @@ class TopicsController < ApplicationController
       format.html { redirect_to forum_topics_path }
       format.json { head :ok }
     end
+  end
+
+  def newtopic
+    @forum = Forum.find(params[:forum_id])
+    @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
+                                                    :include => :user).order ( 'topics.created_at DESC')
+
+  end
+    def last
+    @forum = Forum.find(params[:forum_id])
+    @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
+                                                    :include => :user).order ( 'topics.updated_at DESC')
+
   end
 end

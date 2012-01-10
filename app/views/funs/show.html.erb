@@ -1,51 +1,65 @@
-<div class="article">
-  <div class="a_title">
-<h2><%= @fun.title  %></h2>
-  </div>
-  <div class="a_attr">
+<div class="span-23">
+  <hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '幽默短文', funs_path %>  >
+    <%= link_to @fun.category.name, category_funs_path(@fun.category) %>  >
+    <%=  @fun.title %>
+
+  <span style="float: right;">
+  <label>热门搜索：</label>
+  <%=	 link_to '班师回京', '#' %>
+
+  </span>
+  </hgroup>
+  <hr>
+</div>
+<h4><%= link_to @fun.title ,'', :class => 'title' %></h4>
+
+  <blockquote>
       <% if @fun.category  %>
-        分类：<%= link_to @fun.category.name, category_funs_path(@fun.category) %>
+       <span class="border"> 分类：<%= link_to @fun.category.name, category_funs_path(@fun.category) %></span>
       <% end %>
-    查看：<%= @fun.click_time %> 来自：<%= @fun.from_url %> 发布人：<%=  (@fun.user_id==0) ? "匿名" : @fun.user.login %>
-  </div>
-  <div class="a_content">
-      <div class="a_c">
-        <%=	 raw((@fun.body)) %><br />
-      </div>
-  </div>
+    <span class="border"> 阅读：<%= @fun.click_time %>  </span>
+    <span>来自：<%= @fun.from_url %>    </span>
+  </blockquote>
+
+  <article>
+     <%=	raw RedCloth.new(@fun.body).to_html%>
+  </article>
 
   <br/>
-  <br/>
-  <div class="a_before_next">
-    <span class="a_before">
+  <hgroup>
+    <span class="border">
       上一篇：<%	 if @fun_p %>
           <%= link_to @fun_p[0].title , fun_path(@fun_p[0].id) %>
           <%	 else %>
           没有了
           <%	 end %>
     </span>
-    <span class="a_next">
+    <span>
           下一篇：<%	 if @fun_n %>
           <%= link_to @fun_n[0].title , fun_path(@fun_n[0].id) %>
           <%	 else %>
           没有了
           <%	 end %>
     </span>
-  </div>
-  <div class="fixed"></div>
-  <div class="a_relations">
-        <h2>随机推荐</h2>
-        <ul class="a_ul3">
+  </hgroup>
+  <hr>
+<div class="fixed"></div>
+
+  <fieldset class="random round">
+        <legend>随机推荐</legend>
+        <ul>
             <% @relation_funs.each do |fun| %>
             <li>
                 <%= link_to fun.title, fun ,:target => '_blank', :title => fun.body.truncate(50)%>
             </li>
             <% end %>
         </ul>
-  </div>
-</div>
+  </fieldset>
+
 <style type="text/css">
 #menubar a.m_funs{background: #9999ff;    color:#FFF;}
-#menubar a.m_arti,a.m_home,a.m_novel,a.m_game,a.m_zu, a.m_piao,a.m_le{}
+#menubar a.m_arti,a.m_home,a.m_novel,a.m_game,a.m_baidu, a.m_tianya,a.m_le{}
 </style>
 

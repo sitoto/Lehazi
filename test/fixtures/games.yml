@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cagerogy_id: 1
+  name: MyString
+  company: MyString
+  synopsis: MyText
+  logo: MyString
+  ad_word: MyString
+  is_new: false
+  is_online: false
+  sales: false
+  sale_url: MyString
+  user_id: 1
+
+two:
+  cagerogy_id: 1
+  name: MyString
+  company: MyString
+  synopsis: MyText
+  logo: MyString
+  ad_word: MyString
+  is_new: false
+  is_online: false
+  sales: false
+  sale_url: MyString
+  user_id: 1

@@ -1,0 +1,61 @@
+<div class="span-23">
+  <hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '乐哈社区', forums_path %>  »
+    <%= @forum.name %>
+  <span style="float: right;">
+      <label>热门搜索：</label>
+  </span>
+  </hgroup>
+
+  <hgroup style="margin: 5px; padding: 5px 0px 0 20px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; " >
+    <span class="border hot"><%= link_to '热度排序', forum_topics_path(@forum) %> </span>
+    <span class="border last"><%= link_to '最新更新', last_forum_topics_path(@forum) %> </span>
+    <span class="newtopic"><%= link_to '最新加入', newtopic_forum_topics_path(@forum) %> </span>
+  </hgroup>
+</div>
+<div class="span-23">
+<table>
+  <!--thead>
+    <%	 if is_logged_in? %>
+        <%=	 link_to '发帖', new_forum_topic_path %>
+      <%	 else %>
+  <%= link_to '登陆', login_url	  %>
+    <%	 end %>
+  </thead-->
+  <tr>
+    <th>分类</th>
+    <th>主题</th>
+    <th>下载</th>
+    <th>点击/回帖</th>
+    <th>作者</th>
+    <th>更新时间</th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+
+    <td><%=	 topic.f_category %> </td>
+    <td>
+      <%= link_to topic.name, forum_topic_posts_path(topic.forum,topic) %>
+      <%	 if is_logged_in? and current_user.has_roles?('Moderator') %>
+        <br/>
+          <small>
+            <%= link_to '编辑', edit_forum_topic_path(topic.forum,topic)%>
+            <%=	 link_to '删除',forum_topic_path(topic.forum,topic), method: :delete ,:confirm => '确定？'  %>
+          </small>
+      <%	 end %>
+    </td>
+    <td> <%= link_to '下载/TxT/HTML' , '#'%> </td>
+    <td> <%= topic.click_times %>/<%= topic.posts_count %> </td>
+    <td><%= link_to topic.user.login, user_path(topic.user) %></td>
+
+    <td class="small"><%= topic.updated_at.to_s(:db) %></td>
+  </tr>
+<% end %>
+ <tfoot>
+ <%= will_paginate @topics ,:class => 'digg_pagination' %>
+ </tfoot>
+
+    </table>
+</div>

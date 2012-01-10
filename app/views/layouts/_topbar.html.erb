@@ -1,11 +1,15 @@
-
-<div id="user_nav">
-   <% if current_user %>
-    <%= current_user.email %>.
-    <%= link_to "退出", logout_path %>
-    <!--%= link_to "个人中心",center_path %-->
-  <% else %>
-    <%= link_to "注册", signup_path %> |
-    <%= link_to "登陆", login_path %>
-  <% end %>
-</div>
+    <div id="topbar" class="clearfix">
+        <div id="user_nav">
+           <% if current_user %>
+            <%= current_user.email %>.
+            <%= link_to "退出", logout_path %>
+            <!--%= link_to "个人中心",center_path %-->
+          <% else %>
+            <%= link_to "注册", signup_path %> |
+            <%= link_to "登陆", login_path %>
+          <% end %>
+        </div>
+    </div>
+    <div id="header">
+     <%= image_tag 'logo.png',:alt=>"乐哈子" %>
+    </div>

@@ -1,0 +1,61 @@
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis %><br />
+    <%= f.text_area :synopsis %>
+  </div>
+  <div class="field">
+    <%= f.label :logo %><br />
+    <%= f.text_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label :ad_word %><br />
+    <%= f.text_field :ad_word %>
+  </div>
+  <div class="field">
+    <%= f.label :is_new %><br />
+    <%= f.check_box :is_new %>
+  </div>
+  <div class="field">
+    <%= f.label :is_online %><br />
+    <%= f.check_box :is_online %>
+  </div>
+  <div class="field">
+    <%= f.label :sales %><br />
+    <%= f.check_box :sales %>
+  </div>
+  <div class="field">
+    <%= f.label :sale_url %><br />
+    <%= f.text_field :sale_url %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

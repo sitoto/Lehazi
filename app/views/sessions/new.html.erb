@@ -1,10 +1,14 @@
-<div class="depot_form">
+<div class="span-23">
+  <hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '首页', root_path %>  >
+    用户登录
 
-  <% if flash[:alert] %>
-      <p id="notice"><%= flash[:alert] %></p>
-  <% end %>
+  </hgroup>
+  <hr>
+</div>
   <%= form_tag sessions_path do %>
-      <fieldset>
+      <fieldset class="round">
         <legend>请登陆</legend>
         <div>
           <label for="name">邮箱:</label>
@@ -15,10 +19,10 @@
           <%= password_field_tag :password, params[:password] %>
         </div>
         <div>
-          <%= submit_tag "Login" %>
+          <%= submit_tag "提交" %>
         </div>
       </fieldset>
   <% end %>
-</div>
+
 
 
