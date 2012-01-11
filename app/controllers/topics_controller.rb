@@ -50,10 +50,13 @@ class TopicsController < ApplicationController
     @topic.update_attribute("created_at", @ttt[:created_at])
     @topic.update_attribute("f_username", @ttt[:username])
     @topic.update_attribute("f_category", @ttt[:category].from(1))
-
     @topic.save!
-    @post = Post.new(:body => params[:post][:body],:topic_id => @topic.id, :user_id => current_user.id)
-    @post.save!
+
+    @topic.get_all_posts.each do |key,value|
+      @post = Post.new(:body => value[3],:created_at => value[2],:f_level_num => value[1], :topic_id => @topic.id, :user_id => current_user.id)
+      @post.save!
+    end
+
 
 
     respond_to do |format|

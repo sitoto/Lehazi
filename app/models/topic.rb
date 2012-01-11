@@ -17,20 +17,14 @@ class Topic < ActiveRecord::Base
     end
 
     def get_new_topic
-=begin
-      chk_douban_url
-      doc = Nokogiri::HTML(open(@url))
-      @title = doc.at_css("title").text
-=end
-
       @temp
       @temp_posts ={}
       get_base_info
       @temp
-
     end
 
     def get_all_posts
+      @temp_posts
     end
 
 
@@ -59,7 +53,10 @@ class Topic < ActiveRecord::Base
 		@lz = ""
     @created_at = ""
     @category = ""
+    @first_post =""
 		@pages = 0
+    @reply_num=0
+    @level_num=0
 
       doc.css(".pl20").each do |item|
         @lz = item.at_css("a").text
@@ -69,13 +66,37 @@ class Topic < ActiveRecord::Base
       end
       doc.css(".topic-doc").each do |item|
         @created_at = item.at_css(".color-green").text
+        @first_post = item.at_css("p").text
       end
 
       @temp={:title => @title, :username => @lz, :created_at => @created_at, :category => @category}
+      #Get Posts
+      @temp_posts[0] =[@lz,0,@created_at,@first_post]
 
-      @reply_num=0
+      filter_douban_post doc
+
   end
 
+  def filter_douban_post doc
+    doc.css(".reply-doc").each do |item|
+			@level_num += 1
+			author = item.at_css("a").text
+      created_time  = item.at_css("h4").text
+			content= item.at_css("p").text
+      if author == @lz
+        @reply_num += 1
+        @temp_posts[@reply_num] = [author,@level_num,created_time, content]
+      end
+
+      doc.css(".next a").each do |link|
+        if link.attr("href")
+           href = link.attr("href")
+          doc = Nokogiri::HTML(open(href))
+          filter_douban_post doc
+        end
+      end
+    end
+  end
 
 
 	def chk_douban_url

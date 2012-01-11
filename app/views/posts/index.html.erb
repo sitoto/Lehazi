@@ -10,23 +10,19 @@
 </div>
 <div class="span-18">
 <h4 class="round2 back" ><%= @topic.name  %></h4>
-<!--p>
-  <% if is_logged_in? %>
-        <%=	 link_to '回帖', new_forum_topic_post_path %>
-      <%else %>
-  <%= link_to '登陆', login_url	  %>
-    <%	 end %>
-</p-->
-<table>
-<thead>
+
+<hgroup>
 <%= will_paginate @posts ,:class => 'digg_pagination' %>
-</thead>
+</hgroup>
+<table>
+
+  <tbody>
 <% @posts.each do |post| %>
 
   <tr>
     <td class="right">
-      <span class="border"> <%= post.updated_at.to_date %></span>
-      <span class="border"> <%= post.f_level_num %> 楼</span>
+      <span class="border"><%= post.created_at.to_date %></span>
+      <span class="border">(原<%= post.f_level_num %>楼)</span>
       <% if is_logged_in? and current_user.has_roles?('Moderator') %>
           <small>
             <%= link_to '编辑', edit_forum_topic_post_path(@topic.forum_id,post.topic_id,post.id)%>
@@ -37,10 +33,12 @@
   </tr>
   <tr><td class="round"><article> <%= raw RedCloth.new(post.body).to_html  %></article></td></tr>
 <% end %>
-<tfoot>
-<%= will_paginate @posts ,:class => 'digg_pagination' %>
-</tfoot>
+  </tbody>
 </table>
+<hgroup>
+<%= will_paginate @posts ,:class => 'digg_pagination' %>
+</hgroup>
+
 </div>
 <div class="span-5 side">
     <ul>
