@@ -50,6 +50,7 @@ class Topic < ActiveRecord::Base
     @category = ""
     @first_post =""
 
+
     @reply_num=0
     @level_num=0
 
@@ -64,7 +65,8 @@ class Topic < ActiveRecord::Base
         @first_post = item.at_css("p").inner_html
       end
 
-      @temp={:title => @title, :username => @lz, :created_at => @created_at, :category => @category}
+      @temp={:title => @title, :username => @lz, :created_at => @created_at,
+             :category => @category,:last_from_url => @url}
       #Get Posts
       @temp_posts[0] =[@lz,0,@created_at,@first_post]
       filter_douban_post doc
@@ -80,13 +82,14 @@ class Topic < ActiveRecord::Base
         @reply_num += 1
         @temp_posts[@reply_num] = [author,@level_num,created_time, content]
       end
+    end
 
-      doc.css(".next a").each do |link|
-        if link.attr("href")
-           href = link.attr("href")
-          doc = Nokogiri::HTML(open(href))
-          filter_douban_post doc
-        end
+    doc.css(".next a").each do |link|
+      if link.attr("href")
+         href = link.attr("href")
+         @temp[:last_from_url] =  href
+         doc = Nokogiri::HTML(open(href))
+         filter_douban_post doc
       end
     end
   end

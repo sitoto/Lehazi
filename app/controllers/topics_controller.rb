@@ -18,14 +18,10 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/1
-  # GET /topics/1.json
   def show
     redirect_to forum_topic_posts_path(params[:forum_id],params[:id])
   end
 
-  # GET /topics/new
-  # GET /topics/new.json
   def new
     @topic = Topic.new
     @post = Post.new
@@ -49,13 +45,7 @@ class TopicsController < ApplicationController
     @ttt = @topic.get_new_topic
 
     if @ttt  == nil
-
       redirect_to new_forum_topic_path(@topic.forum_id), :notice => "错误，无法采集，可能该贴已存在！"
-=begin
-      respond_to do |format|
-        format.html { render action: "new" }
-      end
-=end
       return
     end
 
@@ -64,6 +54,8 @@ class TopicsController < ApplicationController
     @topic.update_attribute("created_at", @ttt[:created_at])
     @topic.update_attribute("f_username", @ttt[:username])
     @topic.update_attribute("f_category", @ttt[:category].from(1))
+    @topic.update_attribute("last_from_url", @ttt[:last_from_url])
+
     @topic.save!
 
     @topic.get_all_posts.each do |key,value|
@@ -87,8 +79,6 @@ class TopicsController < ApplicationController
 
   end
 
-  # PUT /topics/1
-  # PUT /topics/1.json
   def update
     @topic = Topic.find(params[:id])
 
@@ -103,8 +93,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # DELETE /topics/1
-  # DELETE /topics/1.json
   def destroy
     @topic = Topic.find(params[:id])
     @topic.posts.each {|post| post.destroy }
@@ -122,10 +110,10 @@ class TopicsController < ApplicationController
                                                     :include => :user).order ( 'topics.created_at DESC')
 
   end
-    def last
-    @forum = Forum.find(params[:forum_id])
-    @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.updated_at DESC')
+  def last
+  @forum = Forum.find(params[:forum_id])
+  @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
+                                                  :include => :user).order ( 'topics.updated_at DESC')
 
   end
 end
