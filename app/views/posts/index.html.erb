@@ -45,8 +45,8 @@
 <div class="span-5 side">
     <ul>
       <li>来源：<%= link_to @topic.forum.name, @topic.from_url %></li>
-      <li>作者：<%= link_to @topic.user.login , user_path(@topic.user) %></li>
-      <li>创建：<%= @topic.updated_at.to_date %></li>
+      <li>作者：<%= @topic.f_username %></li>
+      <li>创建：<%= @topic.created_at.to_date %></li>
       <li>更新：<%= @topic.updated_at.to_date %></li>
       <li>不完全？<%= link_to '现在更新', '#' %></li>
 

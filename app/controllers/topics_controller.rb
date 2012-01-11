@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   def index
     @forum = Forum.find(params[:forum_id])
     @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.click_times DESC')
+                                                    :include => :user).order ( 'topics.posts_count DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +38,19 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(:name => params[:topic][:name], :forum_id => params[:forum_id], :user_id => current_user.id)
+    #获取-提交的信息
+    @topic = Topic.new(:name => 'temp',:from_url => params[:topic][:from_url], :forum_id => params[:forum_id].to_i, :user_id => current_user.id)
+
+    #获取 主题、楼主、创建时间、
+    @topic.init_url_type(@topic.from_url, @topic.forum_id)
+
+    @ttt = @topic.get_new_topic
+
+    @topic.update_attribute("name", @ttt[:title])
+    @topic.update_attribute("created_at", @ttt[:created_at])
+    @topic.update_attribute("f_username", @ttt[:username])
+    @topic.update_attribute("f_category", @ttt[:category].from(1))
+
     @topic.save!
     @post = Post.new(:body => params[:post][:body],:topic_id => @topic.id, :user_id => current_user.id)
     @post.save!
@@ -48,12 +60,14 @@ class TopicsController < ApplicationController
         format.html { redirect_to forum_topic_posts_path(@topic.forum_id,@topic.id), notice: 'Topic was successfully created.' }
         #format.json { render json: @topic, status: :created, location: @topic }
     end
+=begin
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
       format.html { render action: "new" }
       format.json { render json: @topic.errors, status: :unprocessable_entity }
 
     end
+=end
   end
 
   # PUT /topics/1

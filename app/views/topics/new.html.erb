@@ -2,6 +2,8 @@
 
 <%= form_for(@topic ,:url => forum_topics_path) do |f| %>
          <p>标题：<br /> <%=	 f.text_field :name, :size => 40 %> </p>
+         <p>采集地址：<br /> <%=	 f.text_field :from_url, :size => 40 %> </p>
+
          <p>内容：<br/> <%=	text_area :post, :body, :rows => 8, :cols => 60 %></p>
          <%= submit_tag '保存' %>
 <%	 end %>

@@ -7,6 +7,8 @@ gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'will_paginate'
 gem 'RedCloth'
+gem  'nokogiri' ,'1.5.0'
+
 
 gem 'mysql2'
 group :production do

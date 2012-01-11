@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110092300) do
+ActiveRecord::Schema.define(:version => 20120111025741) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20120110092300) do
     t.integer  "click_times", :default => 1
     t.string   "from_url",    :default => ""
     t.string   "f_category",  :default => ""
+    t.string   "f_username",  :default => ""
   end
 
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"

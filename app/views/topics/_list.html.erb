@@ -29,7 +29,6 @@
     <th>下载</th>
     <th>点击/回帖</th>
     <th>作者</th>
-    <th>更新时间</th>
   </tr>
 
 <% @topics.each do |topic| %>
@@ -48,9 +47,9 @@
     </td>
     <td> <%= link_to '下载/TxT/HTML' , '#'%> </td>
     <td> <%= topic.click_times %>/<%= topic.posts_count %> </td>
-    <td><%= link_to topic.user.login, user_path(topic.user) %></td>
+    <td><%= link_to topic.user.login, user_path(topic.user) %><br>
 
-    <td class="small"><%= topic.updated_at.to_s(:db) %></td>
+    <span class="small"><%= topic.updated_at.to_s(:db) %></span></td>
   </tr>
 <% end %>
  <tfoot>

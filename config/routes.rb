@@ -11,7 +11,7 @@ end
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "we" =>  "we#index", :as => "we"
-  get "tieba" =>  "we#tieba", :as => "teiba"
+  get "tieba" =>  "we#tieba", :as => "tieba"
   get "tianya" =>  "we#tianya", :as => "tianya"
   get "douban" =>  "we#douban", :as => "douban"
 
