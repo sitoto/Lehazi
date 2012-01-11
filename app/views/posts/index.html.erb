@@ -21,7 +21,7 @@
 
   <tr>
     <td class="right">
-      <span class="border"><%= post.created_at.to_date %></span>
+      <span class="border"><%= post.created_at.to_s(:db) %></span>
       <span class="border">(原<%= post.f_level_num %>楼)</span>
       <% if is_logged_in? and current_user.has_roles?('Moderator') %>
           <small>

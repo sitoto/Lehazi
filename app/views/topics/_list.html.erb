@@ -27,13 +27,12 @@
     <th>分类</th>
     <th>主题</th>
     <th>下载</th>
-    <th>点击/回帖</th>
+    <th>点击/帖数</th>
     <th>作者</th>
   </tr>
 
 <% @topics.each do |topic| %>
   <tr>
-
     <td><%=	 topic.f_category %> </td>
     <td>
       <%= link_to topic.name, forum_topic_posts_path(topic.forum,topic) %>
@@ -47,7 +46,7 @@
     </td>
     <td> <%= link_to '下载/TxT/HTML' , '#'%> </td>
     <td> <%= topic.click_times %>/<%= topic.posts_count %> </td>
-    <td><%= link_to topic.user.login, user_path(topic.user) %><br>
+    <td><%= topic.f_username %><br>
 
     <span class="small"><%= topic.updated_at.to_s(:db) %></span></td>
   </tr>
@@ -55,6 +54,5 @@
  <tfoot>
  <%= will_paginate @topics ,:class => 'digg_pagination' %>
  </tfoot>
-
     </table>
 </div>

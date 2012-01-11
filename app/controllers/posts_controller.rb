@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     @topic =Topic.find(params[:topic_id], :include =>  :forum)
     @posts = Post.where(['topic_id = ?',@topic.id]).paginate(:page => params[:page], :include => :user)
 
+    @topic.increment!(:click_times, by = 1)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class TopicsController < ApplicationController
   layout "we"
 
@@ -39,12 +40,25 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     #获取-提交的信息
-    @topic = Topic.new(:name => 'temp',:from_url => params[:topic][:from_url], :forum_id => params[:forum_id].to_i, :user_id => current_user.id)
+    @topic = Topic.new(:name => 'temp',:from_url => params[:topic][:from_url],
+                        :forum_id => params[:forum_id].to_i, :user_id => current_user.id)
 
     #获取 主题、楼主、创建时间、
     @topic.init_url_type(@topic.from_url, @topic.forum_id)
 
     @ttt = @topic.get_new_topic
+
+    if @ttt  == nil
+
+      redirect_to new_forum_topic_path(@topic.forum_id), :notice => "错误，无法采集，可能该贴已存在！"
+=begin
+      respond_to do |format|
+        format.html { render action: "new" }
+      end
+=end
+      return
+    end
+
 
     @topic.update_attribute("name", @ttt[:title])
     @topic.update_attribute("created_at", @ttt[:created_at])
@@ -63,14 +77,14 @@ class TopicsController < ApplicationController
         format.html { redirect_to forum_topic_posts_path(@topic.forum_id,@topic.id), notice: 'Topic was successfully created.' }
         #format.json { render json: @topic, status: :created, location: @topic }
     end
-=begin
+
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
       format.html { render action: "new" }
       format.json { render json: @topic.errors, status: :unprocessable_entity }
 
     end
-=end
+
   end
 
   # PUT /topics/1

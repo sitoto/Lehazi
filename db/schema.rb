@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111025741) do
+ActiveRecord::Schema.define(:version => 20120111140942) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -197,11 +197,12 @@ ActiveRecord::Schema.define(:version => 20120111025741) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posts_count", :default => 0,  :null => false
-    t.integer  "click_times", :default => 1
-    t.string   "from_url",    :default => ""
-    t.string   "f_category",  :default => ""
-    t.string   "f_username",  :default => ""
+    t.integer  "posts_count",   :default => 0,  :null => false
+    t.integer  "click_times",   :default => 1
+    t.string   "from_url",      :default => ""
+    t.string   "f_category",    :default => ""
+    t.string   "f_username",    :default => ""
+    t.string   "last_from_url"
   end
 
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"

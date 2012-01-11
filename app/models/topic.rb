@@ -9,8 +9,7 @@ class Topic < ActiveRecord::Base
   validates_presence_of :name
   validates_length_of :name, :maximum => 255
 
-  attr_accessor :pages
-
+  #common
     def init_url_type(u , t)
       @url = u
       @type = t
@@ -32,19 +31,15 @@ class Topic < ActiveRecord::Base
       if @type == 1
         chk_tieba_url != "0" ? do_get_tieba_topic : ""
       else if @type == 2
-          chk_tianya_url != "0" ? do_get_tianya_topic : ""
-        else if @type == 3
-          chk_douban_url != "0" ? do_get_douban_topic : ""
-             end
+              chk_tianya_url != "0" ? do_get_tianya_topic : ""
+          else if @type == 3
+                  chk_douban_url != "0" ? do_get_douban_topic : ""
+                end
         end
       end
     end
+ #common- end
 
-  #do_get_tieba_topic
-  def do_get_tieba_topic
-  end
-  def do_get_tianya_topic
-  end
 
   #www.douban.com
   def do_get_douban_topic
@@ -54,7 +49,7 @@ class Topic < ActiveRecord::Base
     @created_at = ""
     @category = ""
     @first_post =""
-		@pages = 0
+
     @reply_num=0
     @level_num=0
 
@@ -66,15 +61,13 @@ class Topic < ActiveRecord::Base
       end
       doc.css(".topic-doc").each do |item|
         @created_at = item.at_css(".color-green").text
-        @first_post = item.at_css("p").text
+        @first_post = item.at_css("p").inner_html
       end
 
       @temp={:title => @title, :username => @lz, :created_at => @created_at, :category => @category}
       #Get Posts
       @temp_posts[0] =[@lz,0,@created_at,@first_post]
-
       filter_douban_post doc
-
   end
 
   def filter_douban_post doc
@@ -82,7 +75,7 @@ class Topic < ActiveRecord::Base
 			@level_num += 1
 			author = item.at_css("a").text
       created_time  = item.at_css("h4").text
-			content= item.at_css("p").text
+			content= item.at_css("p").inner_html
       if author == @lz
         @reply_num += 1
         @temp_posts[@reply_num] = [author,@level_num,created_time, content]
@@ -98,7 +91,6 @@ class Topic < ActiveRecord::Base
     end
   end
 
-
 	def chk_douban_url
 		result = ""
 		regEx = /douban\.com\/group\/topic\/[0-9]*/
@@ -109,7 +101,20 @@ class Topic < ActiveRecord::Base
 		end
 		@url = result
 
+    if Topic.find_all_by_from_url(@url).count > 0
+      return "0"
+    end
+
+    @url
   end
+ #www.douban.com  -end
+
+ #baidu -tieba
+  def do_get_tieba_topic
+  end
+  def do_get_tianya_topic
+  end
+
   def chk_tieba_url
     "0"
   end
