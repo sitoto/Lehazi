@@ -8,3 +8,5 @@ en:
   clickedtimes: "点击"
   content: "内容"
   title: "标题"
+  update_post_info1: "更新完成，不过楼主还未发布新帖！"
+  update_post_info2: "暂无更新！"

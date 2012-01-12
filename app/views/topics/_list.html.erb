@@ -10,8 +10,8 @@
 
   <hgroup style="margin: 5px; padding: 5px 0px 0 20px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; " >
     <span class="border hot"><%= link_to '热度排序', forum_topics_path(@forum) %> </span>
-    <span class="border last"><%= link_to '最新更新', last_forum_topics_path(@forum) %> </span>
-    <span class="newtopic"><%= link_to '最新加入', newtopic_forum_topics_path(@forum) %> </span>
+    <span class="border last"><%= link_to '最近查看', last_forum_topics_path(@forum) %> </span>
+    <span class="newtopic"><%= link_to '最新更新', newtopic_forum_topics_path(@forum) %> </span>
   </hgroup>
 </div>
 <div class="span-23">
@@ -26,7 +26,7 @@
   <tr>
     <th>分类</th>
     <th>主题</th>
-    <th>下载</th>
+    <!--th>下载</th-->
     <th>点击/帖数</th>
     <th>作者</th>
   </tr>
@@ -44,11 +44,11 @@
           </small>
       <%	 end %>
     </td>
-    <td> <%= link_to '下载/TxT/HTML' , '#'%> </td>
+    <!--td> <%= link_to '下载/TxT/HTML' , '#'%> </td-->
     <td> <%= topic.click_times %>/<%= topic.posts_count %> </td>
     <td><%= topic.f_username %><br>
 
-    <span class="small"><%= topic.updated_at.to_s(:db) %></span></td>
+    <span class="small"><%= topic.updated_at.strftime "%Y-%m-%d %H:%M:%S" %></span></td>
   </tr>
 <% end %>
  <tfoot>

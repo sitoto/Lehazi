@@ -49,7 +49,8 @@ class Topic < ActiveRecord::Base
     @created_at = ""
     @category = ""
     @first_post =""
-
+    @f_updated_at = DateTime.now
+    @f_lz_updated_at  = DateTime.now
 
     @reply_num=0
     @level_num=0
@@ -66,7 +67,9 @@ class Topic < ActiveRecord::Base
       end
 
       @temp={:title => @title, :username => @lz, :created_at => @created_at,
-             :category => @category,:last_from_url => @url}
+             :category => @category,:last_from_url => @url,
+             :f_updated_at => @f_updated_at,
+             :f_lz_updated_at => @f_lz_updated_at}
       #Get Posts
       @temp_posts[0] =[@lz,0,@created_at,@first_post]
       filter_douban_post doc
@@ -81,7 +84,10 @@ class Topic < ActiveRecord::Base
       if author == @lz
         @reply_num += 1
         @temp_posts[@reply_num] = [author,@level_num,created_time, content]
+        @temp[:f_lz_updated_at] =  created_time
       end
+
+      @temp[:f_updated_at] =  created_time
     end
 
     doc.css(".next a").each do |link|

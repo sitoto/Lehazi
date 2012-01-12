@@ -17,6 +17,7 @@ def create
 end
 
 def destroy
+  session[:"to_url"] = nil
   session[:user_id] = nil
   redirect_to root_url, :notice => "Logged out!"
 end

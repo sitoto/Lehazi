@@ -44,8 +44,8 @@ class TopicsController < ApplicationController
 
     @ttt = @topic.get_new_topic
 
-    if @ttt  == nil
-      redirect_to new_forum_topic_path(@topic.forum_id), :notice => "错误，无法采集，可能该贴已存在！"
+    if @ttt.nil?
+      redirect_to new_forum_topic_path(@topic.forum), :notice => "错误，无法采集，可能该贴已存在！"
       return
     end
 
@@ -55,6 +55,8 @@ class TopicsController < ApplicationController
     @topic.update_attribute("f_username", @ttt[:username])
     @topic.update_attribute("f_category", @ttt[:category].from(1))
     @topic.update_attribute("last_from_url", @ttt[:last_from_url])
+    @topic.update_attribute("f_updated_at", @ttt[:f_updated_at])
+    @topic.update_attribute("f_lz_updated_at", @ttt[:f_lz_updated_at])
 
     @topic.save!
 
@@ -74,9 +76,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html { render action: "new" }
       format.json { render json: @topic.errors, status: :unprocessable_entity }
-
     end
-
   end
 
   def update
@@ -107,7 +107,7 @@ class TopicsController < ApplicationController
   def newtopic
     @forum = Forum.find(params[:forum_id])
     @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.created_at DESC')
+                                                    :include => :user).order ( 'topics.f_updated_at DESC')
 
   end
   def last

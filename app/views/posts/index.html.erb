@@ -21,7 +21,7 @@
 
   <tr>
     <td class="right">
-      <span class="border"><%= post.created_at.to_s(:db) %></span>
+      <span class="border"><%= post.created_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
       <span class="border">(原<%= post.f_level_num %>楼)</span>
       <% if is_logged_in? and current_user.has_roles?('Moderator') %>
           <small>
@@ -46,7 +46,9 @@
       <li>作者：<%= @topic.f_username %></li>
       <li>创建：<%= @topic.created_at.to_date %></li>
       <li>更新：<%= @topic.updated_at.to_date %></li>
-      <li>不完全？<%= link_to '现在更新', '#' %></li>
+      <li>不完全？<%= form_for(:post ,:url => forum_topic_posts_path) do |f| %>
+         <%= submit_tag '现在更新' %>
+<%	 end %></li>
 
     </ul>
 </div>
