@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     #获取本站 最新的post、获取本主题最后 更新网址、总帖数
     #@post = Post.new(:body =>  params[:post][:body], :topic_id => @topic.id, :user_id => current_user.id)
     @post = Post.new()
-    @post.init_url_type(@topic.id, @topic.f_username, @last_topic_post[0].f_level_num, @topic.last_from_url, @topic.f_updated_at)
+    @post.init_url_type(@topic.forum_id, @topic.f_username, @last_topic_post[0].f_level_num, @topic.last_from_url, @topic.f_updated_at)
 
     @ttt = @post.get_new_topic
 

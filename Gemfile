@@ -15,6 +15,9 @@ group :production do
 	gem 'mysql2'
 end
 
+group :development do
+  gem "ruby-debug19"
+end
 gem 'capistrano'
 gem 'carrierwave' ,'0.5.6'
 gem 'mini_magick'

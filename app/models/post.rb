@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'ruby-debug'
 
 class Post < ActiveRecord::Base
   belongs_to :topic, :counter_cache => true
@@ -9,7 +10,7 @@ class Post < ActiveRecord::Base
   validates_length_of :body, :maximum => 10000
 
   def init_url_type topic_id, f_username,f_level_num, last_from_url, f_updated_at
-
+    #debugger
     @level_num = f_level_num
     @lz = f_username
     @f_updated_at = f_updated_at
@@ -54,12 +55,14 @@ class Post < ActiveRecord::Base
       created_time  = item.at_css("h4").text
       content= item.at_css("p").inner_html
       #is begin?
+      #debugger
       if @reply_num == -1
            if @f_updated_at.to_datetime.to_s(:number)  == created_time.to_datetime.to_s(:number)
              @reply_num = 0
            end
         next
       end
+      #debugger
       #begin to get posts
       @level_num += 1
       if author == @lz
@@ -71,7 +74,7 @@ class Post < ActiveRecord::Base
 
       end
 
-      @temp[:f_update_at] = created_time
+      @temp[:f_updated_at] = created_time
     end
 
     doc.css(".next a").each do |link|
