@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     #获取本站 最新的post、获取本主题最后 更新网址、总帖数
     #@post = Post.new(:body =>  params[:post][:body], :topic_id => @topic.id, :user_id => current_user.id)
     @post = Post.new()
-    @post.init_url_type(@topic.f_username, @last_topic_post[0].f_level_num, @topic.last_from_url, @topic.f_updated_at)
+    @post.init_url_type(@topic.id, @topic.f_username, @last_topic_post[0].f_level_num, @topic.last_from_url, @topic.f_updated_at)
 
     @ttt = @post.get_new_topic
 
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
     @topic.update_attribute("last_from_url", @ttt[:last_from_url])
     @topic.update_attribute("f_updated_at", @ttt[:f_updated_at])
     @topic.update_attribute("f_lz_updated_at", @ttt[:f_lz_updated_at])
-    @topic.save
+    @topic.save!
     #add the new posts
     @post.get_all_posts.each do |key,value|
       @post = Post.new(:body => value[3],:created_at => value[2],:f_level_num => value[1], :topic_id => @topic.id, :user_id => current_user.id)

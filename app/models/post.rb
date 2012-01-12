@@ -8,8 +8,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :body
   validates_length_of :body, :maximum => 10000
 
-  def init_url_type f_username,f_level_num, last_from_url, f_updated_at
-    doc = Nokogiri::HTML(open(last_from_url))
+  def init_url_type topic_id, f_username,f_level_num, last_from_url, f_updated_at
+
     @level_num = f_level_num
     @lz = f_username
     @f_updated_at = f_updated_at
@@ -19,7 +19,22 @@ class Post < ActiveRecord::Base
              :f_updated_at => @f_updated_at,
              :f_lz_updated_at => @f_lz_updated_at}
 
-    filter_douban_post doc
+     check_type topic_id,last_from_url
+  end
+
+  def check_type topic_id ,last_from_url
+    doc = Nokogiri::HTML(open(last_from_url))
+    if topic_id == 1
+      filter_tieba_post doc
+    end
+    if topic_id == 2
+      filter_tianya_post doc
+    end
+
+    if topic_id == 3
+      filter_douban_post doc
+    end
+
   end
 
 
@@ -69,5 +84,11 @@ class Post < ActiveRecord::Base
     end
   end
 
+
+  def filter_tianya_post doc
+  end
+
+  def filter_tieba_post doc
+  end
 
 end
