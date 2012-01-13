@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
     @topic.update_attribute("name", @ttt[:title])
     @topic.update_attribute("created_at", @ttt[:created_at])
     @topic.update_attribute("f_username", @ttt[:username])
-    @topic.update_attribute("f_category", @ttt[:category].from(1))
+    @topic.update_attribute("f_category", @ttt[:category])
     @topic.update_attribute("last_from_url", @ttt[:last_from_url])
     @topic.update_attribute("f_updated_at", @ttt[:f_updated_at])
     @topic.update_attribute("f_lz_updated_at", @ttt[:f_lz_updated_at])

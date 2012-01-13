@@ -1,4 +1,5 @@
-require 'nokogiri'
+#encoding: UTF-8
+#require 'nokogiri'
 require 'open-uri'
 require 'ruby-debug'
 
@@ -48,6 +49,42 @@ class Post < ActiveRecord::Base
   end
 
   def filter_tieba_post doc
+    doc.css(".p_postlist .l_post").each do |item|
+      post_json_str = item.css(".p_post").attr("data-field")
+      json_post = JSON.parse(post_json_str)
+
+      created_at = json_post["content"]["date"]
+      if @reply_num == -1
+           if @f_updated_at.to_datetime.to_s(:number)  == created_at.to_datetime.to_s(:number)
+             @reply_num = 0
+           end
+        next
+      end
+
+      author = json_post["author"]["name"]
+      level = json_post["content"]["floor"]
+      content = item.css(".d_post_content").inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+
+
+      if author == @lz
+        @temp_posts[@reply_num] = [author,level,created_at, content]
+        @temp[:f_lz_updated_at] =  created_at
+        @reply_num += 1
+      end
+
+      @temp[:f_updated_at] =  created_at
+    end
+
+    doc.css(".p_thread .l_thread_info .l_posts_num .l_pager a").each do |link|
+      if link.text == "下一页"
+        href = "http://tieba.baidu.com" << link.attr("href")
+        puts "next page is #{href}"
+        @temp[:last_from_url] =  href
+        doc = Nokogiri::HTML(open(href))
+        filter_tieba_post doc
+        break
+      end
+    end
 
   end
 
@@ -61,12 +98,12 @@ class Post < ActiveRecord::Base
 
     doc.css(".reply-doc").each do |item|
       author = item.at_css("a").text
-      created_time  = item.at_css("h4").text
+      created_at  = item.at_css("h4").text
       content= item.at_css("p").inner_html
       #is begin?
       #debugger
       if @reply_num == -1
-           if @f_updated_at.to_datetime.to_s(:number)  == created_time.to_datetime.to_s(:number)
+           if @f_updated_at.to_datetime.to_s(:number)  == created_at.to_datetime.to_s(:number)
              @reply_num = 0
            end
         next
@@ -75,20 +112,21 @@ class Post < ActiveRecord::Base
       #begin to get posts
       @level_num += 1
       if author == @lz
-        @temp_posts[@reply_num] = [author,@level_num,created_time, content]
+        @temp_posts[@reply_num] = [author,@level_num,created_at, content]
         @reply_num += 1;
         @temp[:update_num] = @reply_num
-        @temp[:f_lz_updated_at] =  created_time
+        @temp[:f_lz_updated_at] =  created_at
 
 
       end
 
-      @temp[:f_updated_at] = created_time
+      @temp[:f_updated_at] = created_at
     end
 
     doc.css(".next a").each do |link|
       if link.attr("href")
          href = link.attr("href")
+         puts "next page is #{href}"
          @temp[:last_from_url] =  href
          doc = Nokogiri::HTML(open(href))
          filter_douban_post doc

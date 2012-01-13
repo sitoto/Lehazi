@@ -55,11 +55,14 @@ class Topic < ActiveRecord::Base
         @lz = item.at_css("a").text
       end
       doc.css(".pl2").each do |item|
-        @category = item.at_css("a").text
+        @category = item.at_css("a").text.from(1)
       end
       doc.css(".topic-doc").each do |item|
         @created_at = item.at_css(".color-green").text
-        @first_post = item.at_css("p").inner_html
+        item.css("p").each do |p|
+          @first_post = @first_post << p.inner_html
+        end
+
       end
 
       @temp={:title => @title, :username => @lz, :created_at => @created_at,
@@ -144,11 +147,7 @@ class Topic < ActiveRecord::Base
       author = json_post["author"]["name"]
       level = json_post["content"]["floor"]
       content = item.css(".d_post_content").inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
-=begin
-      puts @lz
-      puts author
-      debugger
-=end
+
       if author == @lz
         @temp_posts[@reply_num] = [author,level,created_at, content]
         @temp[:f_lz_updated_at] =  created_at
