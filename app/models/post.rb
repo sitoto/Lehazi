@@ -47,6 +47,15 @@ class Post < ActiveRecord::Base
     @temp
   end
 
+  def filter_tieba_post doc
+
+  end
+
+  def filter_tianya_post doc
+
+  end
+
+
 
   def filter_douban_post doc
 
@@ -88,10 +97,6 @@ class Post < ActiveRecord::Base
   end
 
 
-  def filter_tianya_post doc
-  end
 
-  def filter_tieba_post doc
-  end
 
 end

@@ -72,11 +72,13 @@ class TopicsController < ApplicationController
         #format.json { render json: @topic, status: :created, location: @topic }
     end
 
+=begin
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
       format.html { render action: "new" }
       format.json { render json: @topic.errors, status: :unprocessable_entity }
     end
+=end
   end
 
   def update
