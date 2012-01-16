@@ -1,0 +1,155 @@
+.container {
+    width: 960px;
+}
+body {
+    background: #dff;
+}
+header {
+    padding-top: 20px;
+}
+header  img{
+    padding: 1em;
+    background: #fff;
+}
+section {
+    margin-top: 1em;
+    font-size: 120%;
+    padding: 20px;
+    background: #fff;
+}
+
+/* link */
+a{
+    color: #09c;
+    text-decoration: none;
+}
+a:hover {
+    color: #069;
+    text-decoration: underline;
+}
+a:visited {
+    color: #069;
+}
+/* Navigation */
+nav {
+    float: right;
+    background: white;
+    padding: 0;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 0.2em 0;
+}
+nav ul li a {
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+nav ul li a:visited {
+    color: #09c;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+/* Round Corners */
+.round{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.round2{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+footer nav{
+    float: none;
+}
+/* common for fix */
+
+
+/* box*/
+.random{
+    padding: 5px;
+}
+.random ul{
+    padding: 0;
+    margin: 0;
+}
+.random ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+}
+.side{
+    padding: 0px;
+    font-size: 80%;
+}
+.side ul{
+    padding: 0;
+    margin: 0;
+}
+.side ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    border-bottom: black dashed 1px;
+}
+
+.back{
+    font-weight: bold;
+    background: #cff;
+    color: #0000bb;
+    text-align: center;
+}
+
+/* home list */
+
+.list {
+    background: #dff;
+    padding: 10px 20px;
+}
+.list ul{
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.list ul li{
+    padding: 5px 3px;
+    margin: 0 ;
+}
+.list_fun{
+    border: 2px solid #dff;
+    padding: 10px 20px;
+}
+.list_fun ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width:100%;
+}
+.list_fun ul li{
+    float: left;
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+}
+

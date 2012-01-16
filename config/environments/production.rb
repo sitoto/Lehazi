@@ -10,13 +10,17 @@ LehaziCom::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
+  #config.assets.enabled = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false #change it to true 2011-12-25 fix bug ActionView::Template::Error (application.css isn't precompiled):
+  
+  config.assets.precompile += %w( *.css *.js )
 
+  
   # Generate digests for assets URLs
   config.assets.digest = true
 

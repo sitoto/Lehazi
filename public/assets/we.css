@@ -1,0 +1,20 @@
+/* line 4, f:/Sites/Lehazi_com/app/assets/stylesheets/we.css.scss */
+#we #we-side {
+  font-size: 80%;
+  float: left;
+  width: 100px;
+  padding: 0px;
+}
+
+/* line 5, f:/Sites/Lehazi_com/app/assets/stylesheets/we.css.scss */
+#we #we-side ul {
+  list-style: none;
+  margin-left: 10px;
+  padding: 0;
+}
+
+/* line 6, f:/Sites/Lehazi_com/app/assets/stylesheets/we.css.scss */
+#we #we-content {
+  float: right;
+  width: 850px;
+}

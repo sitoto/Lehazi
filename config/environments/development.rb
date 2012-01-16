@@ -24,7 +24,7 @@ LehaziCom::Application.configure do
     :domain => "gmail.com",
     :authentication => "plain",
     :user_name => "lehazi.com@gmail.com",
-    :password => "lehazi2011"
+    :password => "lehazi"
   }
 
   # Print deprecation notices to the Rails logger

@@ -1,0 +1,46 @@
+/* line 5, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game {
+  float: left;
+  padding: 0 3px 3px;
+}
+
+/* line 6, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game .game_nav {
+  line-height: 150%;
+  font-size: 13px;
+  margin: 3px 5px;
+  border-bottom: 1px solid #999;
+}
+
+/* line 7, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game .leftbar {
+  float: left;
+  width: 200px;
+  padding: 0;
+}
+
+/* line 8, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game .leftbar ul {
+  float: left;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 9, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game .leftbar ul li {
+  float: left;
+  width: 150px;
+  margin: 10px 10px 0 10px;
+  display: block;
+  padding: 0;
+}
+
+/* line 12, f:/Sites/Lehazi_com/app/assets/stylesheets/games.css.scss */
+#game .content {
+  float: left;
+  width: 800px;
+  display: block;
+  margin: 0 8px 0 0;
+  padding: 0;
+}

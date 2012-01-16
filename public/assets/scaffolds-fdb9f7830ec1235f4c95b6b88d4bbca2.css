@@ -1,0 +1,219 @@
+/*p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+*/
+/* line 7, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 12, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #00c;
+  text-decoration: none;
+}
+/* line 15, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #00c;
+}
+/* line 17, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #f00;
+}
+
+/* line 22, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 25, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 28, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 33, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 40, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 49, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 53, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 58, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 62, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+fieldset, img {
+  border: 0;
+}
+
+/* line 65, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 68, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+li {
+  display: block;
+}
+
+/* line 71, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+caption, th {
+  text-align: left;
+}
+
+/* line 74, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* line 77, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+q:before, q:after {
+  content: "";
+}
+
+/* line 80, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+abbr, acronym {
+  border: 0;
+}
+
+/* line 83, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+sup {
+  font-size: 0.6em;
+  line-height: 1;
+  vertical-align: top;
+}
+
+/* line 91, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.float-right {
+  float: right;
+}
+
+/* line 94, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.float-left {
+  float: left;
+}
+
+/* line 97, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.center {
+  text-align: center;
+}
+
+/* line 100, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 104, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.clearfix {
+  zoom: 1;
+}
+
+/* line 107, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 114, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.clear {
+  clear: both;
+}
+
+/* line 117, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 120, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.quiet {
+  color: #999999 !important;
+}
+
+/* line 123, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.redbold {
+  font-weight: bold !important;
+  color: #b31e3f !important;
+}
+
+/* line 127, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.italic {
+  font-style: italic;
+}
+
+/* line 130, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.lowercase {
+  text-transform: lowercase;
+}
+
+/* line 133, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* line 136, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.red, .reqd, .error, .important {
+  color: red;
+}
+
+/* line 137, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+.border {
+  margin-bottom: 6px;
+}
+
+/* line 139, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+th {
+  background-color: #cff;
+  color: #111;
+}
+
+/* line 140, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+tr.odd {
+  background-color: #fff;
+}
+
+/* line 141, f:/Sites/Lehazi_com/app/assets/stylesheets/scaffolds.css.scss */
+tr.even {
+  background-color: #eecccc;
+}
