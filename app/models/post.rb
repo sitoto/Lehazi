@@ -16,7 +16,10 @@ class Post < ActiveRecord::Base
     @lz = f_username
     @f_updated_at = f_updated_at
     @temp_posts = {}
+    @auth_time = {}
     @reply_num = -1
+    @tip = 0
+    @level_tip = 0
     @temp = {:update_num => @reply_num, :username => @lz, :last_from_url => last_from_url,
              :f_updated_at => @f_updated_at,
              :f_lz_updated_at => @f_lz_updated_at}
@@ -70,6 +73,7 @@ class Post < ActiveRecord::Base
         @temp_posts[@reply_num] = [author,level,created_at, content]
         @temp[:f_lz_updated_at] =  created_at
         @reply_num += 1
+        @temp[:update_num] = @reply_num
       end
 
       @temp[:f_updated_at] =  created_at
@@ -89,9 +93,84 @@ class Post < ActiveRecord::Base
   end
 
   def filter_tianya_post doc
+    #单独获取 用户和时间 信息数组
 
+    @first_do2 = true
+
+    lz = doc.at_css(".pagewrap table td a").text
+    created_at = doc.at_css(".pagewrap table td").text.last(19)
+    created_at = chk_datetime created_at
+    @auth_time[@tip] = [lz, created_at]
+    @tip += 1
+		doc.css(".allpost table").each do |item|
+			author = item.at_css("center a").text
+			time = chk_datetime item.at_css("center").text
+
+
+      @auth_time[@tip] = [author, time]
+      puts @tip
+      @tip += 1
+
+		end
+
+    doc.css(".allpost .post").each do |item|
+      @level_tip += 1
+      @level_num += 1
+      if @first_do2 == true
+        @first_do2 = false
+        content = item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+        author = @auth_time[@level_tip-1][0]
+        created_at = @auth_time[@level_tip-1][1]
+
+        if @reply_num == -1
+           if @f_updated_at.to_datetime.to_s(:number)  == created_at.to_datetime.to_s(:number)
+             @reply_num = 0
+
+           end
+          next
+        end
+        @temp_posts[@reply_num] = [author,@level_num,created_at, content]
+        @reply_num += 1
+
+        next
+      end
+
+      author = @auth_time[@level_tip-1][0]
+      created_at = @auth_time[@level_tip-1][1]
+      content= item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+
+
+      if @reply_num == -1
+           if @f_updated_at.to_datetime.to_s(:number)  == created_at.to_datetime.to_s(:number)
+             @reply_num = 0
+           end
+        next
+      end
+
+      #debugger
+      if author == @lz
+        puts "lz == author"
+        #debugger
+        @temp_posts[@reply_num] = [author,@level_num,created_at, content]
+        @temp[:f_lz_updated_at] =  created_at
+        @reply_num += 1
+        @temp[:update_num] = @reply_num
+      end
+
+      @temp[:f_updated_at] =  created_at
+    end
+
+    doc.css("#pageDivTop a").each do |link|
+			if link.text == "下一页"
+				href =  link.attr("href")
+				puts "next page is #{href}"
+        @temp[:last_from_url] =  href
+				doc = Nokogiri::HTML(open(href))
+				filter_tianya_post doc
+				break
+			end
+		end
   end
-
 
 
   def filter_douban_post doc
@@ -135,6 +214,12 @@ class Post < ActiveRecord::Base
   end
 
 
-
+ 	def chk_datetime str
+		regEx = /2\d+-[0-9]+-[0-9]+\D[0-9]+:\d+:\d+/
+		if regEx =~ str
+			return regEx.match(str).to_s
+		end
+		return "0000"
+  end
 
 end

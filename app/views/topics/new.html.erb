@@ -4,7 +4,7 @@
          <p>标题：<br /> <%=	 f.text_field :name, :size => 40 %> </p>
          <p>采集网址：<br /> <%=	 f.text_field :from_url, :size => 80 %> </p>
 
-         <p>内容：<br/> <%=	text_area :post, :body, :rows => 8, :cols => 60 %></p>
+         <p>内容：<br/> <%=	text_field :post, :body, :size => 20 %></p>
          <%= submit_tag '保存' %>
 <%	 end %>
 

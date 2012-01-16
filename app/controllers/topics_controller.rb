@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   def index
     @forum = Forum.find(params[:forum_id])
     @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.posts_count DESC')
+                                                    :include => :user).order ( 'topics.updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,13 +50,9 @@ class TopicsController < ApplicationController
     end
 
 
-    @topic.update_attribute("name", @ttt[:title])
-    @topic.update_attribute("created_at", @ttt[:created_at])
-    @topic.update_attribute("f_username", @ttt[:username])
-    @topic.update_attribute("f_category", @ttt[:category])
-    @topic.update_attribute("last_from_url", @ttt[:last_from_url])
-    @topic.update_attribute("f_updated_at", @ttt[:f_updated_at])
-    @topic.update_attribute("f_lz_updated_at", @ttt[:f_lz_updated_at])
+    @topic.update_attributes(:name => @ttt[:title], :created_at => @ttt[:created_at], :f_username => @ttt[:username],
+                             :f_category => @ttt[:category], :last_from_url => @ttt[:last_from_url],
+                             :f_updated_at => @ttt[:f_updated_at], :f_lz_updated_at => @ttt[:f_lz_updated_at])
 
     @topic.save!
 
@@ -115,7 +111,7 @@ class TopicsController < ApplicationController
   def last
   @forum = Forum.find(params[:forum_id])
   @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                  :include => :user).order ( 'topics.updated_at DESC')
+                                                  :include => :user).order ( 'topics.posts_count DESC')
 
   end
 end

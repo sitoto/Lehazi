@@ -46,8 +46,8 @@
       <li>作者：<%= @topic.f_username %></li>
       <li>创建：<%= @topic.created_at.to_date %></li>
       <li>更新：<%= @topic.updated_at.to_date %></li>
-      <li>不完全？<%= form_for(:post ,:url => forum_topic_posts_path) do |f| %>
-         <%= submit_tag '现在更新' %>
+      <li><%= form_for(:post ,:url => forum_topic_posts_path) do |f| %>
+         <%= submit_tag '不完全？现在更新' %>
 <%	 end %></li>
 
     </ul>

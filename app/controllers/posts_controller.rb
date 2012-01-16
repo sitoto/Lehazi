@@ -68,9 +68,8 @@ class PostsController < ApplicationController
     end
 
     #there is some new post update the topic
-    @topic.update_attribute("last_from_url", @ttt[:last_from_url])
-    @topic.update_attribute("f_updated_at", @ttt[:f_updated_at])
-    @topic.update_attribute("f_lz_updated_at", @ttt[:f_lz_updated_at])
+    @topic.update_attributes(:last_from_url => @ttt[:last_from_url], :f_updated_at => @ttt[:f_updated_at],
+                              :f_lz_updated_at => @ttt[:f_lz_updated_at])
     @topic.save!
     #add the new posts
     @post.get_all_posts.each do |key,value|

@@ -2,6 +2,8 @@
 class WeController < ApplicationController
   def index
     @title = "乐哈社区"
+    redirect_to forums_url
+
   end
   def tieba
     @title = "贴吧热贴"

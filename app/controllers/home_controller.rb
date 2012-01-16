@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 
     #精选集
     @top_funs = Fun.find(:all, :order => 'created_at DESC', :limit => 18 )
+=begin
     #时事笑话
     @top_funs_news = Fun.where(:category_id => 5).find(:all, :order => 'created_at DESC', :limit => 18 )
     #学生时代
@@ -29,6 +30,7 @@ class HomeController < ApplicationController
     @top_funs_for = Fun.where(:category_id => 11).find(:all, :order => 'created_at DESC', :limit => 18 )
     #情感趣事
     @top_funs_love = Fun.where(:category_id => 9).find(:all, :order => 'created_at DESC', :limit => 18 )
+=end
 
     @count = Fun.count
     #随机抽取
