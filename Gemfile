@@ -26,6 +26,7 @@ gem 'bson'
 gem 'bson_ext'
 
 group :assets do
+  gem 'therubyracer', :platforms => :ruby
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
@@ -33,7 +34,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'therubyracer', :platforms => :ruby
+#gem 'therubyracer', :platforms => :ruby
 
 group :test do
   # Pretty printed test output
