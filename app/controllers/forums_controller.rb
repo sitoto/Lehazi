@@ -1,3 +1,4 @@
+#encoding: UTF-8
 class ForumsController < ApplicationController
     layout "we"
   before_filter :check_moderator_role, :except => [:index, :show]
@@ -6,7 +7,7 @@ class ForumsController < ApplicationController
   # GET /forums.json
   def index
     @forums = Forum.all
-
+    @title = "乐哈社区"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @forums }

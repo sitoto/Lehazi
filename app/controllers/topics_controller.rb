@@ -12,6 +12,8 @@ class TopicsController < ApplicationController
     @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
                                                     :include => :user).order ( 'topics.updated_at DESC')
 
+    @title =  @forum.name
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }

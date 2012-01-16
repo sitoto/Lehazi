@@ -1,7 +1,7 @@
 # encoding: utf-8
 module ApplicationHelper
   def title
-    base_title = "乐哈子"
+    base_title = "乐哈子 娱乐广场"
     if @title.nil?
       base_title
     else

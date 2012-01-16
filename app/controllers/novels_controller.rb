@@ -1,9 +1,11 @@
+# encoding: utf-8
 class NovelsController < ApplicationController
   before_filter :check_editor_role, :except => [:index, :show]
 
   # GET /novels
   # GET /novels.json
   def index
+    @title = "小说列表"
     @novels = Novel.paginate(:page => params[:page]).order('created_at DESC')
   end
 

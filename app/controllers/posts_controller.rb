@@ -7,10 +7,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+
     @topic =Topic.find(params[:topic_id], :include =>  :forum)
     @posts = Post.where(['topic_id = ?',@topic.id]).paginate(:page => params[:page], :include => :user)
 
     @topic.increment!(:click_times, by = 1)
+    @title = @topic.name << " - " << @topic.forum.name
 
     respond_to do |format|
       format.html # index.html.erb

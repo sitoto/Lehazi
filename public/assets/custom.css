@@ -120,3 +120,36 @@ footer nav{
     text-align: center;
 }
 
+/* home list */
+
+.list {
+    background: #dff;
+    padding: 10px 20px;
+}
+.list ul{
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.list ul li{
+    padding: 5px 3px;
+    margin: 0 ;
+}
+.list_fun{
+    border: 2px solid #dff;
+    padding: 10px 20px;
+}
+.list_fun ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width:100%;
+}
+.list_fun ul li{
+    float: left;
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+}
+
