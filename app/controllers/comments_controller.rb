@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @entry.comments << @comment
-        Notifier.new_comment_notification(@comment).deliver
+        #Notifier.new_comment_notification(@comment).deliver
         format.html { redirect_to user_entry_path(@entry.user_id, @entry.id), notice: 'Comment was successfully created.' }
 
       else
