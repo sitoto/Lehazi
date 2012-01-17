@@ -146,7 +146,8 @@ class Topic < ActiveRecord::Base
       created_at = json_post["content"]["date"]
       author = json_post["author"]["name"]
       level = json_post["content"]["floor"]
-      content = item.css(".d_post_content").inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+      content = gbk_changto_utf8 item.css(".d_post_content").inner_html #.force_encoding("GBK")
+      #content = item.css(".d_post_content").inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
 
       if author == @lz
         @temp_posts[@reply_num] = [author,level,created_at, content]
@@ -230,7 +231,7 @@ class Topic < ActiveRecord::Base
     doc.css(".allpost .post").each do |item|
       @level_num += 1
       if @first_do2 == true
-        content = item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+        content = gbk_changto_utf8 item.inner_html #.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
         author = @auth_time[@level_num-1][0]
         created_at = @auth_time[@level_num-1][1]
         @temp_posts[@reply_num] = [author,@level_num,created_at, content]
@@ -240,7 +241,7 @@ class Topic < ActiveRecord::Base
       end
       author = @auth_time[@level_num-1][0]
       created_at = @auth_time[@level_num-1][1]
-      content= item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+      content= gbk_changto_utf8 item.inner_html #.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
 
       if author == @lz
         @temp_posts[@reply_num] = [author,@level_num,created_at, content]
@@ -303,6 +304,10 @@ class Topic < ActiveRecord::Base
 		return "0000"
   end
 
+  def gbk_changto_utf8 str
+	str.force_encoding("GBK")
+    str.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+  end
 end
 
 

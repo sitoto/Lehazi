@@ -14,4 +14,6 @@ module ApplicationHelper
             tag('meta', :name => 'title', :content => title)
           ].join("\n").html_safe
   end
+  
+
 end

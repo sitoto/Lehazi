@@ -66,7 +66,7 @@ class Post < ActiveRecord::Base
 
       author = json_post["author"]["name"]
       level = json_post["content"]["floor"]
-      content = item.css(".d_post_content").inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+      content = gbk_changto_utf8 item.css(".d_post_content").inner_html #.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
 
 
       if author == @lz
@@ -118,7 +118,7 @@ class Post < ActiveRecord::Base
       @level_num += 1
       if @first_do2 == true
         @first_do2 = false
-        content = item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+        content = gbk_changto_utf8 item.inner_html #.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
         author = @auth_time[@level_tip-1][0]
         created_at = @auth_time[@level_tip-1][1]
 
@@ -137,7 +137,7 @@ class Post < ActiveRecord::Base
 
       author = @auth_time[@level_tip-1][0]
       created_at = @auth_time[@level_tip-1][1]
-      content= item.inner_html.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+      content= gbk_changto_utf8 item.inner_html #.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
 
 
       if @reply_num == -1
@@ -220,6 +220,11 @@ class Post < ActiveRecord::Base
 			return regEx.match(str).to_s
 		end
 		return "0000"
+  end
+  
+  def gbk_changto_utf8 str
+	str.force_encoding("GBK")
+    str.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
   end
 
 end
