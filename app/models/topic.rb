@@ -306,7 +306,7 @@ class Topic < ActiveRecord::Base
 
   def gbk_changto_utf8 str
 	str.force_encoding('GBK')
-	str.encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '')
+	str.encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '?').force_encoding('UTF-8')
 	#str.encode('UTF-8')
     #str.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
   end
