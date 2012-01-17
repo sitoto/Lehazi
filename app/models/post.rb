@@ -223,8 +223,9 @@ class Post < ActiveRecord::Base
   end
   
   def gbk_changto_utf8 str
-	str.force_encoding("GBK")
-    str.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
+	str.force_encoding('GBK')
+	str.encode('UTF-8')
+    #str.encode(Encoding.find("UTF-8"),Encoding.find("GBK"))
   end
 
 end
