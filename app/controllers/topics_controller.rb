@@ -21,7 +21,8 @@ class TopicsController < ApplicationController
   end
 
   def show
-    redirect_to forum_topic_posts_path(params[:forum_id],params[:id])
+    #redirect_to forum_topic_posts_path(params[:forum_id],params[:id])
+    redirect_to forum_topic_posts_path(@topic.forum, @topic)
   end
 
   def new
@@ -66,7 +67,7 @@ class TopicsController < ApplicationController
 
 
     respond_to do |format|
-        format.html { redirect_to forum_topic_posts_path(@topic.forum_id,@topic.id), notice: 'Topic was successfully created.' }
+        format.html { redirect_to forum_topic_posts_path(@topic.forum,@topic), notice: 'Topic was successfully created.' }
         #format.json { render json: @topic, status: :created, location: @topic }
     end
 
