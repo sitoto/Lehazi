@@ -2,7 +2,7 @@
   <hgroup>
     <label>当前位置： </label>
     <%=	 link_to '乐哈社区', forums_path %>  »
-    <%= link_to @topic.forum.name , forum_topics_path(@topic.forum_id) %> »
+    <%= link_to @topic.forum.name , forum_topics_path(@topic.forum) %> »
     <%=	 @topic.f_category %>  »
     <%= @topic.name  %>
   </hgroup>
