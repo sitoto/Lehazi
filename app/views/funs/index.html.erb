@@ -51,8 +51,10 @@
     <ul>
       <li><%= link_to '贴吧热贴' , tieba_path %></li>
       <li><%= link_to '天涯热贴' , tianya_path %></li>
-
     </ul>
+    <div class="prepend-top">
+      <%= render :partial =>'layouts/tagscloud' ,:locals => {:model => "fun"}%>
+    </div>
 </div>
 
 <style type="text/css">

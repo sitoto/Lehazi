@@ -1,6 +1,7 @@
 class Fun < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_many :taggings, :as => 'taggable'
 
   validates_presence_of :title
   validates_presence_of :body

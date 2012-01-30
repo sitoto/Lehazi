@@ -15,7 +15,11 @@
   </hgroup>
 </div>
 <div class="span-23">
+<hgroup>
+<%= will_paginate @topics ,:class => 'digg_pagination' %>
+</hgroup>
 <table>
+  <tbody>
   <!--thead>
     <%	 if is_logged_in? %>
         <%=	 link_to '发帖', new_forum_topic_path %>
@@ -51,8 +55,9 @@
     <span class="small"><%= topic.updated_at.strftime "%Y-%m-%d %H:%M:%S" %></span></td>
   </tr>
 <% end %>
- <tfoot>
+  </tbody>
+</table>
+<hgroup>
  <%= will_paginate @topics ,:class => 'digg_pagination' %>
- </tfoot>
-    </table>
+ </hgroup>
 </div>

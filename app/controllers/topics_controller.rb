@@ -13,7 +13,8 @@ class TopicsController < ApplicationController
                                                     :include => :user).order ( 'topics.updated_at DESC')
 
     @title =  @forum.name
-
+    @keywords = "只看楼主,乐一下,了一下,leyixia,乐哈网,乐哈子,热贴,热吧,热区,豆瓣直播,贴吧,天涯,直播,脱水"
+    @description = "乐哈网，热贴热吧，娱乐信息"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }

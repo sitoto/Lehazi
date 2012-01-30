@@ -37,6 +37,16 @@
 </table>
 <%= will_paginate @articles ,:class => 'digg_pagination' %>
 </div>
+
+<div class="span-4 last">
+    <ul>
+      <li><%= link_to '贴吧热贴' , tieba_path %></li>
+      <li><%= link_to '天涯热贴' , tianya_path %></li>
+    </ul>
+    <div class="prepend-top">
+      <%= render :partial =>'layouts/tagscloud' ,:locals => {:model => "article"}%>
+    </div>
+</div>
 <style type="text/css">
   #menubar a.m_arti{background: #9999ff;    color:#FFF;}
 #menubar a.m_funs,a.m_home,a.m_novel,a.m_game,a.m_baidu, a.m_tianya,a.m_le{}

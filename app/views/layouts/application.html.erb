@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
-  <%= csrf_meta_tags %>
-  <%= custom_meta_tags %>
-
-  <%= render "layouts/stylesheets" %>
-
-  <%= yield :head %>
+<title><%= title %></title>
+<%= csrf_meta_tags %>
+<%= custom_meta_tags %>
+<%= render "layouts/stylesheets" %>
+<%= yield :head %>
 </head>
 <body>
 
@@ -24,7 +22,6 @@
         <%= yield %>
        <div class="clear"></div>
      </section>
-
      <%= render :partial =>'layouts/footer' %>
   </div>
 

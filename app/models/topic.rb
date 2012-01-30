@@ -7,6 +7,7 @@ class Topic < ActiveRecord::Base
   belongs_to :forum, :counter_cache => true
   belongs_to :user
   has_many :posts, :dependent => :delete_all
+  has_many :taggings, :as => 'taggable'
 
   validates_presence_of :name
   validates_length_of :name, :maximum => 255
@@ -296,12 +297,13 @@ class Topic < ActiveRecord::Base
     @reply_num=0
     @level_num=0
   end
-	def chk_datetime str
-		regEx = /2\d+-[0-9]+-[0-9]+\D[0-9]+:\d+:\d+/
-		if regEx =~ str
-			return regEx.match(str).to_s
-		end
-		return "0000"
+  
+  def chk_datetime str
+	regEx = /2\d+-[0-9]+-[0-9]+\D[0-9]+:\d+:\d+/
+	if regEx =~ str
+		return regEx.match(str).to_s
+	end
+	return "0000"
   end
 
   def gbk_changto_utf8 str

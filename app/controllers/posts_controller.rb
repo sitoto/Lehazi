@@ -1,5 +1,7 @@
 #encoding: utf-8
 class PostsController < ApplicationController
+  include TagsHelper
+
   layout "we"
   before_filter :check_moderator_role, :only => [:destroy, :edit, :update]
   before_filter :login_required, :except => [:index, :show ]
@@ -13,6 +15,9 @@ class PostsController < ApplicationController
 
     @topic.increment!(:click_times, by = 1)
     @title = @topic.name << " - " << @topic.forum.name
+
+      @keywords = tag_get("topic", @topic.id, 20)
+      @description = @topic.name.truncate(255)
 
     respond_to do |format|
       format.html # index.html.erb

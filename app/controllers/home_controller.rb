@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   end
 
   def index
-    @title = "首页"
+
     #获取前 18条娱乐相关新闻信息 含有分类名称
     #获取前 27条娱乐相关新闻信息 含有分类名称
     #@articles = Article.where(:published => true).paginate(:page => params[:page],
@@ -36,6 +36,10 @@ class HomeController < ApplicationController
     #随机抽取
     @random_funs =Fun.find(get_random_numbers(@count))
 
+    @title = "首页"
+    #@keywords = tag_get("home", 1, 20)
+    @keywords = "乐一下,了一下,leyixia,乐哈网,乐哈子,娱乐广场,娱乐,旅游,lehazi,小笑话,幽默,漂流客,租房客"
+    @description = "乐哈网，笑话，热贴热吧，娱乐信息"
     #Fun.find(:all, :order => 'click_time DESC', :limit => 9 )
 
     #10.times.map{ 20+Random.rand(11) }

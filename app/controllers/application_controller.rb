@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
  protect_from_forgery
   helper_method :current_user
   helper_method :is_logged_in?
+
   #before_filter :authorize
   private
 

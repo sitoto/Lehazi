@@ -1,5 +1,7 @@
 LehaziCom::Application.routes.draw do
 
+  resources :tags
+
 if Rails.env.development?
   match "/images/uploads/*path" => "gridfs#serve"
 end

@@ -1,5 +1,7 @@
 # encoding: utf-8
 class FunsController < ApplicationController
+  include TagsHelper
+
   before_filter :check_editor_role, :except => [:index, :show]
 
   # GET /funs
@@ -18,6 +20,8 @@ class FunsController < ApplicationController
     end
 
     @title = '幽默短文'
+    @keywords = '故事,笑话,网文,小笑话,幽默短片,xiaohua,xiaoshuo,gaoxiao,好笑,乐一下,了下,乐哈,leha,'
+    @description = "搞笑网文、幽默笑话、时事笑话集散地"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @funs }
@@ -35,6 +39,8 @@ class FunsController < ApplicationController
 
       @fun.increment!(:click_time, by = 1)
       @title = @fun.title  + ' - ' + @fun.category.name
+      @keywords = tag_get("fun", @fun.id, 20)
+      @description = @fun.body.truncate(255)
 
       arr = get_random_numbers(Fun.count,18)
 
@@ -47,6 +53,8 @@ class FunsController < ApplicationController
   rescue
     redirect_to funs_path, :notice => "未知的参数"
   end
+
+
 
   # GET /funs/new
   # GET /funs/new.json

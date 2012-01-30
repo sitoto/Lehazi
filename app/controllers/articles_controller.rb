@@ -1,5 +1,7 @@
 # encoding: utf-8
 class ArticlesController < ApplicationController
+  include TagsHelper
+
   before_filter :check_editor_role, :except => [:index, :show]
 
   def index
@@ -29,6 +31,8 @@ class ArticlesController < ApplicationController
       @article = Article.find_by_id_and_published(params[:id], true)
     end
     @title = @article.title  + '_' + @article.category.name
+    @keywords = tag_get("article", @article.id, 20)
+    @description = @article.synopsis.truncate(255)
     respond_to do |format|
       format.html
       format.xml { render :xml => @article.to_xml }
