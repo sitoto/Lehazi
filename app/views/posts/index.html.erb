@@ -42,7 +42,7 @@
 </div>
 <div class="span-5 side">
     <ul>
-      <li>来源：<%= link_to @topic.forum.name, @topic.from_url %></li>
+      <li>来源：<%= link_to @topic.forum.name, @topic.from_url , :target => '_blank'%></li>
       <li>作者：<%= @topic.f_username %></li>
       <li>创建：<%= @topic.created_at.to_date %></li>
       <li>更新：<%= @topic.updated_at.to_date %></li>

@@ -2,19 +2,26 @@
 class FunsController < ApplicationController
   include TagsHelper
 
-  before_filter :check_editor_role, :except => [:index, :show]
+  before_filter :check_editor_role, :except => [:index, :show, :tag]
 
   # GET /funs
   # GET /funs.json
   def index
+
+
 
     if params[:category_id]
        @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page], :per_page => 10,
                                                     :include => :user).order ( 'created_at DESC')
        @fun_category = Category.find(params[:category_id])
     else
-      @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
+       if params[:tag_id]
+         @title = "标签"
+       else
+         @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
+       end
     end
+
     @funs.each do |f|
         f.increment!(:click_time, by = 1)
     end
@@ -22,6 +29,8 @@ class FunsController < ApplicationController
     @title = '幽默短文'
     @keywords = '故事,笑话,网文,小笑话,幽默短片,xiaohua,xiaoshuo,gaoxiao,好笑,乐一下,了下,乐哈,leha,'
     @description = "搞笑网文、幽默笑话、时事笑话集散地"
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @funs }
@@ -119,6 +128,9 @@ class FunsController < ApplicationController
      @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
   end
 
+  def tag
+
+  end
   def get_random_numbers  count,max
    (1..count).to_a.sample(max)
   end

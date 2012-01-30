@@ -8,5 +8,6 @@ class CreateTaggings < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :taggings, :tag_id
   end
 end

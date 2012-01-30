@@ -1,7 +1,5 @@
 LehaziCom::Application.routes.draw do
 
-  resources :tags
-
 if Rails.env.development?
   match "/images/uploads/*path" => "gridfs#serve"
 end
@@ -17,6 +15,7 @@ end
   get "tianya" =>  "we#tianya", :as => "tianya"
   get "douban" =>  "we#douban", :as => "douban"
 
+  resources :tags
 
   resources :users  do
     resources :entries do
@@ -42,6 +41,7 @@ end
   resources :funs do
     collection do
       get 'admin'
+      get 'tag/:tag_id' ,:action => "index"
     end
    end
   resources :novels  do
@@ -58,12 +58,9 @@ end
     resources :games
   end
 
-
-
-
-
   resources :forums do
     resources :topics do
+
       collection do
         get "newtopic"
         get "last"
