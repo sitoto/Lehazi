@@ -1,18 +1,19 @@
 <div class="span-23">
   <hgroup>
     <label>当前位置： </label>
-    <%=	 link_to '乐哈社区', forums_path %>  »
-    <%= @forum.name %>
+    <%=	 link_to '乐贴', forums_path %>  »
+    <%= @forum.blank? ? @tag_name : @forum.name %>
   <span class="right">
       <label>热门搜索：</label>
   </span>
   </hgroup>
-
+  <% unless @forum.blank? %>
   <hgroup style="margin: 5px; padding: 5px 0px 0 20px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; " >
     <span class="border hot"><%= link_to '最近查看', forum_topics_path(@forum) %> </span>
     <span class="border last"><%= link_to '热度排序', last_forum_topics_path(@forum) %> </span>
     <span class="newtopic"><%= link_to '最新更新', newtopic_forum_topics_path(@forum) %> </span>
   </hgroup>
+  <% end %>
 </div>
 <div class="span-23">
 <hgroup>

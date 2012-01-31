@@ -13,11 +13,11 @@ class PostsController < ApplicationController
     @topic =Topic.find(params[:topic_id], :include =>  :forum)
     @posts = Post.where(['topic_id = ?',@topic.id]).paginate(:page => params[:page], :include => :user)
 
-    @topic.increment!(:click_times, by = 1)
     @title = @topic.name << " - " << @topic.forum.name
+    @keywords = tag_get("topic", @topic.id, 20)
+    @description = @topic.name.truncate(255)
 
-      @keywords = tag_get("topic", @topic.id, 20)
-      @description = @topic.name.truncate(255)
+    @topic.increment!(:click_times, by = 1)
 
     respond_to do |format|
       format.html # index.html.erb

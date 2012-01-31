@@ -8,12 +8,10 @@
      <% if !@fun_category.nil?  %>
         <%= link_to @fun_category.name , category_funs_path(@fun_category) %>  >
      <% end %>
-    列表
-
+    <%=	 @tag_name.blank? ? "列表" : @tag_name %>
 
   <span style="float: right;">
   <label>热门搜索：</label>
-  <%=	 link_to '班师回京', '#' %>
 
   </span>
   </hgroup>
@@ -49,8 +47,9 @@
 </div>
 <div class="span-4 last">
     <ul>
-      <li><%= link_to '贴吧热贴' , tieba_path %></li>
-      <li><%= link_to '天涯热贴' , tianya_path %></li>
+      <li><%= link_to '贴吧热贴' , tieba_path , :target => '_blank'%></li>
+      <li><%= link_to '天涯热贴' , tianya_path , :target => '_blank' %></li>
+      <li><%= link_to '豆瓣直播' , douban_path , :target => '_blank' %></li>
     </ul>
     <div class="prepend-top">
       <%= render :partial =>'layouts/tagscloud' ,:locals => {:model => "fun"}%>

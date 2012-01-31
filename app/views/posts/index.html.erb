@@ -1,7 +1,7 @@
 <div class="span-23">
   <hgroup>
     <label>当前位置： </label>
-    <%=	 link_to '乐哈社区', forums_path %>  »
+    <%=	 link_to '乐贴', forums_path %>  »
     <%= link_to @topic.forum.name , forum_topics_path(@topic.forum) %> »
     <%=	 @topic.f_category %>  »
     <%= @topic.name  %>
@@ -51,7 +51,7 @@
 <%	 end %></li>
 
     </ul>
-    <div class="prepend-top box ">
+    <div class="prepend-top">
       <%= render :partial =>'layouts/tagscloud' ,:locals => {:model => "topic"}%>
     </div>
 </div>

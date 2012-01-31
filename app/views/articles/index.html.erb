@@ -8,10 +8,11 @@
      <% if !@article_category.nil?  %>
         <%= link_to @article_category.name , category_funs_path(@article_category) %>  >
      <% end %>
-    列表
+    <%=	 @tag_name.blank? ? "列表" : @tag_name %>
+
   <span style="float: right;">
       <label>热门搜索：</label>
-      <%=	 link_to '2012末日', '#' %>
+
   </span>
   </hgroup>
   <hr>

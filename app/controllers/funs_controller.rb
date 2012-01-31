@@ -2,14 +2,14 @@
 class FunsController < ApplicationController
   include TagsHelper
 
-  before_filter :check_editor_role, :except => [:index, :show, :tag]
+  before_filter :check_editor_role, :except => [:index, :show]
 
   # GET /funs
   # GET /funs.json
   def index
 
     @title = '幽默短文'
-    @keywords = '故事,笑话,网文,小笑话,幽默短片,xiaohua,xiaoshuo,gaoxiao,好笑,乐一下,了下,乐哈,leha,'
+    @keywords = '故事,笑话,网文,小笑话,幽默短片,好笑,乐一下,了下,乐哈,xiaohua,xiaoshuo,gaoxiao,leha'
     @description = "搞笑网文、幽默笑话、时事笑话集散地"
 
     if params[:category_id]
@@ -18,13 +18,10 @@ class FunsController < ApplicationController
        @fun_category = Category.find(params[:category_id])
     else
        if params[:tag_id]
-          @title = Tag.find(params[:tag_id]).name
-              options = {
-    :conditions => "taggings.tag_id = #{params[:tag_id].to_i}",
-    :joins => " right join taggings on funs.id = taggable_id"
-    }
-         #temp = Tagging.find_by_sql("SELECT taggable_id FROM `taggings` where tag_id = ?",params[:tag_id].to_i)
-         @funs = Fun.where( "taggings.tag_id = #{params[:tag_id].to_i}").joins(" right join taggings on funs.id = taggable_id").paginate(:page => params[:page], :per_page => 10,
+         @tag_name = Tag.find(params[:tag_id]).name
+         @title <<"_" <<  @tag_name
+         @keywords = @tag_name
+         @funs = Fun.where( "taggings.tag_id = #{params[:tag_id].to_i} and taggings.taggable_type = 'fun'").joins(" right join taggings on funs.id = taggable_id").paginate(:page => params[:page], :per_page => 10,
                                                     :include => :user,  :readonly => false).order ( 'funs.created_at DESC')
        else
          @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
@@ -34,9 +31,6 @@ class FunsController < ApplicationController
     @funs.each do |f|
         f.increment!(:click_time, by = 1)
     end
-
-
-
 
     respond_to do |format|
       format.html # index.html.erb
@@ -135,9 +129,6 @@ class FunsController < ApplicationController
      @funs = Fun.paginate(:page => params[:page], :include => :user).order('created_at DESC')
   end
 
-  def tag
-
-  end
   def get_random_numbers  count,max
    (1..count).to_a.sample(max)
   end

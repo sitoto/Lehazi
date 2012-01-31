@@ -8,13 +8,27 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @forum = Forum.find(params[:forum_id])
-    @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
-                                                    :include => :user).order ( 'topics.updated_at DESC')
 
-    @title =  @forum.name
+    @title = "乐贴"
     @keywords = "只看楼主,乐一下,了一下,leyixia,乐哈网,乐哈子,热贴,热吧,热区,豆瓣直播,贴吧,天涯,直播,脱水"
-    @description = "乐哈网，热贴热吧，娱乐信息"
+    @description = "热贴,热吧,百度贴吧,豆瓣直播,天涯论坛,"
+
+    if params[:tag_id]
+      @tag_name = Tag.find(params[:tag_id]).name
+      @title <<"_" <<  @tag_name
+      @keywords = @tag_name
+      @topics = Topic.where( "taggings.tag_id = #{params[:tag_id].to_i} and taggings.taggable_type = 'topic'").joins(" right join taggings on topics.id = taggable_id").paginate(:page => params[:page], :per_page => 10,
+                                              :include => :user,  :readonly => false).order ( 'topics.updated_at DESC')
+    else
+      @forum = Forum.find(params[:forum_id])
+      @topics = Topic.where("forum_id=#{params[:forum_id].to_i} ").paginate(:page => params[:page],
+                                                    :include => :user).order ( 'topics.updated_at DESC')
+      @title = @forum.name
+    end
+
+
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }

@@ -36,6 +36,7 @@ end
   resources :articles  do
     collection do
       get 'admin'
+      get 'tag/:tag_id' ,:action => "index"
     end
   end
   resources :funs do
@@ -58,9 +59,13 @@ end
     resources :games
   end
 
+  resource :topics do
+    collection do
+      get 'tag/:tag_id' ,:action => "index"
+    end
+  end
   resources :forums do
     resources :topics do
-
       collection do
         get "newtopic"
         get "last"
