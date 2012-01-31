@@ -8,7 +8,9 @@ class FunsController < ApplicationController
   # GET /funs.json
   def index
 
-
+    @title = '幽默短文'
+    @keywords = '故事,笑话,网文,小笑话,幽默短片,xiaohua,xiaoshuo,gaoxiao,好笑,乐一下,了下,乐哈,leha,'
+    @description = "搞笑网文、幽默笑话、时事笑话集散地"
 
     if params[:category_id]
        @funs = Fun.where("category_id=#{params[:category_id].to_i}").paginate(:page => params[:page], :per_page => 10,
@@ -16,7 +18,14 @@ class FunsController < ApplicationController
        @fun_category = Category.find(params[:category_id])
     else
        if params[:tag_id]
-         @title = "标签"
+          @title = Tag.find(params[:tag_id]).name
+              options = {
+    :conditions => "taggings.tag_id = #{params[:tag_id].to_i}",
+    :joins => " right join taggings on funs.id = taggable_id"
+    }
+         #temp = Tagging.find_by_sql("SELECT taggable_id FROM `taggings` where tag_id = ?",params[:tag_id].to_i)
+         @funs = Fun.where( "taggings.tag_id = #{params[:tag_id].to_i}").joins(" right join taggings on funs.id = taggable_id").paginate(:page => params[:page], :per_page => 10,
+                                                    :include => :user,  :readonly => false).order ( 'funs.created_at DESC')
        else
          @funs = Fun.paginate(:page => params[:page],:per_page => 10, :include => :user).order('created_at DESC')
        end
@@ -26,9 +35,7 @@ class FunsController < ApplicationController
         f.increment!(:click_time, by = 1)
     end
 
-    @title = '幽默短文'
-    @keywords = '故事,笑话,网文,小笑话,幽默短片,xiaohua,xiaoshuo,gaoxiao,好笑,乐一下,了下,乐哈,leha,'
-    @description = "搞笑网文、幽默笑话、时事笑话集散地"
+
 
 
     respond_to do |format|
