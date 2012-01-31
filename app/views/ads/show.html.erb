@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ad.name %>
+</p>
+
+<p>
+  <b>From:</b>
+  <%= @ad.from %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= raw @ad.body %>
+</p>
+
+<p>
+  <b>Word:</b>
+  <%= @ad.word %>
+</p>
+
+<p>
+  <b>Pic:</b>
+  <%= @ad.pic %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @ad.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @ad.height %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%= @ad.published %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', ads_path %>

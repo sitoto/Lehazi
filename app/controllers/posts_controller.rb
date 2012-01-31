@@ -1,6 +1,7 @@
 #encoding: utf-8
 class PostsController < ApplicationController
   include TagsHelper
+  include AdsHelper
 
   layout "we"
   before_filter :check_moderator_role, :only => [:destroy, :edit, :update]

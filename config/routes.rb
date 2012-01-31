@@ -1,8 +1,13 @@
 LehaziCom::Application.routes.draw do
 
+  resources :ads
+
+  resources :friend_links
+
 if Rails.env.development?
   match "/images/uploads/*path" => "gridfs#serve"
 end
+  get "index/friend_links" => "friend_links#index" ,:as => "friend_links"
 
   get "blogs"  => "blog#index", :as => "blogs"
 

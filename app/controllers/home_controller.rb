@@ -32,6 +32,7 @@ class HomeController < ApplicationController
     @top_funs_love = Fun.where(:category_id => 9).find(:all, :order => 'created_at DESC', :limit => 18 )
 =end
 
+
     @count = Fun.count
     #随机抽取
     @random_funs =Fun.find(get_random_numbers(@count))

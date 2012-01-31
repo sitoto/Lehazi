@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @friend_link.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @friend_link.url %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @friend_link.logo %>
+</p>
+
+<p>
+  <b>level:</b>
+  <%= @friend_link.level %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%= @friend_link.published %>
+</p>
+
+
+<%= link_to 'Edit', edit_friend_link_path(@friend_link) %> |
+<%= link_to 'Back', friend_links_path %>

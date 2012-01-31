@@ -1,0 +1,17 @@
+<div class="span-23 friend">
+<hgroup>
+    <label>当前位置： </label>
+    <%=	 link_to '首页', root_path %>  >  友情链接
+
+  </hgroup>
+  <hr>
+
+<h3>友情链接</h3>
+ <ul>
+    <% @friend_links.each do |friend_link| %>
+      <li>
+        <%= link_to friend_link.name, friend_link.url, :target => '_blank' %>
+      </li>
+    <% end %>
+ </ul>
+</div>

@@ -152,12 +152,28 @@ footer nav{
     display: inline-block;
     padding: 10px;
 }
+/* friend link*/
+.friend {
+    background: #dff;
+    padding: 10px 20px;
+}
+.friend ul{
+    width: 100%;
+}
+.friend ul li{
+    float: left;
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+    width: 30%;
+}
 
 /* tag cloud */
 #big_tags_cloud {padding:5px; text-align:justify; }
-#big_tags_cloud a {font-family:'Times New Roman'; line-height:1.7;border-bottom:1px solid #779944;}
-#big_tags_cloud span.t1 a{ color:#779944;font-size:11pt;}
+#big_tags_cloud a {font-family:'Times New Roman'; line-height:1.7;}
+#big_tags_cloud h5 {padding: 4px 8px 0px 8px}
+#big_tags_cloud span.t1 a{ color:#003399;font-size:11pt;}
 #big_tags_cloud span.t2 a{ color:#779944;font-size:12pt;}
-#big_tags_cloud span.t3 a{ color:#779944;font-size:13pt;}
-#big_tags_cloud span.t4 a{ color:#558800;font-size:14pt;font-weight:bold;}
+#big_tags_cloud span.t3 a{ color:#0033aa;font-size:13pt;}
+#big_tags_cloud span.t4 a{ color:#0000ff;font-size:14pt;font-weight:bold;}
 #big_tags_cloud span.t5 a{ color:#669900;font-size:15pt; font-weight:bold;}

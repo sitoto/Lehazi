@@ -1,6 +1,7 @@
 <% the_cloud = tags_cloud(model) %>
 <% unless the_cloud.blank? %>
     <div id="big_tags_cloud">
+    <h5>标签云</h5>
     <% the_cloud.each do |tag,id,fsize,count| %>
         <span class="t<%= fsize -%>">
         <a title="<%= count %>" alt="<%= count -%>"  class="tag_<%= id %>"

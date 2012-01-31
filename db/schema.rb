@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120119050033) do
+ActiveRecord::Schema.define(:version => 20120131083324) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "name",                          :null => false
+    t.string   "from",                          :null => false
+    t.string   "body"
+    t.boolean  "word",       :default => false, :null => false
+    t.boolean  "pic",        :default => false, :null => false
+    t.integer  "width",      :default => 0,     :null => false
+    t.integer  "height",     :default => 0,     :null => false
+    t.boolean  "published",  :default => true,  :null => false
+    t.integer  "weight",     :default => 0,     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -63,6 +77,18 @@ ActiveRecord::Schema.define(:version => 20120119050033) do
     t.integer  "topics_count", :default => 0,  :null => false
     t.string   "permalink",    :default => ""
   end
+
+  create_table "friend_links", :force => true do |t|
+    t.string   "name"
+    t.string   "url",        :default => "http://www.lehazi.com", :null => false
+    t.string   "logo"
+    t.integer  "level",      :default => 0,                       :null => false
+    t.boolean  "published",  :default => true,                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friend_links", ["name"], :name => "index_friend_links_on_name", :length => {"name"=>191}
 
   create_table "funs", :force => true do |t|
     t.string   "title",       :default => "笑话", :null => false
@@ -193,7 +219,7 @@ ActiveRecord::Schema.define(:version => 20120119050033) do
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
-    t.string   "taggable"
+    t.string   "taggable_type"
     t.integer  "taggable_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,6 +1,7 @@
 # encoding: utf-8
 class FunsController < ApplicationController
   include TagsHelper
+  include AdsHelper
 
   before_filter :check_editor_role, :except => [:index, :show]
 
