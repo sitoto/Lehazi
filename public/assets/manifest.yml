@@ -63,7 +63,8 @@ temp/bole.jpg: temp/bole-b76a653e9652ec3bcb967582f1ddb66e.jpg
 temp/ha.jpg: temp/ha-3b1e841f15a064f338509093bd10d952.jpg
 temp/yezi.jpg: temp/yezi-947c5b72a6ccbceebcd47323bb19e3b1.jpg
 admin.js: admin-be936550b6939a6f107544b16b3fb99d.js
-application.js: application-de7eea1b8e94b14c8b107e16d3ccf347.js
+ads.js: ads-be936550b6939a6f107544b16b3fb99d.js
+application.js: application-13ec5bf3379f575b410d6b8eee450ba1.js
 articles.js: articles-be936550b6939a6f107544b16b3fb99d.js
 blog.js: blog-be936550b6939a6f107544b16b3fb99d.js
 categories.js: categories-be936550b6939a6f107544b16b3fb99d.js
@@ -71,6 +72,7 @@ category.js: category-aa3efc5a01da03e568c4e0d4620c96f7.js
 comments.js: comments-be936550b6939a6f107544b16b3fb99d.js
 entries.js: entries-be936550b6939a6f107544b16b3fb99d.js
 forums.js: forums-be936550b6939a6f107544b16b3fb99d.js
+friend_links.js: friend_links-be936550b6939a6f107544b16b3fb99d.js
 funs.js: funs-be936550b6939a6f107544b16b3fb99d.js
 games.js: games-be936550b6939a6f107544b16b3fb99d.js
 gridfs.js: gridfs-be936550b6939a6f107544b16b3fb99d.js
@@ -82,12 +84,14 @@ posts.js: posts-be936550b6939a6f107544b16b3fb99d.js
 rent_infos.js: rent_infos-be936550b6939a6f107544b16b3fb99d.js
 roles.js: roles-be936550b6939a6f107544b16b3fb99d.js
 sessions.js: sessions-be936550b6939a6f107544b16b3fb99d.js
+tags.js: tags-be936550b6939a6f107544b16b3fb99d.js
 topics.js: topics-be936550b6939a6f107544b16b3fb99d.js
 user_portraits.js: user_portraits-be936550b6939a6f107544b16b3fb99d.js
 user_sessions.js: user_sessions-be936550b6939a6f107544b16b3fb99d.js
 users.js: users-be936550b6939a6f107544b16b3fb99d.js
 we.js: we-be936550b6939a6f107544b16b3fb99d.js
-application.css: application-7edfae0d79882f81c14d24b559710e15.css
+ads.css: ads-1c9609bc58b1e77c196de29021583379.css
+application.css: application-6b066566f09c65570dded8056dbb2969.css
 blueprint/ie.css: blueprint/ie-2a1f5060a61945d53c85dc7de55c0161.css
 blueprint/plugins/buttons/icons/cross.png: blueprint/plugins/buttons/icons/cross-1f87fac86c438386527b5e7d5ceecb0e.png
 blueprint/plugins/buttons/icons/key.png: blueprint/plugins/buttons/icons/key-5f38d0204e83d3d83585a62ff993342b.png
@@ -114,10 +118,10 @@ blueprint/src/forms.css: blueprint/src/forms-ad3f209dc3648a4a860d7538596ebc3d.cs
 blueprint/src/grid.css: blueprint/src/grid-c2b09a08a232eb5906ddf1708f06e441.css
 blueprint/src/grid.png: blueprint/src/grid-a3e8e6a6df57000ec00b24e8ec862608.png
 blueprint/src/ie.css: blueprint/src/ie-9abc4242ad101ab3c96c98aedb150a3f.css
-blueprint/src/print.css: blueprint/src/print-f52c35be5e011864cec188a6210106bc.css
 blueprint/src/reset.css: blueprint/src/reset-353cc2697d8d3d6be2e34f7a8a0a8eaf.css
 blueprint/src/typography.css: blueprint/src/typography-b00af13617c46e27dd98e22a03cc615c.css
-custom.css: custom-ebb7b626afff089345163a8400527ab2.css
+custom.css: custom-56521a37fd6bf5273f0919a0a3fcf2f1.css
+friend_links.css: friend_links-1c9609bc58b1e77c196de29021583379.css
 games.css: games-6bf3d0baea63a49ab78dc1dfa5a0922f.css
 global.css: global-aea8f08c9efd7a0a60974eb8fab6f50e.css
 home.css: home-dd6b7dcb0d7e9522d55441e2ad00d2ff.css
@@ -125,6 +129,7 @@ infos.css: infos-aa9129eee1fa003de324c6a84f0d017e.css
 novels.css: novels-190742330d39ad0f938c586798afde96.css
 pagination.css: pagination-923955ec7ae8d648b23f2e308e345816.css
 scaffolds.css: scaffolds-fdb9f7830ec1235f4c95b6b88d4bbca2.css
+tags.css: tags-1c9609bc58b1e77c196de29021583379.css
 we.css: we-d09f167af956ea06d883e0f13611cb18.css
 jquery-ui.js: jquery-ui-062cb608c4bff94ebe9ada632549b66c.js
 jquery-ui.min.js: jquery-ui.min-de1f48daa9de18901932b78b8f066891.js
